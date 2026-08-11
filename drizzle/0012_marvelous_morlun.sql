@@ -1,0 +1,2 @@
+ALTER TABLE "app"."notifications" ADD COLUMN "deduplication_key" text;--> statement-breakpoint
+CREATE UNIQUE INDEX "notifications_deduplication_key_unique" ON "app"."notifications" USING btree ("deduplication_key");

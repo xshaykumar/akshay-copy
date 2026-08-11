@@ -1,0 +1,2 @@
+CREATE UNIQUE INDEX "assessments_client_version_unique" ON "app"."assessments" USING btree ("client_user_id","version");--> statement-breakpoint
+CREATE UNIQUE INDEX "replacement_requests_one_open_per_assignment_unique" ON "app"."replacement_requests" USING btree ("assignment_id") WHERE "app"."replacement_requests"."status" in ('requested', 'reviewing', 'approved');

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "refunds_one_open_per_payment_unique" ON "app"."refunds" USING btree ("payment_order_id") WHERE "app"."refunds"."status" in ('requested', 'approved', 'processing');

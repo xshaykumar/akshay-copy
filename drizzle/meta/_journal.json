@@ -1,0 +1,230 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1784911194256,
+      "tag": "0000_large_alex_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784917329627,
+      "tag": "0001_amazing_doctor_faustus",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784918275988,
+      "tag": "0002_solid_ted_forrester",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784924914127,
+      "tag": "0003_fat_rumiko_fujikawa",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1785270674094,
+      "tag": "0004_brainy_wrecker",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1785327106858,
+      "tag": "0005_tan_northstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1785358229541,
+      "tag": "0006_eminent_sheva_callister",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1785476000906,
+      "tag": "0007_dapper_nebula",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1785476675117,
+      "tag": "0008_breezy_gwen_stacy",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1785482667260,
+      "tag": "0009_overjoyed_zzzax",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1785482694181,
+      "tag": "0010_lovely_the_initiative",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1785487487102,
+      "tag": "0011_slow_speed",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1785487821033,
+      "tag": "0012_marvelous_morlun",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1785488259439,
+      "tag": "0013_odd_leo",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1785593060620,
+      "tag": "0014_mean_deathstrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1785595202415,
+      "tag": "0015_furry_silver_samurai",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1785595291770,
+      "tag": "0016_stale_luckman",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1785668782125,
+      "tag": "0017_mixed_fat_cobra",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1785679549303,
+      "tag": "0018_safe_sleeper",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1785680560748,
+      "tag": "0019_little_shinko_yamashiro",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1785682380270,
+      "tag": "0020_add_temporary_free_plan",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1785690377548,
+      "tag": "0021_sync_public_plan_catalog",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1785768174198,
+      "tag": "0022_heavy_kat_farrell",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1785868871924,
+      "tag": "0023_odd_magik",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1785934511377,
+      "tag": "0024_handy_zemo",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1785934687431,
+      "tag": "0025_backfill_admin_certification_waivers",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1785939371327,
+      "tag": "0026_remove_obsolete_payment_subject_constraint",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1785939385369,
+      "tag": "0027_steep_namora",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1785962968205,
+      "tag": "0028_sharp_black_tom",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1786022478812,
+      "tag": "0029_remove_temporary_free_plan",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1786281004896,
+      "tag": "0030_cloudy_star_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1786293318865,
+      "tag": "0031_smart_eternity",
+      "breakpoints": true
+    }
+  ]
+}
