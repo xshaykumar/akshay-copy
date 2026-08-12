@@ -142,8 +142,14 @@
   display: inline-block;
   margin: 0;
   color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: 800;
+  line-height: inherit;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+  letter-spacing: 0.02em;
 }
 
 .desktopNav {
