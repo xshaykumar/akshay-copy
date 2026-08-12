@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import styles from "./public.module.css";
 import logoImage from "@/logo1.png";
-import headerLogoImage from "@/logo_final.png";
+import headerLogoImage from "@/logo_final_transparent.png";
 
 const navigation = [
   { href: "/#services", label: "Services" },
@@ -38,7 +38,7 @@ function SocialIcon({ brand }: { brand: keyof typeof socialIconPaths }) {
 export function BrandMark({
   compact = false,
   header = false,
-  tagline = "Human potential, engineered",
+  tagline = "Elite coaching platform",
 }: {
   compact?: boolean;
   header?: boolean;
@@ -61,7 +61,8 @@ export function BrandMark({
       {!compact && (
         <span className={styles.brandWords}>
           <strong>
-            <span className={styles.brandNumber}>360</span> Performance
+            <span className={styles.brandNumber}>360</span>
+            <span>Performance</span>
           </strong>
           <span className={styles.brandTagline}>{tagline}</span>
         </span>
@@ -179,7 +180,7 @@ export function PublicFooter() {
             <Mail size={16} aria-hidden="true" /> support@360performance.in
           </a>
           <span>
-            <MapPin size={16} aria-hidden="true" /> Rampur Road, Haldwani – 263139
+            <MapPin size={16} aria-hidden="true" /> Rampur Road, Haldwani, Uttarakhand – 263139
           </span>
         </address>
       </div>
