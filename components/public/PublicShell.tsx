@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import styles from "./public.module.css";
 import logoImage from "@/logo1.png";
-import headerLogoImage from "@/logo_final_transparent.png";
 
 const navigation = [
   { href: "/#services", label: "Services" },
@@ -51,7 +50,7 @@ export function BrandMark({
         aria-hidden="true"
       >
         <Image
-          src={header ? headerLogoImage : logoImage}
+          src={logoImage}
           alt=""
           sizes={header ? "64px" : "(max-width: 640px) 112px, 140px"}
           quality={100}
