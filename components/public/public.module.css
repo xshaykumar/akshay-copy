@@ -4216,7 +4216,7 @@
 /* ===== DESKTOP — loads desktop.jpg (different image, needs its own value) ===== */
 @media (min-width: 769px) {
   .hillRushRegister {
-    top: 65% !important; /* PLACEHOLDER — tune this live, see below */
+    top: 71% !important; /* PLACEHOLDER — tune this live, see below */
     min-width: 260px;
     padding: 12px 30px;
     font-size: 18px;
