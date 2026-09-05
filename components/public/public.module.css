@@ -4143,164 +4143,6 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  display: block; /* Ensure it takes full width */
-}
-
-.hillRushPoster picture {
-  display: block;
-  width: 100%;
-}
-
-.hillRushImage {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.hillRushRegister {
-  position: absolute !important;
-  left: 50% !important;
-  top: 82% !important; /* Image 2 ke according position fix karne ke liye 82% kiya hai */
-  transform: translate(-50%, -50%) !important; /* X aur Y dono axis par center karne ke liye */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 260px;
-  padding: 15px 34px;
-  background: #111111 !important;
-  color: #f2c14e !important;
-  border: 2px solid #f2c14e !important;
-  border-radius: 6px;
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  box-shadow:
-    0 0 10px rgba(212, 175, 55, 0.35),
-    0 0 25px rgba(212, 175, 55, 0.18);
-  transition: all 0.25s ease;
-  z-index: 20;
-}
-
-.hillRushRegister:hover {
-  background: #d4af37 !important;
-  color: #000 !important;
-  transform: translate(-50%, calc(-50% - 3px)) !important;
-  box-shadow:
-    0 0 18px rgba(212, 175, 55, 0.6),
-    0 0 35px rgba(212, 175, 55, 0.3);
-}
-
-.hillRushRegister:active {
-  transform: translate(-50%, -50%) scale(0.97) !important;
-}
-
-@media (max-width: 768px) {
-  .hillRushRegister {
-    top: 80% !important;
-    min-width: 190px;
-    padding: 12px 22px;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hillRushRegister {
-    top: 78% !important;
-    min-width: 165px;
-    padding: 10px 18px;
-    font-size: 13px;
-    letter-spacing: 1.2px;
-  }
-}
-  .profileBody {
-    padding-top: 52px;
-  }
-
-  .profileStat {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-  }
-
-  .formCard {
-    padding: 25px 19px;
-  }
-
-  .formGroupFull {
-    grid-column: auto;
-  }
-
-  .roleChooser {
-    grid-template-columns: 1fr;
-  }
-
-  .legalLayout {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .legalNav {
-    position: static;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .publicSite *,
-  .authPage * {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .rotatingWord,
-  .heroActions .primaryButton::before,
-  .premiumCopy .darkButton::before {
-    animation: none !important;
-  }
-
-  .rotatingWord {
-    display: none;
-  }
-
-  .rotatingWord:first-child {
-    display: grid;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .publicProfileHeading {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .publicProfileHeading > img,
-  .publicProfileHeading > span:first-child {
-    width: 112px;
-    height: 112px;
-    border-radius: 26px;
-  }
-}
-/* =========================================
-   HALDWANI HILL RUSH CHALLENGE 2026
-   ========================================= */
-
-.hillRushSection {
-  width: 100%;
-  background: #000;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.hillRushPoster {
-  position: relative !important;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
   display: block;
 }
 
@@ -4315,10 +4157,11 @@
   height: auto;
 }
 
+/* DESKTOP VERSION (Sirf isko top: 80% kiya hai) */
 .hillRushRegister {
   position: absolute !important;
   left: 50% !important;
-  top: 58% !important; /* Button ko 'HALDWANI -> KATHGODAM' text ke theek neeche laane ke liye */
+  top: 80% !important; 
   transform: translate(-50%, -50%) !important;
   display: inline-flex;
   align-items: center;
@@ -4354,7 +4197,7 @@
   transform: translate(-50%, -50%) scale(0.97) !important;
 }
 
-/* Tablet Screens */
+/* Tablet Screens (Unchanged) */
 @media (max-width: 768px) {
   .hillRushRegister {
     top: 58% !important;
@@ -4365,10 +4208,10 @@
   }
 }
 
-/* Mobile Screens (Aapke Screenshot ke hisaab se) */
+/* Mobile Screens (Unchanged - Working perfectly) */
 @media (max-width: 480px) {
   .hillRushRegister {
-    top: 57% !important; /* Mobile layout me vertically exact middle aligned */
+    top: 57% !important;
     min-width: 150px;
     padding: 8px 16px;
     font-size: 12px;
