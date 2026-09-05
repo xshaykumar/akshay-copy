@@ -4213,10 +4213,10 @@
   }
 }
 
-/* ===== DESKTOP — loads desktop.jpg (different image, needs its own value) ===== */
+/* ===== DESKTOP — loads desktop.jpg ===== */
 @media (min-width: 769px) {
   .hillRushRegister {
-    top: 71% !important; /* PLACEHOLDER — tune this live, see below */
+    top: 71% !important;
     min-width: 260px;
     padding: 12px 30px;
     font-size: 18px;
