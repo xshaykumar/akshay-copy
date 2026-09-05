@@ -4181,13 +4181,23 @@
 }
 
 
-/* MOBILE — KEEP YOUR PERFECT POSITION */
-@media (max-width: 480px) {
+/* TABLET + DESKTOP (same image, same relative position) */
+@media (min-width: 481px) {
   .hillRushRegister {
-    top: 57% !important;
-    min-width: 150px;
-    padding: 8px 16px;
-    font-size: 12px;
-    letter-spacing: 1px;
+    top: 85% !important;
+    min-width: 190px;
+    padding: 10px 20px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hillRushRegister {
+    /* keep top the same, only scale up size/spacing */
+    min-width: 260px;
+    padding: 12px 30px;
+    font-size: 18px;
+    letter-spacing: 2px;
   }
 }
