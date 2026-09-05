@@ -4126,7 +4126,7 @@
     grid-column: 1;
   }
 
-  /* =========================================
+ /* =========================================
    HALDWANI HILL RUSH CHALLENGE 2026
    ========================================= */
 
@@ -4157,26 +4157,21 @@
   height: auto;
 }
 
-/* DESKTOP VERSION (Sirf isko top: 80% kiya hai) */
+/* Common Base Styles */
 .hillRushRegister {
   position: absolute !important;
   left: 50% !important;
-  top: 80% !important; 
   transform: translate(-50%, -50%) !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  padding: 12px 30px;
   background: #111111 !important;
   color: #f2c14e !important;
   border: 2px solid #f2c14e !important;
   border-radius: 6px;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
   font-weight: 800;
-  letter-spacing: 2px;
   box-shadow:
     0 0 10px rgba(212, 175, 55, 0.35),
     0 0 25px rgba(212, 175, 55, 0.18);
@@ -4197,8 +4192,19 @@
   transform: translate(-50%, -50%) scale(0.97) !important;
 }
 
-/* Tablet Screens (Unchanged) */
-@media (max-width: 768px) {
+/* DESKTOP ONLY (Overlaps fix karne ke liye top: 78% explicitly set kiya hai) */
+@media (min-width: 769px) {
+  .hillRushRegister {
+    top: 78% !important;
+    min-width: 260px;
+    padding: 12px 30px;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+}
+
+/* TABLET (Unchanged) */
+@media (max-width: 768px) and (min-width: 481px) {
   .hillRushRegister {
     top: 58% !important;
     min-width: 190px;
@@ -4208,7 +4214,7 @@
   }
 }
 
-/* Mobile Screens (Unchanged - Working perfectly) */
+/* MOBILE (Unchanged - Working perfectly) */
 @media (max-width: 480px) {
   .hillRushRegister {
     top: 57% !important;
