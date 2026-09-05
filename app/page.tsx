@@ -156,6 +156,35 @@ const process = [
 export default function Home() {
   return (
     <PublicShell>
+      {/* HALDWANI HILL RUSH CHALLENGE 2026 */}
+
+<section className={styles.hillRushSection}>
+  <div className={styles.hillRushPoster}>
+
+    <picture>
+      <source
+        media="(min-width: 769px)"
+        srcSet="/hill-rush-desktop.jpg"
+      />
+
+      <img
+        src="/hill-rush-mobile.jpg"
+        alt="Haldwani Hill Rush Challenge 2026"
+        className={styles.hillRushImage}
+      />
+    </picture>
+
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSe-_qJQvzlcwW4WNSwvnWrUKW9aHDUW76nMMPLBAtm78jS5YA/viewform?usp=header"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.hillRushRegister}
+    >
+      REGISTER NOW
+    </a>
+
+  </div>
+</section>
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
@@ -198,35 +227,53 @@ export default function Home() {
         </div>
       </section>
 
-         {/* HALDWANI HILL RUSH CHALLENGE 2026 */}
+        
+      <section className={styles.founderSection}>
+  <div className={styles.sectionInner}>
+    <div className={styles.founderFeature}>
 
-<section className={styles.hillRushSection}>
-  <div className={styles.hillRushPoster}>
+      <div className={styles.founderPortrait}>
+        <Image
+          src={founderImage}
+          alt="Akshay Kumar, founder of 360 Performance"
+          fill
+          sizes="(max-width: 900px) min(100vw - 40px, 620px), 42vw"
+        />
 
-    <picture>
-      <source
-        media="(min-width: 769px)"
-        srcSet="/hill-rush-desktop.jpg"
-      />
+        <div className={styles.founderPortraitCaption}>
+          <span>Founder profile</span>
+          <strong>6+ years · 500+ clients</strong>
+        </div>
+      </div>
 
-      <img
-        src="/hill-rush-mobile.jpg"
-        alt="Haldwani Hill Rush Challenge 2026"
-        className={styles.hillRushImage}
-      />
-    </picture>
+      <div className={styles.founderContent}>
+        <span className={styles.sectionLabel}>Meet the founder</span>
 
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLSe-_qJQvzlcwW4WNSwvnWrUKW9aHDUW76nMMPLBAtm78jS5YA/viewform?usp=header"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.hillRushRegister}
-    >
-      REGISTER NOW
-    </a>
+        <h2>Akshay Kumar</h2>
 
+        <p className={styles.founderRole}>
+          Founder · Strength & Rehabilitation Expert · Performance Coach
+        </p>
+
+        <p className={styles.founderBio}>
+          Akshay Kumar is the founder of 360 Performance and has over six
+          years of professional coaching experience, helping more than
+          500 clients improve their strength, body composition, athletic
+          performance, rehabilitation, and overall health.
+        </p>
+
+        <p className={styles.founderBio}>
+          Every coaching program is designed using evidence-based
+          principles rather than generic workout plans, ensuring each
+          client receives a personalized training experience based on
+          their goals, movement quality, and lifestyle.
+        </p>
+      </div>
+
+    </div>
   </div>
-</section>   
+</section>
+
       <section className={styles.darkSection}>
         <div className={styles.sectionInner}>
           <div className={styles.premiumGrid}>
