@@ -198,7 +198,36 @@ export default function Home() {
         </div>
       </section>
 
-            <section className={styles.darkSection}>
+         {/* HALDWANI HILL RUSH CHALLENGE 2026 */}
+
+<section className={styles.hillRushSection}>
+  <div className={styles.hillRushPoster}>
+
+    <picture>
+      <source
+        media="(min-width: 769px)"
+        srcSet="/hill-rush-desktop.jpg"
+      />
+
+      <img
+        src="/hill-rush-mobile.jpg"
+        alt="Haldwani Hill Rush Challenge 2026"
+        className={styles.hillRushImage}
+      />
+    </picture>
+
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSe-_qJQvzlcwW4WNSwvnWrUKW9aHDUW76nMMPLBAtm78jS5YA/viewform?usp=header"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.hillRushRegister}
+    >
+      REGISTER NOW
+    </a>
+
+  </div>
+</section>   
+      <section className={styles.darkSection}>
         <div className={styles.sectionInner}>
           <div className={styles.premiumGrid}>
             <div className={styles.premiumCopy}>
