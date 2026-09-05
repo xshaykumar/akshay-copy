@@ -4157,7 +4157,7 @@
   height: auto;
 }
 
-/* Common Base Styles */
+/* Base Styles */
 .hillRushRegister {
   position: absolute !important;
   left: 50% !important;
@@ -4192,10 +4192,10 @@
   transform: translate(-50%, -50%) scale(0.97) !important;
 }
 
-/* DESKTOP ONLY (Overlaps fix karne ke liye top: 78% explicitly set kiya hai) */
+/* DESKTOP & LAPTOP SCREENS (Forcefully pushed to 88% down) */
 @media (min-width: 769px) {
   .hillRushRegister {
-    top: 78% !important;
+    top: 88% !important; /* Raised value to guarantee bottom position */
     min-width: 260px;
     padding: 12px 30px;
     font-size: 18px;
@@ -4203,10 +4203,10 @@
   }
 }
 
-/* TABLET (Unchanged) */
+/* TABLET SCREENS */
 @media (max-width: 768px) and (min-width: 481px) {
   .hillRushRegister {
-    top: 58% !important;
+    top: 85% !important;
     min-width: 190px;
     padding: 10px 20px;
     font-size: 14px;
@@ -4214,7 +4214,7 @@
   }
 }
 
-/* MOBILE (Unchanged - Working perfectly) */
+/* MOBILE SCREENS (Your perfect working version) */
 @media (max-width: 480px) {
   .hillRushRegister {
     top: 57% !important;
