@@ -199,228 +199,133 @@ export default function Home() {
       </section>
 
             {/* Haldwani Hill Rush Challenge 2026 */}
-      <section
+<section
+  style={{
+    position: "relative",
+    width: "100%",
+    minHeight: "min(900px, 92vh)",
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#dcecf8",
+  }}
+>
+  {/* Poster background */}
+  <Image
+    src="/haldwani-hill-rush.png"
+    alt="Haldwani Hill Rush Challenge 2026"
+    fill
+    priority
+    sizes="100vw"
+    style={{
+      objectFit: "cover",
+      objectPosition: "center top",
+    }}
+  />
+
+  {/* Very light overlay — keeps the poster visible */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background:
+        "linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(0,0,0,0.08))",
+      pointerEvents: "none",
+    }}
+  />
+
+  {/* Sponsor logos */}
+  <div
+    style={{
+      position: "absolute",
+      top: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "22px",
+      zIndex: 2,
+      width: "90%",
+    }}
+  >
+    {/* 360 Performance */}
+    <div
+      style={{
+        width: "150px",
+        height: "70px",
+        position: "relative",
+      }}
+    >
+      <Image
+        src="/logo.svg"
+        alt="360 Performance"
+        fill
+        sizes="150px"
         style={{
-          width: "100%",
-          padding: "60px 20px",
-          background: "#f7f5f0",
+          objectFit: "contain",
         }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "70px 25px",
-            textAlign: "center",
-            borderRadius: "28px",
-            background:
-              "linear-gradient(135deg, #080808 0%, #19140d 55%, #050505 100%)",
-            boxShadow: "0 25px 70px rgba(0,0,0,0.18)",
-            overflow: "hidden",
-          }}
-        >
-          <p
-            style={{
-              margin: "0 0 18px",
-              color: "#c79a55",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "5px",
-            }}
-          >
-            360 PERFORMANCE PRESENTS
-          </p>
+      />
+    </div>
 
-          <h2
-            style={{
-              margin: 0,
-              color: "#ffffff",
-              fontSize: "clamp(38px, 7vw, 82px)",
-              lineHeight: 0.95,
-              fontWeight: 800,
-              letterSpacing: "-3px",
-            }}
-          >
-            HALDWANI HILL RUSH
-          </h2>
+    {/* Divider */}
+    <div
+      style={{
+        width: "1px",
+        height: "55px",
+        background: "rgba(0,0,0,0.35)",
+      }}
+    />
 
-          <h3
-            style={{
-              margin: "12px 0 25px",
-              color: "#c79a55",
-              fontSize: "clamp(22px, 4vw, 46px)",
-              fontWeight: 700,
-              letterSpacing: "3px",
-            }}
-          >
-            CHALLENGE 2026
-          </h3>
+    {/* FirstCry Intellitots */}
+    <div
+      style={{
+        width: "190px",
+        height: "70px",
+        position: "relative",
+        mixBlendMode: "multiply",
+      }}
+    >
+      <Image
+        src="/intellitots-logo.png"
+        alt="FirstCry Intellitots"
+        fill
+        sizes="190px"
+        style={{
+          objectFit: "contain",
+        }}
+      />
+    </div>
+  </div>
 
-          <div
-            style={{
-              width: "70px",
-              height: "1px",
-              margin: "28px auto",
-              background: "#c79a55",
-            }}
-          />
-
-          <p
-            style={{
-              margin: "0 0 35px",
-              color: "#ffffff",
-              fontSize: "clamp(14px, 2vw, 19px)",
-              fontWeight: 600,
-              letterSpacing: "2px",
-            }}
-          >
-            HALDWANI <span style={{ color: "#c79a55" }}>→</span>{" "}
-            KATHGODAM <span style={{ color: "#c79a55" }}>→</span>{" "}
-            HALDWANI
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "45px",
-              flexWrap: "wrap",
-              marginBottom: "40px",
-            }}
-          >
-            <div>
-              <small
-                style={{
-                  display: "block",
-                  color: "#a8a39a",
-                  fontSize: "10px",
-                  letterSpacing: "2px",
-                  marginBottom: "7px",
-                }}
-              >
-                DATE
-              </small>
-              <strong style={{ color: "#ffffff", fontSize: "14px" }}>
-                4 OCTOBER 2026
-              </strong>
-            </div>
-
-            <div>
-              <small
-                style={{
-                  display: "block",
-                  color: "#a8a39a",
-                  fontSize: "10px",
-                  letterSpacing: "2px",
-                  marginBottom: "7px",
-                }}
-              >
-                REGISTRATION
-              </small>
-              <strong style={{ color: "#ffffff", fontSize: "14px" }}>
-                ₹299
-              </strong>
-            </div>
-
-            <div>
-              <small
-                style={{
-                  display: "block",
-                  color: "#a8a39a",
-                  fontSize: "10px",
-                  letterSpacing: "2px",
-                  marginBottom: "7px",
-                }}
-              >
-                EVENT
-              </small>
-              <strong style={{ color: "#ffffff", fontSize: "14px" }}>
-                RUNNING CHALLENGE
-              </strong>
-            </div>
-          </div>
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe-_qJQvzlcwW4WNSwvnWrUKW9aHDUW76nMMPLBAtm78jS5YA/viewform?usp=header"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "14px",
-              minWidth: "210px",
-              padding: "17px 30px",
-              borderRadius: "5px",
-              background: "#c79a55",
-              color: "#111111",
-              textDecoration: "none",
-              fontSize: "12px",
-              fontWeight: 800,
-              letterSpacing: "2px",
-            }}
-          >
-            REGISTER NOW <span style={{ fontSize: "18px" }}>→</span>
-          </a>
-
-          <p
-            style={{
-              margin: "18px 0 0",
-              color: "#858078",
-              fontSize: "11px",
-              letterSpacing: "1px",
-            }}
-          >
-            Limited registrations · Secure your spot
-          </p>
-        </div>
-      </section>
-      <section className={styles.section} id="about">
-        <div className={styles.sectionInner}>
-          <div className={styles.platformIntro}>
-            <div className={styles.platformLead}>
-              <span className={styles.sectionLabel}>About 360 Performance</span>
-              <h2 className={styles.sectionTitle}>
-                One trusted ecosystem for <em>serious coaching.</em>
-              </h2>
-            </div>
-            <div className={styles.platformManifesto}>
-              <Sparkles size={22} aria-hidden="true" />
-              <p>
-                360 Performance was founded with the vision of creating
-                India&apos;s most trusted coaching platform—where certified
-                coaches and clients connect through one professional ecosystem.
-              </p>
-            </div>
-          </div>
-          <div className={styles.platformPrinciples}>
-            <article>
-              <span>01</span>
-              <h3>Qualified, not crowded</h3>
-              <p>
-                Clients compare verified qualifications, specializations,
-                languages, availability, and coaching experience before choosing.
-              </p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Personal, not generic</h3>
-              <p>
-                Programs are shaped by goals, movement quality, injury history,
-                lifestyle, nutrition, and the person behind the profile.
-              </p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Connected, not fragmented</h3>
-              <p>
-                Coach selection, plans, scheduling, payments, and support live
-                within the same professional coaching environment.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+  {/* Registration button */}
+  <a
+    href="#register"
+    style={{
+      position: "absolute",
+      left: "50%",
+      bottom: "15%",
+      transform: "translateX(-50%)",
+      zIndex: 3,
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "15px 34px",
+      borderRadius: "10px",
+      background: "#C99532",
+      color: "#fff",
+      fontWeight: 700,
+      fontSize: "15px",
+      letterSpacing: "1px",
+      textDecoration: "none",
+      boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
+      whiteSpace: "nowrap",
+    }}
+  >
+    REGISTER NOW →
+  </a>
+</section>
 
       <section className={styles.founderSection}>
         <div className={styles.sectionInner}>
