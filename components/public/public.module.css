@@ -4126,76 +4126,41 @@
     grid-column: 1;
   }
 
- /* =========================================
-   HALDWANI HILL RUSH CHALLENGE 2026
+/* =========================================
+   HALDWANI HILL RUSH - REGISTER BUTTON
    ========================================= */
 
-.hillRushSection {
-  width: 100%;
-  background: #000;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.hillRushPoster {
-  position: relative !important;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-  display: block;
-}
-
-.hillRushPoster picture {
-  display: block;
-  width: 100%;
-}
-
-.hillRushImage {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Base Styles */
 .hillRushRegister {
   position: absolute !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   background: #111111 !important;
   color: #f2c14e !important;
   border: 2px solid #f2c14e !important;
   border-radius: 6px;
+
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
+
   box-shadow:
     0 0 10px rgba(212, 175, 55, 0.35),
     0 0 25px rgba(212, 175, 55, 0.18);
+
   transition: all 0.25s ease;
   z-index: 20;
 }
 
-.hillRushRegister:hover {
-  background: #d4af37 !important;
-  color: #000 !important;
-  transform: translate(-50%, calc(-50% - 3px)) !important;
-  box-shadow:
-    0 0 18px rgba(212, 175, 55, 0.6),
-    0 0 35px rgba(212, 175, 55, 0.3);
-}
 
-.hillRushRegister:active {
-  transform: translate(-50%, -50%) scale(0.97) !important;
-}
-
-/* DESKTOP & LAPTOP SCREENS (Forcefully pushed to 88% down) */
+/* DESKTOP */
 @media (min-width: 769px) {
   .hillRushRegister {
-    top: 88% !important; /* Raised value to guarantee bottom position */
+    top: 70% !important;
     min-width: 260px;
     padding: 12px 30px;
     font-size: 18px;
@@ -4203,10 +4168,11 @@
   }
 }
 
-/* TABLET SCREENS */
+
+/* TABLET */
 @media (max-width: 768px) and (min-width: 481px) {
   .hillRushRegister {
-    top: 85% !important;
+    top: 70% !important;
     min-width: 190px;
     padding: 10px 20px;
     font-size: 14px;
@@ -4214,7 +4180,8 @@
   }
 }
 
-/* MOBILE SCREENS (Your perfect working version) */
+
+/* MOBILE — KEEP YOUR PERFECT POSITION */
 @media (max-width: 480px) {
   .hillRushRegister {
     top: 57% !important;
