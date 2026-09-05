@@ -4282,3 +4282,94 @@
     border-radius: 26px;
   }
 }
+/* =========================================
+   HALDWANI HILL RUSH - REGISTER BUTTON
+   GLOBAL FIX
+   ========================================= */
+
+.hillRushSection {
+  width: 100%;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hillRushPoster {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.hillRushPoster picture {
+  display: block;
+  width: 100%;
+}
+
+.hillRushImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hillRushRegister {
+  position: absolute;
+  left: 50%;
+  bottom: 4.5%;
+  transform: translateX(-50%);
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 260px;
+  padding: 15px 34px;
+
+  background: #050505 !important;
+  color: #d4af37 !important;
+
+  border: 2px solid #d4af37 !important;
+  border-radius: 6px;
+
+  text-decoration: none !important;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 0 10px rgba(212, 175, 55, 0.45),
+    0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+.hillRushRegister:hover {
+  background: #d4af37 !important;
+  color: #000 !important;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.hillRushRegister:active {
+  transform: translateX(-50%) scale(0.97);
+}
+
+@media (max-width: 768px) {
+  .hillRushRegister {
+    bottom: 4%;
+    min-width: 190px;
+    padding: 12px 22px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hillRushRegister {
+    min-width: 165px;
+    padding: 10px 18px;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+  }
+}
