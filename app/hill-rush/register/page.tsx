@@ -15,7 +15,7 @@ export default function HillRushRegistration() {
             Your registration details have been received.
           </p>
           <p style={styles.text}>
-            Payment confirmation and BIB details will be shown after payment.
+            Continue with payment to complete your registration.
           </p>
         </div>
       </main>
@@ -49,10 +49,11 @@ export default function HillRushRegistration() {
               setSubmitted(true);
             }}
           >
-            <label style={styles.label}>Participant Name</label>
+            <label style={styles.label}>Full Name</label>
             <input
               style={styles.input}
-              placeholder="Enter full name"
+              type="text"
+              placeholder="Enter your full name"
               required
             />
 
@@ -62,9 +63,8 @@ export default function HillRushRegistration() {
                 <input
                   style={styles.input}
                   type="number"
-                  min="10"
-                  max="17"
-                  placeholder="10–17"
+                  min="18"
+                  placeholder="18+"
                   required
                 />
               </div>
@@ -85,6 +85,7 @@ export default function HillRushRegistration() {
             <label style={styles.label}>Location</label>
             <input
               style={styles.input}
+              type="text"
               placeholder="City / Area"
               required
             />
@@ -116,29 +117,12 @@ export default function HillRushRegistration() {
               <option>Competitive Runner</option>
             </select>
 
-            <h2 style={styles.sectionTitle}>Parent / Guardian Details</h2>
-
-            <label style={styles.label}>Parent / Guardian Name</label>
-            <input
-              style={styles.input}
-              placeholder="Enter guardian name"
-              required
-            />
-
-            <label style={styles.label}>Guardian WhatsApp Number</label>
-            <input
-              style={styles.input}
-              type="tel"
-              placeholder="Guardian WhatsApp number"
-              required
-            />
-
             <label style={styles.consent}>
               <input type="checkbox" required />
               <span>
-                I am the parent/guardian of the participant and give my consent
-                for them to participate in the Haldwani Hill Rush Challenge
-                2026.
+                I confirm that I am 18 years or older and agree to participate
+                in the Haldwani Hill Rush Challenge 2026 at my own
+                responsibility.
               </span>
             </label>
 
@@ -149,8 +133,7 @@ export default function HillRushRegistration() {
         </div>
 
         <div style={styles.notice}>
-          Participants must be between <strong>10 and 17 years</strong> of age.
-          Parent/guardian consent is mandatory.
+          <strong>18+ ONLY</strong> • Registration fee ₹299
         </div>
       </div>
     </main>
