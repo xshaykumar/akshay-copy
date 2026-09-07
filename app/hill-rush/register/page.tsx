@@ -1,13 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
-
 export default function HillRushRegistration() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -79,7 +72,7 @@ export default function HillRushRegistration() {
           },
         };
 
-        const razorpay = new window.Razorpay(options);
+        const razorpay = new (window as any).Razorpay(options);
         razorpay.open();
       };
 
