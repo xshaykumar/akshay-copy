@@ -2,24 +2,100 @@
 
 import { useState } from "react";
 
-export default function HillRushRegistration() {
-  const [submitted, setSubmitted] = useState(false);
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
-  if (submitted) {
-    return (
-      <main style={styles.page}>
-        <div style={styles.card}>
-          <div style={styles.successIcon}>✓</div>
-          <h1 style={styles.title}>Registration Started</h1>
-          <p style={styles.text}>
-            Your registration details have been received.
-          </p>
-          <p style={styles.text}>
-            Continue with payment to complete your registration.
-          </p>
-        </div>
-      </main>
-    );
+export default function HillRushRegistration() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    const form = new FormData(e.currentTarget);
+
+    const data = {
+      name: form.get("name"),
+      age: Number(form.get("age")),
+      gender: form.get("gender"),
+      location: form.get("location"),
+      whatsapp: form.get("whatsapp"),
+      emergency: form.get("emergency"),
+      experience: form.get("experience"),
+    };
+
+    try {
+      const response = await fetch("/api/hill-rush/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to start payment.");
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        const options = {
+          key: result.keyId,
+          amount: result.amount,
+          currency: result.currency,
+          name: "360 Performance",
+          description: "Haldwani Hill Rush Challenge 2026",
+          order_id: result.orderId,
+
+          prefill: {
+            name: data.name,
+            contact: data.whatsapp,
+          },
+
+          theme: {
+            color: "#c9a45c",
+          },
+
+          handler: function () {
+            setMessage(
+              "Payment window completed. Payment verification will be connected next."
+            );
+            setLoading(false);
+          },
+
+          modal: {
+            ondismiss: function () {
+              setLoading(false);
+            },
+          },
+        };
+
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      };
+
+      script.onerror = () => {
+        throw new Error("Unable to load Razorpay.");
+      };
+
+      document.body.appendChild(script);
+    } catch (error) {
+      setLoading(false);
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    }
   }
 
   return (
@@ -43,14 +119,10 @@ export default function HillRushRegistration() {
         <div style={styles.card}>
           <h2 style={styles.sectionTitle}>Participant Details</h2>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <label style={styles.label}>Full Name</label>
             <input
+              name="name"
               style={styles.input}
               type="text"
               placeholder="Enter your full name"
@@ -61,6 +133,7 @@ export default function HillRushRegistration() {
               <div style={styles.field}>
                 <label style={styles.label}>Age</label>
                 <input
+                  name="age"
                   style={styles.input}
                   type="number"
                   min="18"
@@ -71,7 +144,12 @@ export default function HillRushRegistration() {
 
               <div style={styles.field}>
                 <label style={styles.label}>Gender</label>
-                <select style={styles.input} required defaultValue="">
+                <select
+                  name="gender"
+                  style={styles.input}
+                  required
+                  defaultValue=""
+                >
                   <option value="" disabled>
                     Select
                   </option>
@@ -84,6 +162,7 @@ export default function HillRushRegistration() {
 
             <label style={styles.label}>Location</label>
             <input
+              name="location"
               style={styles.input}
               type="text"
               placeholder="City / Area"
@@ -92,6 +171,7 @@ export default function HillRushRegistration() {
 
             <label style={styles.label}>WhatsApp Number</label>
             <input
+              name="whatsapp"
               style={styles.input}
               type="tel"
               placeholder="10-digit WhatsApp number"
@@ -100,6 +180,7 @@ export default function HillRushRegistration() {
 
             <label style={styles.label}>Emergency Contact</label>
             <input
+              name="emergency"
               style={styles.input}
               type="tel"
               placeholder="Emergency contact number"
@@ -107,7 +188,12 @@ export default function HillRushRegistration() {
             />
 
             <label style={styles.label}>Running Experience</label>
-            <select style={styles.input} required defaultValue="">
+            <select
+              name="experience"
+              style={styles.input}
+              required
+              defaultValue=""
+            >
               <option value="" disabled>
                 Select experience
               </option>
@@ -121,19 +207,20 @@ export default function HillRushRegistration() {
               <input type="checkbox" required />
               <span>
                 I confirm that I am 18 years or older and agree to participate
-                in the Haldwani Hill Rush Challenge 2026 at my own
-                responsibility.
+                in the Haldwani Hill Rush Challenge 2026.
               </span>
             </label>
 
-            <button type="submit" style={styles.button}>
-              CONTINUE TO PAYMENT — ₹299
+            <button type="submit" style={styles.button} disabled={loading}>
+              {loading ? "OPENING PAYMENT..." : "PAY ₹299 & REGISTER"}
             </button>
+
+            {message && <p style={styles.message}>{message}</p>}
           </form>
         </div>
 
         <div style={styles.notice}>
-          <strong>18+ ONLY</strong> • Registration fee ₹299
+          <strong>18+ ONLY</strong> • Haldwani → Kathgodam → Haldwani
         </div>
       </div>
     </main>
@@ -195,7 +282,6 @@ const styles: Record<string, React.CSSProperties> = {
   price: {
     fontSize: "32px",
     fontWeight: 800,
-    color: "#fff",
   },
 
   priceText: {
@@ -271,35 +357,21 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#080808",
     fontWeight: 900,
     fontSize: "15px",
-    letterSpacing: "0.5px",
     cursor: "pointer",
+  },
+
+  message: {
+    color: "#d6ae5b",
+    textAlign: "center",
+    fontSize: "13px",
+    marginTop: "15px",
+    lineHeight: 1.5,
   },
 
   notice: {
     textAlign: "center",
     color: "#777",
     fontSize: "12px",
-    lineHeight: 1.5,
     marginTop: "20px",
-  },
-
-  successIcon: {
-    width: "60px",
-    height: "60px",
-    borderRadius: "50%",
-    background: "#d6ae5b",
-    color: "#000",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "32px",
-    fontWeight: 900,
-    margin: "0 auto 20px",
-  },
-
-  text: {
-    color: "#aaa",
-    textAlign: "center",
-    lineHeight: 1.6,
   },
 };
