@@ -175,7 +175,7 @@ export default function Home() {
     </picture>
 
     <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLSe-_qJQvzlcwW4WNSwvnWrUKW9aHDUW76nMMPLBAtm78jS5YA/viewform?usp=header"
+      href="https://rzp.io/rzp/CFg0yaFX"
       target="_blank"
       rel="noopener noreferrer"
       className={styles.hillRushRegister}
