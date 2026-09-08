@@ -414,8 +414,7 @@ export default function Home() {
         </div>
       </section>
 
-      <HaldwaniHillRush />
-
+    
     </PublicShell>
   );
 }
