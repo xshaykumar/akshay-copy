@@ -718,82 +718,67 @@
   }
 }
 /* =========================
-   REDUCED MOTION
+   EVENT PARTNER LOGOS
 ========================= */
 
-@media (prefers-reduced-motion: reduce) {
-  .marqueeTrack {
-    animation: none;
-  }
-
-  .registerButton {
-    transition: none;
-  }
-}/* EVENT LOGO */
-.eventLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 18px;
-  position: relative;
-  z-index: 20;
-}
-
-.eventLogo img {
-  width: 120px;
-  height: auto;
-  max-height: 90px;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
-}
-/* PARTNER LOGO */
 .partnerLogo {
-  position: relative;
-  width: 210px;
-  height: 70px;
-  margin: 0 auto 8px;
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  height: 65px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
+
+  z-index: 50;
+  pointer-events: none;
+  background: transparent !important;
 }
 
 .partnerLogo img {
-  width: 210px;
-  height: auto;
   display: block;
+  width: 190px;
+  height: auto;
 
-  /* Removes the black appearance */
-  mix-blend-mode: screen;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 
-  /* Keeps the actual logo bright */
-  filter: brightness(1.15) contrast(1.08);
+  /*
+    The JPEG has a black background.
+    Screen blending makes black disappear
+    while keeping the coloured/gold logos visible.
+  */
+  mix-blend-mode: screen !important;
 
-  background: transparent;
+  filter: brightness(1.15) contrast(1.1);
 }
 
 /* Desktop */
 @media (min-width: 769px) {
   .partnerLogo {
-    width: 230px;
-    height: 75px;
+    top: 32px;
+    width: 210px;
+    height: 70px;
   }
 
   .partnerLogo img {
-    width: 230px;
+    width: 210px;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .partnerLogo {
-    width: 160px;
-    height: 55px;
-    margin-bottom: 5px;
+    top: 18px;
+    width: 145px;
+    height: 50px;
   }
 
   .partnerLogo img {
-    width: 160px;
+    width: 145px;
   }
 }
