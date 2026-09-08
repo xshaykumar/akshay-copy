@@ -736,68 +736,34 @@
       0 0 32px rgba(255, 193, 45, 0.35);
   }
 }
-/* =========================
-   EVENT PARTNER LOGOS
-========================= */
-
 .partnerLogo {
   position: absolute;
   top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 190px;
-  height: 65px;
+  left: 32px;
+  z-index: 5;
+
+  width: 210px;
+  height: 85px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  z-index: 50;
   pointer-events: none;
-  background: transparent !important;
 }
 
 .partnerLogo img {
-  display: block;
-  width: 190px;
-  height: auto;
-
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 
   /*
-    The JPEG has a black background.
-    Screen blending makes black disappear
-    while keeping the coloured/gold logos visible.
+    Removes the black appearance of the logo image
+    by blending black into the photo background.
   */
-  mix-blend-mode: screen !important;
+  mix-blend-mode: screen;
 
-  filter: brightness(1.15) contrast(1.1);
-}
+  filter: brightness(1.15) contrast(1.05);
 
-/* Desktop */
-@media (min-width: 769px) {
-  .partnerLogo {
-    top: 32px;
-    width: 210px;
-    height: 70px;
-  }
-
-  .partnerLogo img {
-    width: 210px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .partnerLogo {
-    top: 18px;
-    width: 145px;
-    height: 50px;
-  }
-
-  .partnerLogo img {
-    width: 145px;
-  }
+  display: block;
 }
