@@ -21,6 +21,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { PublicShell } from "@/components/public/PublicShell";
+import HaldwaniHillRush from "@/components/public/HaldwaniHillRush";
 import styles from "@/components/public/public.module.css";
 import founderImage from "@/founder.png";
 
@@ -412,6 +413,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HaldwaniHillRush />
 
     </PublicShell>
   );
