@@ -263,12 +263,22 @@ export default function HaldwaniHillRush() {
       <div className={styles.hero}>
 
         
-        <div className={styles.content}>    <div className={styles.eventLogo}>  
-  <img src="/360-fc-logo.png.jpeg" alt="360 Performance Logo" />  
-</div>    <p className={styles.present}>  
-                  PRESENTS  
-  </p>    <h2>HALDWANI</h2>    <h3>HILL RUSH</h3>
+       <div className={styles.content}>
 
+  <div className={styles.partnerLogo}>
+    <img
+      src="/360-fc-logo.png"
+      alt="360 Performance and Firstcry IntelliTots"
+    />
+  </div>
+
+  <p className={styles.present}>
+    360 PERFORMANCE PRESENTS
+  </p>
+
+  <h2>HALDWANI</h2>
+
+  <h3>HILL RUSH</h3>
           <p className={styles.challenge}>
             CHALLENGE 2026
           </p>
