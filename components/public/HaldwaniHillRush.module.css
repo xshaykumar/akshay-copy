@@ -766,7 +766,7 @@
   display: block;
 
   /* hides the black background of the logo image */
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 
   filter: brightness(1.15) contrast(1.1);
 }
