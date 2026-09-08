@@ -1,0 +1,486 @@
+.eventSection {
+  width: 100%;
+  overflow: hidden;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  min-height: 780px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.68) 38%,
+      rgba(0, 0, 0, 0.25) 72%,
+      rgba(0, 0, 0, 0.35) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.65),
+      transparent 45%
+    );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: min(1250px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.kicker {
+  margin: 0 0 20px;
+  color: #d7ad5b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+}
+
+.heroContent h1 {
+  margin: 0;
+  max-width: 850px;
+  font-size: clamp(4rem, 8vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.heroContent h1 span {
+  display: block;
+  color: #d7a84f;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.challenge {
+  margin: 22px 0 5px;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+}
+
+.tagline {
+  margin: 10px 0 30px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* ================= EVENT INFO ================= */
+
+.eventInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 22px;
+}
+
+.eventInfo > div {
+  min-width: 170px;
+  padding: 0 22px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.eventInfo > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.eventInfo strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.eventInfo small {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.category {
+  min-width: 205px;
+  padding: 14px 18px;
+  border: 1px solid rgba(215, 173, 91, 0.5);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+}
+
+.category strong {
+  display: block;
+  color: #e0b75f;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.category span {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.category small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+/* ================= PRICE ================= */
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 17px 0;
+}
+
+.price span {
+  color: #d7ad5b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.price strong {
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.price del {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 15px;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown {
+  display: flex;
+  gap: 9px;
+  margin: 22px 0 27px;
+}
+
+.countdown > div {
+  min-width: 78px;
+  padding: 10px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.countdown strong {
+  display: block;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.countdown span {
+  display: block;
+  margin-top: 6px;
+  color: #d7ad5b;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* ================= REGISTER ================= */
+
+.registerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 56px;
+  padding: 0 30px;
+  border: 1px solid #e0b75f;
+  border-radius: 6px;
+  background: #d7a84f;
+  color: #080808;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.registerButton:hover {
+  transform: translateY(-2px);
+  background: #edc875;
+}
+
+.registerButton span {
+  font-size: 20px;
+}
+
+/* ================= SPONSORS ================= */
+
+.sponsorSection {
+  padding: 38px 0 42px;
+  background: #f7f3eb;
+  color: #151515;
+  overflow: hidden;
+}
+
+.sponsorSection h2 {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 20px;
+  animation: sponsorScroll 28s linear infinite;
+}
+
+.sponsorCard {
+  width: 190px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 190px;
+  border: 1px solid #ded7ca;
+  border-radius: 10px;
+  background: #fff;
+  color: #777;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+@keyframes sponsorScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+.marquee:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 850px;
+    align-items: flex-end;
+  }
+
+  .heroImage {
+    content: "";
+    object-position: 64% center;
+  }
+
+  .heroOverlay {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.94) 5%,
+        rgba(0, 0, 0, 0.68) 55%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+  }
+
+  .heroContent {
+    width: calc(100% - 34px);
+    padding: 35px 0 42px;
+  }
+
+  .kicker {
+    margin-bottom: 13px;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(3.25rem, 17vw, 5.2rem);
+    line-height: 0.84;
+  }
+
+  .challenge {
+    margin-top: 15px;
+    font-size: 12px;
+    letter-spacing: 0.23em;
+  }
+
+  .tagline {
+    margin: 8px 0 20px;
+    font-size: 13px;
+  }
+
+  .eventInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px 0;
+  }
+
+  .eventInfo > div {
+    min-width: 0;
+    padding: 0 12px;
+  }
+
+  .eventInfo > div:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .eventInfo strong {
+    font-size: 11px;
+  }
+
+  .eventInfo small {
+    font-size: 7px;
+  }
+
+  .eventInfo > div:last-child {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .categories {
+    gap: 8px;
+  }
+
+  .category {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 12px;
+  }
+
+  .category strong {
+    font-size: 21px;
+  }
+
+  .category span {
+    font-size: 9px;
+  }
+
+  .category small {
+    font-size: 7px;
+  }
+
+  .price {
+    margin: 13px 0;
+  }
+
+  .price strong {
+    font-size: 24px;
+  }
+
+  .countdown {
+    gap: 5px;
+    margin: 17px 0 20px;
+  }
+
+  .countdown > div {
+    min-width: 0;
+    width: calc(25% - 4px);
+    padding: 9px 4px;
+  }
+
+  .countdown strong {
+    font-size: 20px;
+  }
+
+  .countdown span {
+    font-size: 7px;
+  }
+
+  .registerButton {
+    width: 100%;
+    min-height: 53px;
+  }
+
+  .sponsorSection {
+    padding: 30px 0 35px;
+  }
+
+  .sponsorSection h2 {
+    margin-bottom: 20px;
+    font-size: 10px;
+  }
+
+  .sponsorCard {
+    width: 145px;
+    height: 60px;
+    flex-basis: 145px;
+    font-size: 9px;
+  }
+
+  .marqueeTrack {
+    gap: 12px;
+    animation-duration: 22s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+  }
+
+  .registerButton {
+    transition: none;
+  }
+}
