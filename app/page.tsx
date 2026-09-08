@@ -157,7 +157,7 @@ const process = [
 export default function Home() {
   return (
     <PublicShell>
-      
+      <HaldwaniHillRush />
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
