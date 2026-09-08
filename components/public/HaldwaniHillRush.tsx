@@ -261,7 +261,7 @@ export default function HaldwaniHillRush() {
       aria-label="Haldwani Hill Rush Challenge"
     >
       <div className={styles.hero}>
-
+<div className={styles.photoBackground} />
   <div className={styles.partnerLogo}>
     <img
       src="/360-fc-logo.png"
