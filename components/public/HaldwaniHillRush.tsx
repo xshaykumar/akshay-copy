@@ -263,15 +263,11 @@ export default function HaldwaniHillRush() {
       <div className={styles.hero}>
 
         
-        <div className={styles.content}>
-
-          <p className={styles.present}>
-            360 PERFORMANCE PRESENTS
-          </p>
-
-          <h2>HALDWANI</h2>
-
-          <h3>HILL RUSH</h3>
+        <div className={styles.content}>    <div className={styles.eventLogo}>  
+  <img src="/360 fc logo.png" alt="360 Performance Logo" />  
+</div>    <p className={styles.present}>  
+                  PRESENTS  
+  </p>    <h2>HALDWANI</h2>    <h3>HILL RUSH</h3>
 
           <p className={styles.challenge}>
             CHALLENGE 2026
@@ -388,4 +384,21 @@ export default function HaldwaniHillRush() {
       </div>
     </section>
   );
+}
+.eventLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.eventLogo img {
+  width: 110px;
+  height: auto;
+  max-height: 85px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
 }
