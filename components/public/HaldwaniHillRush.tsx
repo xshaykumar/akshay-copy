@@ -385,20 +385,3 @@ export default function HaldwaniHillRush() {
     </section>
   );
 }
-.eventLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 10;
-}
-
-.eventLogo img {
-  width: 110px;
-  height: auto;
-  max-height: 85px;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
-}
