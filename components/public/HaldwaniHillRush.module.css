@@ -729,4 +729,21 @@
   .registerButton {
     transition: none;
   }
+}/* EVENT LOGO */
+.eventLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 18px;
+  position: relative;
+  z-index: 20;
+}
+
+.eventLogo img {
+  width: 120px;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
 }
