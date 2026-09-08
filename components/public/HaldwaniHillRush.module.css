@@ -1,279 +1,286 @@
 .eventSection {
   width: 100%;
   overflow: hidden;
-  background: #0b0b0b;
-  color: #fff;
+  background: #f5ead5;
+  color: #17282b;
 }
 
-/* ================= HERO ================= */
+/* =========================
+   HERO
+========================= */
 
 .hero {
   position: relative;
-  min-height: 780px;
   width: 100%;
+  min-height: 780px;
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #d9e5df;
 }
 
-.heroImage {
+.artwork {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  display: block;
 }
 
-.heroOverlay {
+.overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.88) 0%,
-      rgba(0, 0, 0, 0.68) 38%,
-      rgba(0, 0, 0, 0.25) 72%,
-      rgba(0, 0, 0, 0.35) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.65),
-      transparent 45%
+      rgba(245, 234, 213, 0.94) 0%,
+      rgba(245, 234, 213, 0.78) 28%,
+      rgba(245, 234, 213, 0.18) 62%,
+      rgba(12, 30, 31, 0.05) 100%
     );
+  pointer-events: none;
 }
 
-.heroContent {
+/* =========================
+   CONTENT
+========================= */
+
+.content {
   position: relative;
-  z-index: 2;
-  width: min(1250px, calc(100% - 80px));
+  z-index: 3;
+  width: min(1180px, 92%);
   margin: 0 auto;
   padding: 70px 0;
 }
 
-.kicker {
-  margin: 0 0 20px;
-  color: #d7ad5b;
-  font-size: 12px;
+.present {
+  margin: 0 0 12px;
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: 0.3em;
+  letter-spacing: 5px;
 }
 
-.heroContent h1 {
+.content h2 {
   margin: 0;
-  max-width: 850px;
-  font-size: clamp(4rem, 8vw, 8.5rem);
-  font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
+  font-size: clamp(42px, 7vw, 92px);
+  line-height: 0.9;
+  font-weight: 950;
+  letter-spacing: -3px;
 }
 
-.heroContent h1 span {
-  display: block;
-  color: #d7a84f;
-  font-style: italic;
-  font-weight: 800;
+.content h3 {
+  margin: 5px 0 0;
+  font-size: clamp(48px, 8vw, 105px);
+  line-height: 0.9;
+  font-weight: 950;
+  letter-spacing: -4px;
+  color: #c98a24;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 0 rgba(48, 37, 18, 0.12);
 }
 
 .challenge {
-  margin: 22px 0 5px;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 800;
-  letter-spacing: 0.35em;
+  display: inline-block;
+  margin: 22px 0 10px;
+  padding: 7px 18px;
+  background: #182b2d;
+  color: #f7d88c;
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 900;
+  letter-spacing: 8px;
 }
 
 .tagline {
-  margin: 10px 0 30px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 17px;
-  font-weight: 500;
+  margin: 0 0 30px;
+  font-size: clamp(16px, 2vw, 23px);
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
-/* ================= EVENT INFO ================= */
+/* =========================
+   EVENT INFO
+========================= */
 
-.eventInfo {
-  display: flex;
-  flex-wrap: wrap;
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   gap: 0;
-  margin-bottom: 22px;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 28px;
+  border-top: 1px solid rgba(23, 40, 43, 0.35);
+  border-bottom: 1px solid rgba(23, 40, 43, 0.35);
 }
 
-.eventInfo > div {
-  min-width: 170px;
-  padding: 0 22px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
+.infoGrid > div {
+  padding: 16px 28px;
+  border-right: 1px solid rgba(23, 40, 43, 0.3);
 }
 
-.eventInfo > div:first-child {
+.infoGrid > div:first-child {
   padding-left: 0;
-  border-left: 0;
 }
 
-.eventInfo strong {
+.infoGrid > div:last-child {
+  border-right: none;
+}
+
+.infoGrid strong {
   display: block;
-  font-size: 14px;
-  font-weight: 850;
+  font-size: 16px;
+  font-weight: 950;
 }
 
-.eventInfo small {
+.infoGrid span {
   display: block;
   margin-top: 5px;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 1px;
 }
 
-/* ================= CATEGORIES ================= */
+/* =========================
+   DISTANCE / CATEGORY
+========================= */
 
 .categories {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.category {
-  min-width: 205px;
-  padding: 14px 18px;
-  border: 1px solid rgba(215, 173, 91, 0.5);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.38);
-  backdrop-filter: blur(8px);
-}
-
-.category strong {
-  display: block;
-  color: #e0b75f;
-  font-size: 26px;
-  font-weight: 900;
-}
-
-.category span {
-  display: block;
-  margin-top: 3px;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.category small {
-  display: block;
-  margin-top: 3px;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-}
-
-/* ================= PRICE ================= */
-
-.price {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 17px 0;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 30px;
 }
 
-.price span {
-  color: #d7ad5b;
-  font-size: 10px;
+.categories > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(23, 40, 43, 0.35);
+}
+
+.categories strong {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 950;
+  color: #bc7b18;
+}
+
+.categories span {
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
 }
 
-.price strong {
-  font-size: 27px;
+.categories p {
+  margin: 0;
+  font-size: 13px;
   font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.price del {
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 15px;
-}
-
-/* ================= COUNTDOWN ================= */
+/* =========================
+   COUNTDOWN
+========================= */
 
 .countdown {
   display: flex;
-  gap: 9px;
-  margin: 22px 0 27px;
+  width: fit-content;
+  margin-bottom: 28px;
+  padding: 13px 18px;
+  border-radius: 12px;
+  background: rgba(20, 39, 41, 0.94);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .countdown > div {
-  min-width: 78px;
-  padding: 10px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.55);
+  min-width: 82px;
+  padding: 0 17px;
   text-align: center;
-  backdrop-filter: blur(8px);
+  border-right: 1px solid rgba(247, 216, 140, 0.3);
+}
+
+.countdown > div:first-child {
+  padding-left: 5px;
+}
+
+.countdown > div:last-child {
+  border-right: none;
+  padding-right: 5px;
 }
 
 .countdown strong {
   display: block;
-  color: #fff;
-  font-size: 25px;
-  font-weight: 900;
+  color: #f4ce75;
+  font-size: 31px;
   line-height: 1;
+  font-weight: 950;
 }
 
 .countdown span {
   display: block;
   margin-top: 6px;
-  color: #d7ad5b;
-  font-size: 8px;
+  color: #fff4dc;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 2px;
 }
 
-/* ================= REGISTER ================= */
+/* =========================
+   REGISTER BUTTON
+========================= */
 
 .registerButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  min-height: 56px;
-  padding: 0 30px;
-  border: 1px solid #e0b75f;
-  border-radius: 6px;
-  background: #d7a84f;
-  color: #080808;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  min-width: 220px;
+  padding: 17px 28px;
+  border: 2px solid #d29a35;
+  border-radius: 5px;
+  background: #172a2c;
+  color: #f8d27a;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 950;
+  letter-spacing: 2px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
   transition:
-    transform 180ms ease,
-    background 180ms ease;
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .registerButton:hover {
-  transform: translateY(-2px);
-  background: #edc875;
+  transform: translateY(-3px);
+  background: #c98a24;
+  color: #172a2c;
 }
 
 .registerButton span {
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 1;
 }
 
-/* ================= SPONSORS ================= */
+/* =========================
+   SPONSORS
+========================= */
 
 .sponsorSection {
-  padding: 38px 0 42px;
-  background: #f7f3eb;
-  color: #151515;
+  position: relative;
   overflow: hidden;
+  padding: 28px 0 34px;
+  background: #fffaf0;
+  border-top: 4px solid #c88a27;
 }
 
 .sponsorSection h2 {
-  margin: 0 0 25px;
+  margin: 0 0 22px;
   text-align: center;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  color: #263638;
+  font-size: 22px;
+  font-weight: 950;
+  letter-spacing: 3px;
 }
 
 .marquee {
@@ -284,196 +291,188 @@
 .marqueeTrack {
   display: flex;
   width: max-content;
-  align-items: center;
-  gap: 20px;
-  animation: sponsorScroll 28s linear infinite;
+  gap: 22px;
+  animation: sponsorMove 24s linear infinite;
 }
 
 .sponsorCard {
-  width: 190px;
-  height: 72px;
+  width: 210px;
+  height: 82px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 190px;
-  border: 1px solid #ded7ca;
+  flex: 0 0 210px;
+  border: 1px solid rgba(45, 50, 44, 0.15);
   border-radius: 10px;
-  background: #fff;
-  color: #777;
-  font-size: 11px;
+  background: white;
+  color: #77705e;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
-@keyframes sponsorScroll {
+@keyframes sponsorMove {
   from {
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(calc(-50% - 10px));
+    transform: translateX(-50%);
   }
 }
 
-.marquee:hover .marqueeTrack {
-  animation-play-state: paused;
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 760px;
+  }
+
+  .content {
+    width: 90%;
+    padding: 55px 0;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .infoGrid > div,
+  .infoGrid > div:first-child {
+    padding: 12px 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(23, 40, 43, 0.2);
+  }
+
+  .infoGrid > div:last-child {
+    border-bottom: none;
+  }
 }
 
-/* ================= MOBILE ================= */
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .hero {
     min-height: 850px;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
-  .heroImage {
-    content: "";
-    object-position: 64% center;
+  .artwork {
+    height: 100%;
   }
 
-  .heroOverlay {
+  .overlay {
     background:
       linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.94) 5%,
-        rgba(0, 0, 0, 0.68) 55%,
-        rgba(0, 0, 0, 0.25) 100%
+        180deg,
+        rgba(245, 234, 213, 0.96) 0%,
+        rgba(245, 234, 213, 0.82) 42%,
+        rgba(245, 234, 213, 0.2) 78%,
+        rgba(12, 30, 31, 0.08) 100%
       );
   }
 
-  .heroContent {
-    width: calc(100% - 34px);
-    padding: 35px 0 42px;
+  .content {
+    width: 90%;
+    padding: 45px 0 35px;
   }
 
-  .kicker {
-    margin-bottom: 13px;
-    font-size: 8px;
-    letter-spacing: 0.2em;
+  .present {
+    font-size: 11px;
+    letter-spacing: 3px;
   }
 
-  .heroContent h1 {
-    font-size: clamp(3.25rem, 17vw, 5.2rem);
-    line-height: 0.84;
+  .content h2 {
+    font-size: clamp(45px, 15vw, 70px);
+    letter-spacing: -2px;
+  }
+
+  .content h3 {
+    font-size: clamp(50px, 17vw, 78px);
+    letter-spacing: -3px;
   }
 
   .challenge {
-    margin-top: 15px;
-    font-size: 12px;
-    letter-spacing: 0.23em;
+    margin-top: 16px;
+    padding: 6px 12px;
+    font-size: 16px;
+    letter-spacing: 4px;
   }
 
   .tagline {
-    margin: 8px 0 20px;
-    font-size: 13px;
-  }
-
-  .eventInfo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 13px 0;
-  }
-
-  .eventInfo > div {
-    min-width: 0;
-    padding: 0 12px;
-  }
-
-  .eventInfo > div:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .eventInfo strong {
-    font-size: 11px;
-  }
-
-  .eventInfo small {
-    font-size: 7px;
-  }
-
-  .eventInfo > div:last-child {
-    grid-column: 1 / -1;
-    padding-left: 0;
-    border-left: 0;
+    margin-bottom: 22px;
+    font-size: 14px;
   }
 
   .categories {
-    gap: 8px;
+    gap: 12px;
   }
 
-  .category {
-    flex: 1;
-    min-width: 0;
-    padding: 11px 12px;
+  .categories > div {
+    padding-right: 12px;
   }
 
-  .category strong {
-    font-size: 21px;
+  .categories strong {
+    font-size: 28px;
   }
 
-  .category span {
-    font-size: 9px;
-  }
-
-  .category small {
-    font-size: 7px;
-  }
-
-  .price {
-    margin: 13px 0;
-  }
-
-  .price strong {
-    font-size: 24px;
+  .categories span,
+  .categories p {
+    font-size: 10px;
   }
 
   .countdown {
-    gap: 5px;
-    margin: 17px 0 20px;
+    width: 100%;
+    justify-content: space-around;
+    padding: 12px 5px;
   }
 
   .countdown > div {
     min-width: 0;
-    width: calc(25% - 4px);
-    padding: 9px 4px;
+    flex: 1;
+    padding: 0 5px;
   }
 
   .countdown strong {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .countdown span {
-    font-size: 7px;
+    font-size: 8px;
+    letter-spacing: 1px;
   }
 
   .registerButton {
     width: 100%;
-    min-height: 53px;
+    min-width: 0;
+    padding: 16px 20px;
   }
 
   .sponsorSection {
-    padding: 30px 0 35px;
+    padding: 24px 0 28px;
   }
 
   .sponsorSection h2 {
-    margin-bottom: 20px;
-    font-size: 10px;
+    font-size: 16px;
+    letter-spacing: 2px;
   }
 
   .sponsorCard {
-    width: 145px;
-    height: 60px;
-    flex-basis: 145px;
-    font-size: 9px;
-  }
-
-  .marqueeTrack {
-    gap: 12px;
-    animation-duration: 22s;
+    width: 170px;
+    height: 68px;
+    flex-basis: 170px;
   }
 }
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
   .marqueeTrack {
