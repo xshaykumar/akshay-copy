@@ -749,34 +749,27 @@
 }
 /* PARTNER LOGO */
 .partnerLogo {
-  position: absolute;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 230px;
+  position: relative;
+  width: 280px;
+  margin: 0 auto 18px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 20;
 }
 
 .partnerLogo img {
   width: 100%;
   height: auto;
   display: block;
-
-  /* hides the black background of the logo image */
-  mix-blend-mode: normal;
-
+  mix-blend-mode: screen;
   filter: brightness(1.15) contrast(1.1);
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
   .partnerLogo {
-    left: 50%;
-    top: 8%;
-    transform: translateX(-50%);
-    width: 150px;
+    width: 190px;
+    margin-bottom: 12px;
   }
 }
