@@ -485,6 +485,29 @@
   }
 }
 
+/* Improve hero text visibility */
+.present,
+.tagline,
+.infoGrid strong,
+.infoGrid span,
+.categories span,
+.categories p {
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+}
+
+.infoGrid {
+  border-top-color: rgba(255, 255, 255, 0.35);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.infoGrid > div {
+  border-right-color: rgba(255, 255, 255, 0.25);
+}
+
+.categories > div {
+  border-right-color: rgba(255, 255, 255, 0.3);
+}
 /* =========================
    REDUCED MOTION
 ========================= */
