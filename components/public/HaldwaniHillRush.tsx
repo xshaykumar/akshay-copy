@@ -262,10 +262,7 @@ export default function HaldwaniHillRush() {
     >
       <div className={styles.hero}>
 
-        <HillRushArtwork />
-
-        <div className={styles.overlay} />
-
+        
         <div className={styles.content}>
 
           <p className={styles.present}>
