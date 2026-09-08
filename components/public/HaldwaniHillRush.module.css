@@ -750,26 +750,50 @@
 /* PARTNER LOGO */
 .partnerLogo {
   position: relative;
-  width: 280px;
-  margin: 0 auto 18px;
+  width: 210px;
+  height: 70px;
+  margin: 0 auto 8px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 20;
 }
 
 .partnerLogo img {
-  width: 100%;
+  width: 210px;
   height: auto;
   display: block;
+
+  /* Removes the black appearance */
   mix-blend-mode: screen;
-  filter: brightness(1.15) contrast(1.1);
+
+  /* Keeps the actual logo bright */
+  filter: brightness(1.15) contrast(1.08);
+
+  background: transparent;
 }
 
-/* MOBILE */
+/* Desktop */
+@media (min-width: 769px) {
+  .partnerLogo {
+    width: 230px;
+    height: 75px;
+  }
+
+  .partnerLogo img {
+    width: 230px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .partnerLogo {
-    width: 190px;
-    margin-bottom: 12px;
+    width: 160px;
+    height: 55px;
+    margin-bottom: 5px;
+  }
+
+  .partnerLogo img {
+    width: 160px;
   }
 }
