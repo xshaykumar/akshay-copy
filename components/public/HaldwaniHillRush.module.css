@@ -17,20 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
- background:
-  linear-gradient(
-    90deg,
-    rgba(15, 25, 25, 0.88) 0%,
-    rgba(15, 25, 25, 0.68) 30%,
-    rgba(15, 25, 25, 0.20) 58%,
-    rgba(15, 25, 25, 0.05) 100%
-  ),
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent;
 }
+
 .photoBackground {
   position: absolute;
   inset: 0;
