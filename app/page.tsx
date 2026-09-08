@@ -157,35 +157,7 @@ const process = [
 export default function Home() {
   return (
     <PublicShell>
-      {/* HALDWANI HILL RUSH CHALLENGE 2026 */}
-
-<section className={styles.hillRushSection}>
-  <div className={styles.hillRushPoster}>
-
-    <picture>
-      <source
-        media="(min-width: 769px)"
-        srcSet="/hill-rush-desktop.jpg"
-      />
-
-      <img
-        src="/hill-rush-mobile.jpg"
-        alt="Haldwani Hill Rush Challenge 2026"
-        className={styles.hillRushImage}
-      />
-    </picture>
-
-    <a
-      href="https://rzp.io/rzp/CFg0yaFX"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.hillRushRegister}
-    >
-      REGISTER NOW
-    </a>
-
-  </div>
-</section>
+      
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
