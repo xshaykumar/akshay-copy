@@ -264,12 +264,12 @@ export default function HaldwaniHillRush() {
 
   <div className={styles.partnerLogo}>
     <img
-      src="/360-fc-logo.png.jpeg"
+      src="/360-fc-logo.png"
       alt="360 Performance and Firstcry IntelliTots"
     />
   </div>
 
-  <HillRushArtwork />
+ <div className={styles.photoBackground} />
 
   <div className={styles.overlay} />
 
