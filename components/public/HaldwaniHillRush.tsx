@@ -262,15 +262,18 @@ export default function HaldwaniHillRush() {
     >
       <div className={styles.hero}>
 
-        
-       <div className={styles.content}>
-
   <div className={styles.partnerLogo}>
     <img
       src="/360-fc-logo.png.jpeg"
       alt="360 Performance and Firstcry IntelliTots"
     />
   </div>
+
+  <HillRushArtwork />
+
+  <div className={styles.overlay} />
+
+  <div className={styles.content}>
 
   <p className={styles.present}>
     360 PERFORMANCE PRESENTS
