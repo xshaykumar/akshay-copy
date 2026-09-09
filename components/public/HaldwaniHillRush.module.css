@@ -1,8 +1,8 @@
 .eventSection {
   width: 100%;
   overflow: hidden;
-  background: #f5ead5;
-  color: #17282b;
+  background: #111;
+  color: #fff;
 }
 
 /* =========================
@@ -12,51 +12,20 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 780px;
+  min-height: 820px;
   overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: transparent;
+  align-items: center;
 }
 
-.photoBackground {
+.background {
   position: absolute;
   inset: 0;
-  z-index: 0;
-
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.18),
-      rgba(0, 0, 0, 0.05)
-    ),
-    url("/hill-rush-desktop.jpg");
-
+  background-image: url("/hill-rush-desktop.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-@media (max-width: 768px) {
-  .photoBackground {
-    background-image:
-      linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.18),
-        rgba(0, 0, 0, 0.05)
-      ),
-      url("/hill-rush-mobile.jpg");
-
-    background-position: center;
-  }
-}
-.artwork {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 .overlay {
@@ -65,12 +34,51 @@
   background:
     linear-gradient(
       90deg,
-      rgba(10, 20, 20, 0.82) 0%,
-      rgba(10, 20, 20, 0.55) 32%,
-      rgba(10, 20, 20, 0.15) 65%,
-      rgba(10, 20, 20, 0.05) 100%
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.48) 45%,
+      rgba(0, 0, 0, 0.20) 100%
     );
-  pointer-events: none;
+}
+
+/* =========================
+   LOGOS
+========================= */
+
+.logos {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  width: 90%;
+}
+
+.logoSpace {
+  min-width: 150px;
+  min-height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed rgba(255, 200, 70, 0.7);
+
+  color: #f5c75a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.logoDivider {
+  width: 1px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* =========================
@@ -80,184 +88,219 @@
 .content {
   position: relative;
   z-index: 3;
-  width: min(1180px, 92%);
+
+  width: min(1100px, 90%);
   margin: 0 auto;
-  padding: 70px 0;
+
+  padding: 130px 0 70px;
+
+  text-align: center;
 }
 
-.present {
-  margin: 0 0 12px;
-  font-size: 16px;
+.kicker {
+  margin: 0 0 8px;
+
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
+}
+
+.content h1 {
+  margin: 0;
+
+  font-size: clamp(55px, 9vw, 110px);
+  line-height: 0.9;
+
+  font-weight: 950;
+  letter-spacing: -4px;
+
+  color: #fff;
 }
 
 .content h2 {
-  margin: 0;
-  font-size: clamp(42px, 7vw, 92px);
-  line-height: 0.9;
-  font-weight: 950;
-  letter-spacing: -3px;
-}
+  margin: 5px 0 15px;
 
-.content h3 {
-  margin: 5px 0 0;
-  font-size: clamp(48px, 8vw, 105px);
+  font-size: clamp(60px, 10vw, 120px);
   line-height: 0.9;
+
   font-weight: 950;
-  letter-spacing: -4px;
-  color: #c98a24;
-  text-transform: uppercase;
-  text-shadow: 2px 3px 0 rgba(48, 37, 18, 0.12);
+  letter-spacing: -5px;
+
+  color: #f0a91f;
 }
 
 .challenge {
   display: inline-block;
-  margin: 22px 0 10px;
-  padding: 7px 18px;
-  background: #182b2d;
-  color: #f7d88c;
-  font-size: clamp(18px, 2.5vw, 28px);
-  font-weight: 900;
-  letter-spacing: 8px;
-}
 
-.tagline {
-  margin: 0 0 30px;
-  font-size: clamp(16px, 2vw, 23px);
+  padding: 8px 24px;
+
+  background: #111;
+  border: 2px solid #e4ad32;
+
+  color: #ffd36b;
+
+  font-size: clamp(20px, 3vw, 32px);
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 7px;
 }
 
 /* =========================
-   EVENT INFO
+   MAIN INFO
 ========================= */
 
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 0;
+.mainInfo {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
   width: fit-content;
   max-width: 100%;
-  margin-bottom: 28px;
-  border-top: 1px solid rgba(23, 40, 43, 0.35);
-  border-bottom: 1px solid rgba(23, 40, 43, 0.35);
+
+  margin: 35px auto 25px;
+
+  border-top: 1px solid rgba(255,255,255,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
-.infoGrid > div {
-  padding: 16px 28px;
-  border-right: 1px solid rgba(23, 40, 43, 0.3);
+.mainInfo > div {
+  padding: 16px 30px;
+
+  border-right: 1px solid rgba(255,255,255,0.3);
 }
 
-.infoGrid > div:first-child {
-  padding-left: 0;
-}
-
-.infoGrid > div:last-child {
+.mainInfo > div:last-child {
   border-right: none;
 }
 
-.infoGrid strong {
+.mainInfo strong {
   display: block;
-  font-size: 16px;
-  font-weight: 950;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  color: #fff;
 }
 
-.infoGrid span {
+.mainInfo span {
   display: block;
+
   margin-top: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  color: #f4c55e;
 }
 
 /* =========================
-   DISTANCE / CATEGORY
+   VENUE
+========================= */
+
+.venue {
+  margin: 20px auto 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.venue strong {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #f4c55e;
+}
+
+.venue span {
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.venue small {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* =========================
+   CATEGORIES
 ========================= */
 
 .categories {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 30px;
+  justify-content: center;
+  gap: 0;
+
+  margin: 25px auto 30px;
 }
 
-.categories > div {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding-right: 20px;
-  border-right: 1px solid rgba(23, 40, 43, 0.35);
+.category {
+  min-width: 190px;
+
+  padding: 12px 25px;
+
+  border-right: 1px solid rgba(255,255,255,0.35);
 }
 
-.categories strong {
-  font-size: clamp(28px, 4vw, 42px);
+.category:last-child {
+  border-right: none;
+}
+
+.category strong {
+  display: block;
+
+  color: #f4b52e;
+
+  font-size: 35px;
   font-weight: 950;
-  color: #bc7b18;
 }
 
-.categories span {
-  font-size: 13px;
+.category span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 12px;
   font-weight: 800;
-}
-
-.categories p {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 900;
   letter-spacing: 1px;
 }
 
 /* =========================
-   COUNTDOWN
+   PERKS
 ========================= */
 
-.countdown {
+.perks {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0;
+
+  margin: 25px auto 35px;
+
+  border-top: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+
   width: fit-content;
-  margin-bottom: 28px;
-  padding: 13px 18px;
-  border-radius: 12px;
-  background: rgba(20, 39, 41, 0.94);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
 }
 
-.countdown > div {
-  min-width: 82px;
-  padding: 0 17px;
-  text-align: center;
-  border-right: 1px solid rgba(247, 216, 140, 0.3);
+.perks span {
+  padding: 14px 20px;
+
+  border-right: 1px solid rgba(255,255,255,0.25);
+
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.countdown > div:first-child {
-  padding-left: 5px;
-}
-
-.countdown > div:last-child {
+.perks span:last-child {
   border-right: none;
-  padding-right: 5px;
-}
-
-.countdown strong {
-  display: block;
-  color: #f4ce75;
-  font-size: 31px;
-  line-height: 1;
-  font-weight: 950;
-}
-
-.countdown span {
-  display: block;
-  margin-top: 6px;
-  color: #fff4dc;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2px;
 }
 
 /* =========================
-   REGISTER BUTTON
+   REGISTER
 ========================= */
 
 .registerButton {
@@ -265,481 +308,228 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  min-width: 220px;
-  padding: 17px 28px;
-  border: 2px solid #d29a35;
+
+  min-width: 240px;
+
+  padding: 16px 30px;
+
+  border: 2px solid #f1b72e;
   border-radius: 5px;
-  background: #172a2c;
-  color: #f8d27a;
+
+  background: #111;
+
+  color: #ffd15a;
+
   text-decoration: none;
+
   font-size: 17px;
   font-weight: 950;
   letter-spacing: 2px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    color 0.2s ease;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.35),
+    0 0 20px rgba(241,183,46,0.15);
+
+  transition: 0.2s ease;
 }
 
 .registerButton:hover {
+  background: #f1b72e;
+  color: #111;
+
   transform: translateY(-3px);
-  background: #c98a24;
-  color: #172a2c;
 }
 
 .registerButton span {
   font-size: 24px;
-  line-height: 1;
 }
 
 /* =========================
-   SPONSORS
+   PARTNERS
 ========================= */
 
-.sponsorSection {
-  position: relative;
-  overflow: hidden;
-  padding: 28px 0 34px;
-  background: #fffaf0;
-  border-top: 4px solid #c88a27;
+.partners {
+  padding: 35px 20px 45px;
+
+  background: #111;
+
+  text-align: center;
+
+  border-top: 2px solid #c9932e;
 }
 
-.sponsorSection h2 {
-  margin: 0 0 22px;
-  text-align: center;
-  color: #263638;
-  font-size: 22px;
-  font-weight: 950;
+.partners h3 {
+  margin: 0 0 25px;
+
+  color: #f2c45b;
+
+  font-size: 18px;
+  font-weight: 900;
+
   letter-spacing: 3px;
 }
 
-.marquee {
-  width: 100%;
-  overflow: hidden;
-}
-
-.marqueeTrack {
+.partnerLogos {
   display: flex;
-  width: max-content;
-  gap: 22px;
-  animation: sponsorMove 24s linear infinite;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 20px;
 }
 
-.sponsorCard {
-  width: 210px;
-  height: 82px;
+.partnerLogos div {
+  width: 150px;
+  height: 70px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 210px;
-  border: 1px solid rgba(45, 50, 44, 0.15);
-  border-radius: 10px;
-  background: white;
-  color: #77705e;
-  font-size: 13px;
+
+  border: 1px dashed rgba(242,196,91,0.6);
+
+  color: #f2c45b;
+
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-}
-
-@keyframes sponsorMove {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 900px) {
-  .hero {
-    min-height: 760px;
-  }
-
-  .content {
-    width: 90%;
-    padding: 55px 0;
-  }
-
-  .infoGrid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .infoGrid > div,
-  .infoGrid > div:first-child {
-    padding: 12px 0;
-    border-right: none;
-    border-bottom: 1px solid rgba(23, 40, 43, 0.2);
-  }
-
-  .infoGrid > div:last-child {
-    border-bottom: none;
-  }
+  letter-spacing: 2px;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+
   .hero {
-    min-height: 850px;
-    align-items: flex-start;
+    min-height: 900px;
   }
 
-  .artwork {
-    height: 100%;
+  .background {
+    background-image: url("/hill-rush-mobile.jpg");
+    background-position: center;
   }
 
-.overlay {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(245, 234, 213, 0.94) 0%,
-      rgba(245, 234, 213, 0.82) 32%,
-      rgba(245, 234, 213, 0.25) 62%,
-      rgba(10, 20, 20, 0.08) 100%
-    );
-}
-  .hero {
-  background-position: 68% center;
-}
+  .overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.35) 45%,
+        rgba(0,0,0,0.75)
+      );
+  }
+
+  .logos {
+    top: 20px;
+    gap: 10px;
+  }
+
+  .logoSpace {
+    min-width: 110px;
+    min-height: 45px;
+    font-size: 9px;
+  }
+
+  .logoDivider {
+    height: 40px;
+  }
 
   .content {
-    width: 90%;
-    padding: 45px 0 35px;
+    width: 92%;
+    padding: 105px 0 45px;
   }
 
-  .present {
-    font-size: 11px;
+  .kicker {
+    font-size: 9px;
     letter-spacing: 3px;
   }
 
-  .content h2 {
-    font-size: clamp(45px, 15vw, 70px);
+  .content h1 {
+    font-size: 16vw;
     letter-spacing: -2px;
   }
 
-  .content h3 {
-    font-size: clamp(50px, 17vw, 78px);
+  .content h2 {
+    font-size: 17vw;
     letter-spacing: -3px;
   }
 
   .challenge {
-    margin-top: 16px;
-    padding: 6px 12px;
-    font-size: 16px;
-    letter-spacing: 4px;
+    font-size: 17px;
+    letter-spacing: 3px;
+    padding: 7px 12px;
   }
 
-  .tagline {
-    margin-bottom: 22px;
-    font-size: 14px;
-  }
-
-  .categories {
-    gap: 12px;
-  }
-
-  .categories > div {
-    padding-right: 12px;
-  }
-
-  .categories strong {
-    font-size: 28px;
-  }
-
-  .categories span,
-  .categories p {
-    font-size: 10px;
-  }
-
-  .countdown {
+  .mainInfo {
     width: 100%;
-    justify-content: space-around;
-    padding: 12px 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .countdown > div {
-    min-width: 0;
-    flex: 1;
-    padding: 0 5px;
+  .mainInfo > div {
+    padding: 12px 8px;
+    border-right: 1px solid rgba(255,255,255,0.25);
   }
 
-  .countdown strong {
-    font-size: 24px;
+  .mainInfo > div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    border-right: none;
   }
 
-  .countdown span {
+  .mainInfo strong {
+    font-size: 13px;
+  }
+
+  .mainInfo span {
     font-size: 8px;
     letter-spacing: 1px;
   }
 
+  .venue span {
+    font-size: 19px;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .category {
+    min-width: 0;
+    padding: 10px 8px;
+  }
+
+  .category:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .category strong {
+    font-size: 29px;
+  }
+
+  .category span {
+    font-size: 9px;
+  }
+
+  .perks {
+    width: 100%;
+  }
+
+  .perks span {
+    flex: 1 1 33%;
+    padding: 10px 5px;
+    font-size: 8px;
+  }
+
   .registerButton {
-    width: 100%;
-    min-width: 0;
-    padding: 16px 20px;
+    width: 90%;
   }
 
-  .sponsorSection {
-    padding: 24px 0 28px;
+  .partnerLogos div {
+    width: 125px;
+    height: 60px;
   }
-
-  .sponsorSection h2 {
-    font-size: 16px;
-    letter-spacing: 2px;
-  }
-
-  .sponsorCard {
-    width: 170px;
-    height: 68px;
-    flex-basis: 170px;
-  }
-}
-
-/* Improve hero text visibility */
-.present,
-.tagline,
-.infoGrid strong,
-.infoGrid span,
-.categories span,
-.categories p {
-  color: #ffffff;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
-}
-
-.infoGrid {
-  border-top-color: rgba(255, 255, 255, 0.35);
-  border-bottom-color: rgba(255, 255, 255, 0.35);
-}
-
-.infoGrid > div {
-  border-right-color: rgba(255, 255, 255, 0.25);
-}
-
-.categories > div {
-  border-right-color: rgba(255, 255, 255, 0.3);
-}
-/* =========================================
-   PREMIUM HILL RUSH HERO
-========================================= */
-
-
-
-/* Remove the small 360 Performance Presents line */
-.hero .present {
-  display: none;
-}
-
-/* Main title */
-.hero .content h2 {
-  color: #ffffff;
-  font-weight: 950;
-  text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.65),
-    0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-/* Gold event title */
-.hero .content h3 {
-  color: #ffbf22;
-  text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.65),
-    0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-/* Challenge badge */
-.hero .challenge {
-  background: rgba(7, 28, 30, 0.92);
-  border: 1px solid rgba(255, 193, 45, 0.65);
-  color: #ffd76a;
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.30),
-    inset 0 0 20px rgba(255, 190, 35, 0.06);
-}
-
-/* Tagline */
-.hero .tagline {
-  color: #ffffff;
-  font-weight: 900;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
-}
-
-/* Event information */
-.hero .infoGrid {
-  border-top: 1px solid rgba(255, 255, 255, 0.30);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.30);
-  background: rgba(5, 20, 22, 0.16);
-  backdrop-filter: blur(3px);
-}
-
-.hero .infoGrid > div {
-  border-right-color: rgba(255, 255, 255, 0.22);
-}
-
-.hero .infoGrid strong,
-.hero .infoGrid span {
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
-}
-
-/* Route and category text */
-.hero .categories span,
-.hero .categories p {
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.80);
-}
-
-.hero .categories strong {
-  color: #ffbd22;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.65);
-}
-
-/* Category separators */
-.hero .categories > div {
-  border-right-color: rgba(255, 255, 255, 0.30);
-}
-
-/* Countdown */
-.hero .countdown {
-  background: rgba(6, 29, 31, 0.94);
-  border: 1px solid rgba(255, 193, 45, 0.25);
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.35),
-    inset 0 0 20px rgba(255, 190, 35, 0.04);
-}
-
-.hero .countdown strong {
-  color: #ffd45c;
-}
-
-/* REGISTER NOW */
-.hero .registerButton {
-  min-width: 270px;
-  padding: 18px 34px;
-  border: 2px solid #ffd044;
-  border-radius: 10px;
-
-  background: linear-gradient(
-    135deg,
-    #ffd83d,
-    #f5a900
-  );
-
-  color: #102527 !important;
-
-  font-size: 19px;
-  font-weight: 950;
-  letter-spacing: 2px;
-
-  box-shadow:
-    0 0 12px rgba(255, 193, 45, 0.65),
-    0 0 30px rgba(255, 193, 45, 0.35),
-    0 12px 30px rgba(0, 0, 0, 0.30);
-
-  text-shadow: none;
-}
-
-.hero .registerButton:hover {
-  background: linear-gradient(
-    135deg,
-    #ffe36b,
-    #ffb91c
-  );
-
-  color: #102527 !important;
-
-  transform: translateY(-4px) scale(1.02);
-
-  box-shadow:
-    0 0 18px rgba(255, 193, 45, 0.85),
-    0 0 40px rgba(255, 193, 45, 0.45),
-    0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-/* Arrow inside button */
-.hero .registerButton span {
-  color: #102527;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-  .hero {
-    background-position: 68% center;
-  }
-
-  .hero .content h2 {
-    font-size: clamp(44px, 15vw, 70px);
-    color: #ffffff;
-  }
-
-  .hero .content h3 {
-    font-size: clamp(50px, 17vw, 78px);
-    color: #ffbd22;
-  }
-
-  .hero .challenge {
-    border-radius: 6px;
-  }
-
-  .hero .infoGrid {
-    background: rgba(5, 20, 22, 0.28);
-    backdrop-filter: blur(5px);
-  }
-
-  .hero .categories strong {
-    color: #ffbd22;
-  }
-
-  .hero .countdown {
-    width: 100%;
-  }
-
-  .hero .registerButton {
-    width: 100%;
-    min-width: 0;
-    margin-top: 4px;
-    font-size: 18px;
-    background: linear-gradient(
-      135deg,
-      #ffd83d,
-      #f5a900
-    );
-    color: #102527 !important;
-    box-shadow:
-      0 0 15px rgba(255, 193, 45, 0.70),
-      0 0 32px rgba(255, 193, 45, 0.35);
-  }
-}
-.partnerLogo {
-  position: absolute;
-  top: 25px;
-  left: 32px;
-  z-index: 5;
-
-  width: 170px;
-  height: 70px;
-
-  pointer-events: none;
-}
-
-.partnerLogo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-
-  mix-blend-mode: screen;
 }
