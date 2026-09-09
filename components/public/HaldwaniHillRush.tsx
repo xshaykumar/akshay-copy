@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  HeartPulse,
+  CupSoda,
+  Shirt,
+  Timer,
+  ShieldCheck,
+} from "lucide-react";
 import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
@@ -120,39 +127,70 @@ export default function HaldwaniHillRush() {
             </div>
           </div>
 
-          {/* EVENT PERKS */}
-          <div className={styles.perks}>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}>✚</div>
-              <span>MEDICAL</span>
-              <small>ON ROUTE</small>
-            </div>
+          {/* ================= EVENT FEATURES ================= */}
 
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}>◆</div>
-              <span>REFRESHMENTS</span>
-              <small>ON ROUTE</small>
-            </div>
+<div className={styles.perks}>
 
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}>♢</div>
-              <span>FREE TANK TOP</span>
-              <small>FOR PARTICIPANTS</small>
-            </div>
+  <div className={styles.perk}>
+    <div className={styles.perkIcon}>
+      <HeartPulse size={30} strokeWidth={2.2} />
+    </div>
 
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}>◷</div>
-              <span>TIMED EVENT</span>
-              <small>ACCURATE TIMING</small>
-            </div>
+    <div className={styles.perkText}>
+      <strong>MEDICAL</strong>
+      <span>MEDICAL SUPPORT</span>
+    </div>
+  </div>
 
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}>◇</div>
-              <span>SECURE ROUTE</span>
-              <small>ROUTE SUPPORT</small>
-            </div>
-          </div>
 
+  <div className={styles.perk}>
+    <div className={styles.perkIcon}>
+      <CupSoda size={30} strokeWidth={2.2} />
+    </div>
+
+    <div className={styles.perkText}>
+      <strong>REFRESHMENTS</strong>
+      <span>ON ROUTE</span>
+    </div>
+  </div>
+
+
+  <div className={styles.perk}>
+    <div className={styles.perkIcon}>
+      <Shirt size={30} strokeWidth={2.2} />
+    </div>
+
+    <div className={styles.perkText}>
+      <strong>FREE TANK TOP</strong>
+      <span>FOR PARTICIPANTS</span>
+    </div>
+  </div>
+
+
+  <div className={styles.perk}>
+    <div className={styles.perkIcon}>
+      <Timer size={30} strokeWidth={2.2} />
+    </div>
+
+    <div className={styles.perkText}>
+      <strong>TIMED EVENT</strong>
+      <span>ACCURATE TIMING</span>
+    </div>
+  </div>
+
+
+  <div className={styles.perk}>
+    <div className={styles.perkIcon}>
+      <ShieldCheck size={30} strokeWidth={2.2} />
+    </div>
+
+    <div className={styles.perkText}>
+      <strong>SECURE ROUTE</strong>
+      <span>ROUTE SUPPORT</span>
+    </div>
+  </div>
+
+</div>
           {/* COUNTDOWN */}
           <div className={styles.countdownTitle}>
             REGISTRATION CLOSES / EVENT STARTS IN
