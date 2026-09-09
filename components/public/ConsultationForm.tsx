@@ -1,176 +1,178 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import styles from "./HaldwaniHillRush.module.css";
+import { useState, type FormEvent } from "react";
+import { CalendarCheck2, CircleCheckBig } from "lucide-react";
+import styles from "./public.module.css";
 
-const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
+export function ConsultationForm() {
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-export default function HaldwaniHillRush() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  useEffect(() => {
-    const target = new Date("2026-10-04T06:20:00+05:30").getTime();
+    const form = event.currentTarget;
 
-    const update = () => {
-      const difference = target - Date.now();
+    setSubmitting(true);
+    setMessage("");
 
-      if (difference <= 0) {
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
+    const values = new FormData(form);
+
+    try {
+      const response = await fetch("/api/consultations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": crypto.randomUUID(),
+        },
+        body: JSON.stringify({
+          contactName: values.get("contactName"),
+          contactPhone: values.get("contactPhone"),
+          goalCategory: values.get("goalCategory"),
+        }),
+      });
+
+      const body = (await response.json()) as {
+        message?: string;
+        error?: {
+          message?: string;
+        };
+      };
+
+      if (!response.ok) {
+        setMessage(
+          body.error?.message ??
+            "The consultation could not be booked. Please check your details and try again.",
+        );
         return;
       }
 
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      });
-    };
+      form.reset();
+      setSubmitted(true);
 
-    update();
-
-    const timer = setInterval(update, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+      setMessage(
+        body.message ??
+          "Thank you. A 360 Performance mentor will contact you shortly.",
+      );
+    } catch {
+      setMessage(
+        "Something went wrong. Please try again.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
-    <section className={styles.eventSection}>
-      <div className={styles.hero}>
-        <div className={styles.background} />
-        <div className={styles.overlay} />
+    <form
+      className={styles.formCard}
+      onSubmit={submit}
+    >
+      {submitted ? (
+        <div
+          className={styles.consultationSuccess}
+          role="status"
+        >
+          <CircleCheckBig
+            size={42}
+            aria-hidden="true"
+          />
 
-        {/* FOUR PARTNER LOGOS */}
-        <div className={styles.topPartners}>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
+          <span>Request submitted</span>
+
+          <h2>
+            Thank you for contacting 360 Performance.
+          </h2>
+
+          <p>{message}</p>
         </div>
+      ) : (
+        <>
+          <h2>Book your consultation</h2>
 
-        <div className={styles.content}>
-          <div className={styles.kicker}>PRESENTS</div>
+          <p>
+            Tell us who you are and what you want
+            to achieve. The consultation is completely
+            free.
+          </p>
 
-          <h1>HALDWANI</h1>
-          <h2>HILL RUSH</h2>
+          <div className={styles.formGrid}>
+            <div className={styles.formGroup}>
+              <label htmlFor="consult-name">
+                Full name
+              </label>
 
-          <div className={styles.challenge}>
-            CHALLENGE 2026
-          </div>
-
-          <div className={styles.mainInfo}>
-            <div>
-              <strong>4 OCTOBER 2026</strong>
-              <span>SUNDAY</span>
+              <input
+                className={styles.formControl}
+                id="consult-name"
+                name="contactName"
+                autoComplete="name"
+                maxLength={80}
+                required
+              />
             </div>
 
-            <div>
-              <strong>₹199</strong>
-              <span>REGISTRATION</span>
+            <div className={styles.formGroup}>
+              <label htmlFor="consult-phone">
+                Mobile number
+              </label>
+
+              <input
+                className={styles.formControl}
+                id="consult-phone"
+                name="contactPhone"
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel"
+                maxLength={16}
+                required
+              />
             </div>
 
-            <div>
-              <strong>HALDWANI → KATHGODAM</strong>
-              <span>AND BACK</span>
-            </div>
-          </div>
+            <div
+              className={`${styles.formGroup} ${styles.formGroupFull}`}
+            >
+              <label htmlFor="consult-goal">
+                Your goal
+              </label>
 
-          <div className={styles.venue}>
-            <strong>VENUE</strong>
-            <span>HALDWANI STADIUM</span>
-            <small>Near Bus Station</small>
-          </div>
-
-          <div className={styles.categories}>
-            <div className={styles.category}>
-              <strong>3 KM</strong>
-              <span>KIDS</span>
-            </div>
-
-            <div className={styles.category}>
-              <strong>15 KM</strong>
-              <span>JUNIOR & ADULT</span>
-            </div>
-
-            <div className={styles.category}>
-              <strong>7 KM</strong>
-              <span>35+ YEARS</span>
-            </div>
-          </div>
-
-          <div className={styles.perks}>
-            <span>MEDICAL</span>
-            <span>REFRESHMENTS</span>
-            <span>FREE TANK TOP</span>
-            <span>TIMED EVENT</span>
-            <span>SECURE ROUTE</span>
-          </div>
-
-          <div className={styles.countdownTitle}>
-            EVENT STARTS IN
-          </div>
-
-          <div className={styles.countdown}>
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
-              <span>DAYS</span>
-            </div>
-
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
-              <span>HOURS</span>
-            </div>
-
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
-              <span>MINUTES</span>
-            </div>
-
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
-              <span>SECONDS</span>
+              <textarea
+                className={styles.formTextArea}
+                id="consult-goal"
+                name="goalCategory"
+                rows={4}
+                maxLength={500}
+                placeholder="Tell us what you would like to achieve"
+                required
+              />
             </div>
           </div>
 
-          <a
-            href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.registerButton}
+          <button
+            className={`${styles.primaryButton} ${styles.formSubmit}`}
+            type="submit"
+            disabled={submitting}
           >
-            REGISTER NOW <span>→</span>
-          </a>
-        </div>
-      </div>
+            <CalendarCheck2
+              size={17}
+              aria-hidden="true"
+            />
 
-      {/* PARTNERS & SPONSORS */}
-      <section className={styles.partners}>
-        <p>OUR PARTNERS & SPONSORS</p>
+            {submitting
+              ? "Submitting…"
+              : "Submit consultation request"}
+          </button>
 
-        <div className={styles.marquee}>
-          <div className={styles.marqueeTrack}>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-          </div>
-        </div>
-      </section>
-    </section>
+          <p
+            className={styles.formNotice}
+            role="status"
+          >
+            {message ||
+              "There is no charge. Our team will contact you on your mobile number."}
+          </p>
+        </>
+      )}
+    </form>
   );
 }
