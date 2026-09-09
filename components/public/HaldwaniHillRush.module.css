@@ -1,911 +1,299 @@
-.eventSection {
-  width: 100%;
-  overflow: hidden;
-  background: #07100c;
-  color: #fff;
-}
-
-/* =========================================
-   MAIN EVENT BACKGROUND
-   CSS ONLY — NO IMAGE
-========================================= */
-
-.hero {
-  position: relative;
-  min-height: 900px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 20%,
-      rgba(255, 196, 55, 0.20) 0%,
-      rgba(255, 196, 55, 0.06) 28%,
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      #10291d 0%,
-      #183b29 35%,
-      #0d2118 65%,
-      #050b08 100%
-    );
-}
-
-/* =========================================
-   CSS MOUNTAINS
-========================================= */
-
-.background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-
-  background:
-    /* distant mountains */
-    linear-gradient(
-      135deg,
-      transparent 0 46%,
-      rgba(215, 222, 215, 0.18) 46.5%,
-      rgba(215, 222, 215, 0.18) 47.5%,
-      transparent 48%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0 48%,
-      rgba(215, 222, 215, 0.14) 48.5%,
-      rgba(215, 222, 215, 0.14) 49.5%,
-      transparent 50%
-    );
-
-  opacity: 1;
-}
-
-/* mountain layers */
-
-.background::before {
-  content: "";
-  position: absolute;
-
-  left: -10%;
-  bottom: 0;
-
-  width: 120%;
-  height: 48%;
-
-  background:
-    linear-gradient(
-      135deg,
-      transparent 0 35%,
-      #183c2b 35.5% 43%,
-      transparent 43.5%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0 42%,
-      #214b35 42.5% 51%,
-      transparent 51.5%
-    ),
-    linear-gradient(
-      135deg,
-      transparent 0 57%,
-      #153524 57.5% 67%,
-      transparent 67.5%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0 63%,
-      #1d432f 63.5% 73%,
-      transparent 73.5%
-    );
+"use client";
+
+import { useEffect, useState } from "react";
+import styles from "./HaldwaniHillRush.module.css";
 
-  filter: blur(1px);
-}
+const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
-/* foreground hill */
+export default function HaldwaniHillRush() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-.background::after {
-  content: "";
+  useEffect(() => {
+    const target = new Date("2026-10-04T06:20:00+05:30").getTime();
 
-  position: absolute;
+    const update = () => {
+      const difference = target - Date.now();
 
-  left: -10%;
-  bottom: -15%;
+      if (difference <= 0) {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
+      }
 
-  width: 120%;
-  height: 45%;
+      setTimeLeft({
+        days: Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        ),
+        hours: Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        ),
+        minutes: Math.floor(
+          (difference / (1000 * 60)) % 60
+        ),
+        seconds: Math.floor(
+          (difference / 1000) % 60
+        ),
+      });
+    };
 
-  border-radius: 50% 50% 0 0;
+    update();
 
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      #285b3d 0%,
-      #123522 45%,
-      #06100a 80%
-    );
+    const interval = setInterval(update, 1000);
 
-  transform: rotate(-2deg);
-}
+    return () => clearInterval(interval);
+  }, []);
 
-/* =========================================
-   GOLDEN LIGHT / SUN
-========================================= */
+  return (
+    <section className={styles.eventSection}>
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+      {/* =================================
+          HERO
+      ================================= */}
 
-  background:
-    radial-gradient(
-      circle at 50% 24%,
-      rgba(255, 214, 105, 0.25) 0,
-      rgba(255, 214, 105, 0.08) 12%,
-      transparent 30%
-    ),
-    linear-gradient(
-      180deg,
-      transparent 45%,
-      rgba(0, 0, 0, 0.12) 65%,
-      rgba(0, 0, 0, 0.65) 100%
-    );
-}
+      <div className={styles.hero}>
 
-/* =========================================
-   4 PARTNERS AT TOP
-========================================= */
+        {/* CSS ONLY BACKGROUND */}
+        <div className={styles.background} />
 
-.topPartners {
-  position: absolute;
+        {/* DARK OVERLAY */}
+        <div className={styles.overlay} />
 
-  top: 28px;
-  left: 50%;
+        {/* =================================
+            TOP 4 PARTNERS
+        ================================= */}
 
-  transform: translateX(-50%);
+        <div className={styles.topPartners}>
 
-  width: min(1000px, 92%);
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
 
-  z-index: 5;
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
 
-  background: rgba(8, 15, 11, 0.78);
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
 
-  border: 1px solid rgba(231, 188, 76, 0.55);
+        </div>
 
-  backdrop-filter: blur(8px);
+        {/* =================================
+            MAIN CONTENT
+        ================================= */}
 
-  border-radius: 8px;
+        <div className={styles.content}>
 
-  padding: 10px;
-}
+          <div className={styles.presents}>
+            PRESENTS
+          </div>
 
-.topPartner {
-  min-height: 60px;
+          <h1>HALDWANI</h1>
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+          <h2>HILL RUSH</h2>
 
-  padding: 8px 15px;
+          <div className={styles.challenge}>
+            CHALLENGE 2026
+          </div>
 
-  border-right: 1px solid
-    rgba(231, 188, 76, 0.35);
+          {/* EVENT DETAILS */}
 
-  text-align: center;
-}
+          <div className={styles.eventDetails}>
 
-.topPartner:last-child {
-  border-right: none;
-}
+            <div className={styles.detail}>
+              <strong>4 OCTOBER 2026</strong>
+              <small>SUNDAY</small>
+            </div>
 
-.topPartner span {
-  color: #f3cf70;
+            <div className={styles.detail}>
+              <strong>₹199</strong>
+              <small>REGISTRATION</small>
+            </div>
 
-  font-size: 11px;
+            <div className={styles.detail}>
+              <strong>HALDWANI → KATHGODAM</strong>
+              <small>AND BACK</small>
+            </div>
 
-  font-weight: 900;
+          </div>
 
-  letter-spacing: 1.5px;
-}
+          {/* VENUE */}
 
-/* =========================================
-   CONTENT
-========================================= */
+          <div className={styles.venue}>
+            <span>VENUE</span>
+            <strong>HALDWANI STADIUM</strong>
+            <small>Near Bus Station</small>
+          </div>
 
-.content {
-  position: relative;
-  z-index: 3;
+          {/* CATEGORIES */}
+
+          <div className={styles.categories}>
 
-  width: min(1100px, 92%);
+            <div className={styles.category}>
+              <strong>3 KM</strong>
+              <span>KIDS</span>
+            </div>
 
-  padding: 145px 0 70px;
+            <div className={styles.category}>
+              <strong>15 KM</strong>
+              <span>JUNIOR & ADULT</span>
+            </div>
 
-  text-align: center;
-}
+            <div className={styles.category}>
+              <strong>7 KM</strong>
+              <span>35+ YEARS</span>
+            </div>
 
-/* =========================================
-   TITLE
-========================================= */
+          </div>
 
-.kicker {
-  margin: 0 0 10px;
+          {/* EVENT PERKS */}
 
-  color: #f4ce67;
+          <div className={styles.perks}>
 
-  font-size: 13px;
+            <div>
+              <strong>✚</strong>
+              <span>MEDICAL</span>
+            </div>
 
-  font-weight: 900;
+            <div>
+              <strong>♢</strong>
+              <span>REFRESHMENTS</span>
+            </div>
 
-  letter-spacing: 7px;
+            <div>
+              <strong>♙</strong>
+              <span>FREE TANK TOP</span>
+            </div>
 
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.8);
-}
+            <div>
+              <strong>◷</strong>
+              <span>TIMED EVENT</span>
+            </div>
 
-.content h1 {
-  margin: 0;
+            <div>
+              <strong>◇</strong>
+              <span>SECURE ROUTE</span>
+            </div>
 
-  color: #fff;
+          </div>
 
-  font-size: clamp(55px, 9vw, 110px);
+          {/* COUNTDOWN */}
 
-  line-height: 0.9;
+          <div className={styles.countdownTitle}>
+            REGISTRATION IS OPEN
+          </div>
 
-  font-weight: 950;
+          <div className={styles.countdown}>
 
-  letter-spacing: -4px;
+            <div>
+              <strong>
+                {String(timeLeft.days).padStart(2, "0")}
+              </strong>
+              <span>DAYS</span>
+            </div>
 
-  text-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.75);
-}
+            <div>
+              <strong>
+                {String(timeLeft.hours).padStart(2, "0")}
+              </strong>
+              <span>HOURS</span>
+            </div>
 
-.content h2 {
-  margin: 8px 0 18px;
+            <div>
+              <strong>
+                {String(timeLeft.minutes).padStart(2, "0")}
+              </strong>
+              <span>MINUTES</span>
+            </div>
 
-  color: #ffbf24;
+            <div>
+              <strong>
+                {String(timeLeft.seconds).padStart(2, "0")}
+              </strong>
+              <span>SECONDS</span>
+            </div>
 
-  font-size: clamp(60px, 10vw, 120px);
+          </div>
 
-  line-height: 0.9;
+          {/* REGISTER BUTTON */}
 
-  font-weight: 950;
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.registerButton}
+          >
+            REGISTER NOW
+            <span>→</span>
+          </a>
 
-  letter-spacing: -5px;
+        </div>
 
-  text-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.8);
-}
+      </div>
 
-/* =========================================
-   CHALLENGE
-========================================= */
+      {/* =================================
+          PARTNERS & SPONSORS
+      ================================= */}
 
-.challenge {
-  display: inline-block;
+      <section className={styles.partners}>
 
-  padding: 9px 28px;
+        <p>OUR PARTNERS & SPONSORS</p>
 
-  background: rgba(5, 8, 6, 0.88);
+        <div className={styles.marquee}>
 
-  border: 2px solid #f0c34e;
+          <div className={styles.marqueeTrack}>
 
-  color: #ffda71;
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  font-size: clamp(20px, 3vw, 32px);
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  font-weight: 900;
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  letter-spacing: 6px;
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.4);
-}
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-/* =========================================
-   EVENT INFO
-========================================= */
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-.mainInfo {
-  display: flex;
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  justify-content: center;
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
 
-  width: fit-content;
-  max-width: 100%;
+          </div>
 
-  margin: 32px auto 22px;
+        </div>
 
-  background: rgba(4, 8, 6, 0.68);
+      </section>
 
-  border-top: 1px solid
-    rgba(255,255,255,0.5);
-
-  border-bottom: 1px solid
-    rgba(255,255,255,0.5);
-
-  backdrop-filter: blur(5px);
-}
-
-.mainInfo > div {
-  padding: 14px 30px;
-
-  border-right: 1px solid
-    rgba(255,255,255,0.25);
-}
-
-.mainInfo > div:last-child {
-  border-right: none;
-}
-
-.mainInfo strong {
-  display: block;
-
-  color: #fff;
-
-  font-size: 17px;
-
-  font-weight: 900;
-}
-
-.mainInfo span {
-  display: block;
-
-  margin-top: 5px;
-
-  color: #ffd04c;
-
-  font-size: 10px;
-
-  font-weight: 900;
-
-  letter-spacing: 2px;
-}
-
-/* =========================================
-   VENUE
-========================================= */
-
-.venue {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 5px;
-
-  margin: 18px auto 22px;
-
-  text-shadow:
-    0 3px 10px rgba(0,0,0,0.8);
-}
-
-.venue strong {
-  color: #ffd04c;
-
-  font-size: 11px;
-
-  letter-spacing: 3px;
-}
-
-.venue span {
-  font-size: 23px;
-
-  font-weight: 900;
-}
-
-.venue small {
-  font-size: 13px;
-}
-
-/* =========================================
-   CATEGORIES
-========================================= */
-
-.categories {
-  display: flex;
-
-  justify-content: center;
-
-  margin: 20px auto 25px;
-
-  background: rgba(0,0,0,0.55);
-
-  backdrop-filter: blur(5px);
-}
-
-.category {
-  min-width: 190px;
-
-  padding: 10px 25px;
-
-  border-right:
-    1px solid rgba(255,255,255,0.3);
-}
-
-.category:last-child {
-  border-right: none;
-}
-
-.category strong {
-  display: block;
-
-  color: #ffc52c;
-
-  font-size: 34px;
-
-  font-weight: 950;
-}
-
-.category span {
-  display: block;
-
-  margin-top: 4px;
-
-  color: #fff;
-
-  font-size: 11px;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-}
-
-/* =========================================
-   PERKS
-========================================= */
-
-.perks {
-  display: flex;
-
-  justify-content: center;
-
-  flex-wrap: wrap;
-
-  width: fit-content;
-
-  max-width: 100%;
-
-  margin: 18px auto 25px;
-
-  background: rgba(0,0,0,0.65);
-
-  border-top:
-    1px solid rgba(255,255,255,0.3);
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.3);
-}
-
-.perks span {
-  padding: 11px 18px;
-
-  border-right:
-    1px solid rgba(255,255,255,0.25);
-
-  color: #fff;
-
-  font-size: 10px;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-}
-
-.perks span:last-child {
-  border-right: none;
-}
-
-/* =========================================
-   COUNTDOWN
-========================================= */
-
-.countdownTitle {
-  margin-bottom: 10px;
-
-  color: #ffe08a;
-
-  font-size: 11px;
-
-  font-weight: 900;
-
-  letter-spacing: 4px;
-
-  text-shadow:
-    0 3px 8px rgba(0,0,0,0.8);
-}
-
-.countdown {
-  display: flex;
-
-  justify-content: center;
-
-  gap: 9px;
-
-  margin-bottom: 23px;
-}
-
-.countBox {
-  min-width: 88px;
-
-  padding: 10px 12px;
-
-  background: rgba(0,0,0,0.78);
-
-  border:
-    1px solid #e4b735;
-
-  border-radius: 5px;
-
-  box-shadow:
-    0 6px 18px rgba(0,0,0,0.4);
-}
-
-.countBox strong {
-  display: block;
-
-  color: #ffd044;
-
-  font-size: 28px;
-
-  font-weight: 950;
-
-  line-height: 1;
-}
-
-.countBox span {
-  display: block;
-
-  margin-top: 6px;
-
-  color: #eee;
-
-  font-size: 8px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-}
-
-/* =========================================
-   REGISTER
-========================================= */
-
-.registerButton {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 14px;
-
-  min-width: 250px;
-
-  padding: 15px 30px;
-
-  background: #101010;
-
-  border: 2px solid #ffd044;
-
-  border-radius: 5px;
-
-  color: #ffd044;
-
-  text-decoration: none;
-
-  font-size: 17px;
-
-  font-weight: 950;
-
-  letter-spacing: 2px;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,0.5);
-
-  transition: 0.25s ease;
-}
-
-.registerButton:hover {
-  background: #ffd044;
-
-  color: #111;
-
-  transform: translateY(-3px);
-}
-
-.registerButton span {
-  font-size: 24px;
-}
-
-/* =========================================
-   PARTNERS & SPONSORS
-========================================= */
-
-.partners {
-  position: relative;
-
-  overflow: hidden;
-
-  padding: 45px 0 55px;
-
-  background: #07100c;
-
-  border-top: 2px solid #d5a331;
-
-  text-align: center;
-}
-
-.partnerKicker {
-  margin: 0 0 8px;
-
-  color: #999;
-
-  font-size: 10px;
-
-  font-weight: 800;
-
-  letter-spacing: 4px;
-}
-
-.partners h3 {
-  margin: 0 0 30px;
-
-  color: #f3c651;
-
-  font-size: 21px;
-
-  font-weight: 900;
-
-  letter-spacing: 4px;
-}
-
-/* =========================================
-   SPONSORS MOVE RIGHT → LEFT
-========================================= */
-
-.marquee {
-  width: 100%;
-
-  overflow: hidden;
-}
-
-.marqueeTrack {
-  display: flex;
-
-  width: max-content;
-
-  gap: 25px;
-
-  animation:
-    sponsorSlide 25s linear infinite;
-}
-
-.partnerLogo {
-  flex: 0 0 auto;
-
-  width: 170px;
-
-  height: 75px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border:
-    1px dashed rgba(242,196,91,0.6);
-
-  color: #f2c45b;
-
-  font-size: 11px;
-
-  font-weight: 900;
-
-  letter-spacing: 2px;
-}
-
-@keyframes sponsorSlide {
-
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-  .hero {
-    min-height: 920px;
-  }
-
-  .topPartners {
-    top: 15px;
-
-    width: 94%;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    padding: 7px;
-  }
-
-  .topPartner {
-    min-height: 42px;
-
-    padding: 5px;
-
-    border-right:
-      1px solid rgba(0,0,0,0.25);
-
-    border-bottom:
-      1px solid rgba(0,0,0,0.25);
-  }
-
-  .topPartner:nth-child(2),
-  .topPartner:nth-child(4) {
-    border-right: none;
-  }
-
-  .topPartner:nth-child(3),
-  .topPartner:nth-child(4) {
-    border-bottom: none;
-  }
-
-  .topPartner span {
-    font-size: 7px;
-
-    letter-spacing: 0.6px;
-  }
-
-  .content {
-    width: 92%;
-
-    padding: 135px 0 50px;
-  }
-
-  .kicker {
-    font-size: 9px;
-
-    letter-spacing: 4px;
-  }
-
-  .content h1 {
-    font-size: 16vw;
-
-    letter-spacing: -2px;
-  }
-
-  .content h2 {
-    font-size: 17vw;
-
-    letter-spacing: -3px;
-  }
-
-  .challenge {
-    padding: 7px 12px;
-
-    font-size: 17px;
-
-    letter-spacing: 3px;
-  }
-
-  .mainInfo {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mainInfo > div {
-    padding: 11px 7px;
-  }
-
-  .mainInfo > div:last-child {
-    grid-column: 1 / -1;
-
-    border-top:
-      1px solid rgba(255,255,255,0.25);
-  }
-
-  .mainInfo strong {
-    font-size: 12px;
-  }
-
-  .mainInfo span {
-    font-size: 8px;
-  }
-
-  .venue span {
-    font-size: 19px;
-  }
-
-  .categories {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .category {
-    min-width: 0;
-
-    padding: 9px 5px;
-  }
-
-  .category strong {
-    font-size: 27px;
-  }
-
-  .category span {
-    font-size: 8px;
-  }
-
-  .category:last-child {
-    grid-column: 1 / -1;
-
-    border-top:
-      1px solid rgba(255,255,255,0.25);
-  }
-
-  .perks {
-    width: 100%;
-  }
-
-  .perks span {
-    flex: 1 1 33%;
-
-    padding: 9px 3px;
-
-    font-size: 7px;
-  }
-
-  .countdown {
-    gap: 5px;
-  }
-
-  .countBox {
-    min-width: 67px;
-
-    padding: 8px 4px;
-  }
-
-  .countBox strong {
-    font-size: 20px;
-  }
-
-  .countBox span {
-    font-size: 6px;
-  }
-
-  .registerButton {
-    width: 90%;
-
-    min-width: 0;
-
-    padding: 13px 20px;
-
-    font-size: 14px;
-  }
-
-  .partnerLogo {
-    width: 135px;
-
-    height: 60px;
-
-    font-size: 9px;
-  }
+    </section>
+  );
 }
