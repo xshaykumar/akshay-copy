@@ -1,7 +1,7 @@
 .eventSection {
   width: 100%;
   overflow: hidden;
-  background: #111;
+  background: #090909;
   color: #fff;
 }
 
@@ -12,31 +12,44 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 820px;
   overflow: hidden;
+
+  min-height: 850px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(201, 147, 46, 0.13),
+      transparent 45%
+    ),
+    #090909;
 }
+
+/* IMPORTANT:
+   NO IMAGE BACKGROUND
+*/
 
 .background {
   position: absolute;
   inset: 0;
-  background-image: url("/hill-rush-desktop.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
+  background: transparent;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
+
   background:
     linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(0, 0, 0, 0.48) 45%,
-      rgba(0, 0, 0, 0.20) 100%
+      180deg,
+      rgba(201, 147, 46, 0.06),
+      transparent 35%,
+      rgba(0, 0, 0, 0.25)
     );
 }
 
@@ -46,39 +59,46 @@
 
 .logos {
   position: absolute;
-  top: 35px;
+
+  top: 30px;
   left: 50%;
+
   transform: translateX(-50%);
+
   z-index: 5;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 25px;
 
   width: 90%;
 }
 
 .logoSpace {
-  min-width: 150px;
-  min-height: 60px;
+  width: 170px;
+  height: 65px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px dashed rgba(255, 200, 70, 0.7);
+  border: 1px dashed rgba(218, 170, 66, 0.65);
 
-  color: #f5c75a;
+  color: #e7bd57;
+
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
+
   letter-spacing: 3px;
 }
 
 .logoDivider {
   width: 1px;
   height: 55px;
-  background: rgba(255, 255, 255, 0.5);
+
+  background: rgba(255,255,255,0.35);
 }
 
 /* =========================
@@ -87,85 +107,95 @@
 
 .content {
   position: relative;
+
   z-index: 3;
 
-  width: min(1100px, 90%);
-  margin: 0 auto;
+  width: min(1100px, 92%);
 
-  padding: 130px 0 70px;
+  padding: 125px 0 70px;
 
   text-align: center;
 }
 
 .kicker {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 6px;
+  color: #dcae3f;
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: 7px;
 }
 
 .content h1 {
   margin: 0;
 
-  font-size: clamp(55px, 9vw, 110px);
+  font-size: clamp(55px, 9vw, 105px);
+
   line-height: 0.9;
 
   font-weight: 950;
+
   letter-spacing: -4px;
 
   color: #fff;
 }
 
 .content h2 {
-  margin: 5px 0 15px;
+  margin: 8px 0 18px;
 
-  font-size: clamp(60px, 10vw, 120px);
+  font-size: clamp(60px, 10vw, 115px);
+
   line-height: 0.9;
 
   font-weight: 950;
+
   letter-spacing: -5px;
 
-  color: #f0a91f;
+  color: #e8ae2d;
 }
 
 .challenge {
   display: inline-block;
 
-  padding: 8px 24px;
+  padding: 9px 25px;
+
+  border: 2px solid #dcae3f;
 
   background: #111;
-  border: 2px solid #e4ad32;
 
-  color: #ffd36b;
+  color: #f4c95c;
 
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(20px, 3vw, 31px);
+
   font-weight: 900;
-  letter-spacing: 7px;
+
+  letter-spacing: 6px;
 }
 
 /* =========================
-   MAIN INFO
+   EVENT INFO
 ========================= */
 
 .mainInfo {
   display: flex;
+
   justify-content: center;
-  align-items: stretch;
 
   width: fit-content;
   max-width: 100%;
 
   margin: 35px auto 25px;
 
-  border-top: 1px solid rgba(255,255,255,0.5);
-  border-bottom: 1px solid rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255,255,255,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
 }
 
 .mainInfo > div {
-  padding: 16px 30px;
+  padding: 15px 30px;
 
-  border-right: 1px solid rgba(255,255,255,0.3);
+  border-right: 1px solid rgba(255,255,255,0.25);
 }
 
 .mainInfo > div:last-child {
@@ -175,10 +205,10 @@
 .mainInfo strong {
   display: block;
 
-  font-size: 18px;
-  font-weight: 900;
-
   color: #fff;
+
+  font-size: 17px;
+  font-weight: 900;
 }
 
 .mainInfo span {
@@ -186,11 +216,12 @@
 
   margin-top: 5px;
 
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  color: #dcae3f;
 
-  color: #f4c55e;
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 2px;
 }
 
 /* =========================
@@ -198,27 +229,33 @@
 ========================= */
 
 .venue {
-  margin: 20px auto 30px;
-
   display: flex;
+
   flex-direction: column;
+
   gap: 5px;
+
+  margin: 20px auto 25px;
 }
 
 .venue strong {
-  font-size: 12px;
+  color: #dcae3f;
+
+  font-size: 11px;
+
   letter-spacing: 3px;
-  color: #f4c55e;
 }
 
 .venue span {
   font-size: 23px;
+
   font-weight: 900;
 }
 
 .venue small {
   font-size: 13px;
-  opacity: 0.9;
+
+  opacity: 0.75;
 }
 
 /* =========================
@@ -227,18 +264,18 @@
 
 .categories {
   display: flex;
-  justify-content: center;
-  gap: 0;
 
-  margin: 25px auto 30px;
+  justify-content: center;
+
+  margin: 20px auto 25px;
 }
 
 .category {
   min-width: 190px;
 
-  padding: 12px 25px;
+  padding: 10px 25px;
 
-  border-right: 1px solid rgba(255,255,255,0.35);
+  border-right: 1px solid rgba(255,255,255,0.25);
 }
 
 .category:last-child {
@@ -248,9 +285,10 @@
 .category strong {
   display: block;
 
-  color: #f4b52e;
+  color: #e8ae2d;
 
-  font-size: 35px;
+  font-size: 34px;
+
   font-weight: 950;
 }
 
@@ -259,8 +297,10 @@
 
   margin-top: 4px;
 
-  font-size: 12px;
+  font-size: 11px;
+
   font-weight: 800;
+
   letter-spacing: 1px;
 }
 
@@ -270,28 +310,31 @@
 
 .perks {
   display: flex;
+
   justify-content: center;
-  align-items: center;
+
   flex-wrap: wrap;
-
-  gap: 0;
-
-  margin: 25px auto 35px;
-
-  border-top: 1px solid rgba(255,255,255,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
 
   width: fit-content;
   max-width: 100%;
+
+  margin: 20px auto 28px;
+
+  border-top: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
 .perks span {
-  padding: 14px 20px;
+  padding: 12px 18px;
 
-  border-right: 1px solid rgba(255,255,255,0.25);
+  border-right: 1px solid rgba(255,255,255,0.2);
 
-  font-size: 11px;
+  color: #eee;
+
+  font-size: 10px;
+
   font-weight: 900;
+
   letter-spacing: 1px;
 }
 
@@ -300,41 +343,107 @@
 }
 
 /* =========================
-   REGISTER
+   COUNTDOWN
+========================= */
+
+.countdownTitle {
+  margin-bottom: 10px;
+
+  color: #dcae3f;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 4px;
+}
+
+.countdown {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+}
+
+.countBox {
+  min-width: 90px;
+
+  padding: 10px 12px;
+
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(220,174,63,0.6);
+
+  border-radius: 5px;
+}
+
+.countBox strong {
+  display: block;
+
+  color: #f0bd3e;
+
+  font-size: 28px;
+
+  font-weight: 950;
+
+  line-height: 1;
+}
+
+.countBox span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #aaa;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+/* =========================
+   REGISTER BUTTON
 ========================= */
 
 .registerButton {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 15px;
 
-  min-width: 240px;
+  min-width: 250px;
 
-  padding: 16px 30px;
+  padding: 15px 30px;
 
-  border: 2px solid #f1b72e;
+  border: 2px solid #e8ae2d;
+
   border-radius: 5px;
 
   background: #111;
 
-  color: #ffd15a;
+  color: #f4c95c;
 
   text-decoration: none;
 
   font-size: 17px;
+
   font-weight: 950;
+
   letter-spacing: 2px;
 
-  box-shadow:
-    0 8px 25px rgba(0,0,0,0.35),
-    0 0 20px rgba(241,183,46,0.15);
-
-  transition: 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .registerButton:hover {
-  background: #f1b72e;
+  background: #e8ae2d;
+
   color: #111;
 
   transform: translateY(-3px);
@@ -349,50 +458,99 @@
 ========================= */
 
 .partners {
-  padding: 35px 20px 45px;
+  position: relative;
 
-  background: #111;
+  overflow: hidden;
+
+  padding: 45px 0 55px;
+
+  background: #0d0d0d;
+
+  border-top: 1px solid #c9932e;
 
   text-align: center;
+}
 
-  border-top: 2px solid #c9932e;
+.partnerKicker {
+  margin: 0 0 8px;
+
+  color: #888;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
 }
 
 .partners h3 {
-  margin: 0 0 25px;
+  margin: 0 0 30px;
 
-  color: #f2c45b;
+  color: #f1c14f;
 
-  font-size: 18px;
+  font-size: 21px;
+
+  font-weight: 900;
+
+  letter-spacing: 4px;
+}
+
+/* =========================
+   RIGHT → LEFT MARQUEE
+========================= */
+
+.marquee {
+  width: 100%;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.marqueeTrack {
+  display: flex;
+
+  align-items: center;
+
+  width: max-content;
+
+  gap: 25px;
+
+  animation: sponsorSlide 25s linear infinite;
+}
+
+.partnerLogo {
+  flex: 0 0 auto;
+
+  width: 170px;
+  height: 75px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed rgba(242,196,91,0.55);
+
+  color: #e5bb50;
+
+  font-size: 12px;
+
   font-weight: 900;
 
   letter-spacing: 3px;
 }
 
-.partnerLogos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+@keyframes sponsorSlide {
 
-  gap: 20px;
-}
+  from {
+    transform: translateX(0);
+  }
 
-.partnerLogos div {
-  width: 150px;
-  height: 70px;
+  to {
+    transform: translateX(-50%);
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px dashed rgba(242,196,91,0.6);
-
-  color: #f2c45b;
-
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
 }
 
 /* =========================
@@ -405,30 +563,20 @@
     min-height: 900px;
   }
 
-  .background {
-    background-image: url("/hill-rush-mobile.jpg");
-    background-position: center;
-  }
-
-  .overlay {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(0,0,0,0.65),
-        rgba(0,0,0,0.35) 45%,
-        rgba(0,0,0,0.75)
-      );
-  }
-
   .logos {
-    top: 20px;
+    top: 18px;
+
     gap: 10px;
   }
 
   .logoSpace {
-    min-width: 110px;
-    min-height: 45px;
-    font-size: 9px;
+    width: 110px;
+
+    height: 45px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
   }
 
   .logoDivider {
@@ -437,54 +585,60 @@
 
   .content {
     width: 92%;
-    padding: 105px 0 45px;
+
+    padding: 100px 0 50px;
   }
 
   .kicker {
     font-size: 9px;
-    letter-spacing: 3px;
+
+    letter-spacing: 4px;
   }
 
   .content h1 {
     font-size: 16vw;
+
     letter-spacing: -2px;
   }
 
   .content h2 {
     font-size: 17vw;
+
     letter-spacing: -3px;
   }
 
   .challenge {
-    font-size: 17px;
-    letter-spacing: 3px;
     padding: 7px 12px;
+
+    font-size: 17px;
+
+    letter-spacing: 3px;
   }
 
   .mainInfo {
     width: 100%;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
   }
 
   .mainInfo > div {
-    padding: 12px 8px;
-    border-right: 1px solid rgba(255,255,255,0.25);
+    padding: 12px 7px;
   }
 
   .mainInfo > div:last-child {
     grid-column: 1 / -1;
-    border-top: 1px solid rgba(255,255,255,0.25);
-    border-right: none;
+
+    border-top: 1px solid rgba(255,255,255,0.2);
   }
 
   .mainInfo strong {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .mainInfo span {
     font-size: 8px;
-    letter-spacing: 1px;
   }
 
   .venue span {
@@ -493,25 +647,28 @@
 
   .categories {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
   }
 
   .category {
     min-width: 0;
-    padding: 10px 8px;
-  }
 
-  .category:last-child {
-    grid-column: 1 / -1;
-    border-top: 1px solid rgba(255,255,255,0.25);
+    padding: 10px 5px;
   }
 
   .category strong {
-    font-size: 29px;
+    font-size: 28px;
   }
 
   .category span {
     font-size: 9px;
+  }
+
+  .category:last-child {
+    grid-column: 1 / -1;
+
+    border-top: 1px solid rgba(255,255,255,0.2);
   }
 
   .perks {
@@ -520,16 +677,55 @@
 
   .perks span {
     flex: 1 1 33%;
-    padding: 10px 5px;
-    font-size: 8px;
+
+    padding: 9px 3px;
+
+    font-size: 7px;
+  }
+
+  .countdown {
+    gap: 5px;
+  }
+
+  .countBox {
+    min-width: 68px;
+
+    padding: 9px 5px;
+  }
+
+  .countBox strong {
+    font-size: 21px;
+  }
+
+  .countBox span {
+    font-size: 6px;
   }
 
   .registerButton {
     width: 90%;
+
+    min-width: 0;
+
+    padding: 13px 20px;
+
+    font-size: 14px;
   }
 
-  .partnerLogos div {
-    width: 125px;
+  .partners {
+    padding: 35px 0 45px;
+  }
+
+  .partners h3 {
+    font-size: 16px;
+
+    letter-spacing: 2px;
+  }
+
+  .partnerLogo {
+    width: 135px;
+
     height: 60px;
+
+    font-size: 9px;
   }
 }
