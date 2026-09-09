@@ -30,118 +30,68 @@ export default function HaldwaniHillRush() {
       }
 
       setTimeLeft({
-        days: Math.floor(
-          difference / (1000 * 60 * 60 * 24)
-        ),
-        hours: Math.floor(
-          (difference / (1000 * 60 * 60)) % 24
-        ),
-        minutes: Math.floor(
-          (difference / (1000 * 60)) % 60
-        ),
-        seconds: Math.floor(
-          (difference / 1000) % 60
-        ),
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
       });
     };
 
     update();
 
-    const interval = setInterval(update, 1000);
+    const timer = setInterval(update, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
     <section className={styles.eventSection}>
-
-      {/* =================================
-          HERO
-      ================================= */}
-
       <div className={styles.hero}>
-
-        {/* CSS ONLY BACKGROUND */}
         <div className={styles.background} />
-
-        {/* DARK OVERLAY */}
         <div className={styles.overlay} />
 
-        {/* =================================
-            TOP 4 PARTNERS
-        ================================= */}
-
+        {/* FOUR PARTNER LOGOS */}
         <div className={styles.topPartners}>
-
-          <div className={styles.topPartner}>
-            <span>LOGO</span>
-          </div>
-
-          <div className={styles.topPartner}>
-            <span>LOGO</span>
-          </div>
-
-          <div className={styles.topPartner}>
-            <span>LOGO</span>
-          </div>
-
-          <div className={styles.topPartner}>
-            <span>LOGO</span>
-          </div>
-
+          <div className={styles.topPartner}>LOGO</div>
+          <div className={styles.topPartner}>LOGO</div>
+          <div className={styles.topPartner}>LOGO</div>
+          <div className={styles.topPartner}>LOGO</div>
         </div>
 
-        {/* =================================
-            MAIN CONTENT
-        ================================= */}
-
         <div className={styles.content}>
-
-          <div className={styles.presents}>
-            PRESENTS
-          </div>
+          <div className={styles.kicker}>PRESENTS</div>
 
           <h1>HALDWANI</h1>
-
           <h2>HILL RUSH</h2>
 
           <div className={styles.challenge}>
             CHALLENGE 2026
           </div>
 
-          {/* EVENT DETAILS */}
-
-          <div className={styles.eventDetails}>
-
-            <div className={styles.detail}>
+          <div className={styles.mainInfo}>
+            <div>
               <strong>4 OCTOBER 2026</strong>
-              <small>SUNDAY</small>
+              <span>SUNDAY</span>
             </div>
 
-            <div className={styles.detail}>
+            <div>
               <strong>₹199</strong>
-              <small>REGISTRATION</small>
+              <span>REGISTRATION</span>
             </div>
 
-            <div className={styles.detail}>
+            <div>
               <strong>HALDWANI → KATHGODAM</strong>
-              <small>AND BACK</small>
+              <span>AND BACK</span>
             </div>
-
           </div>
 
-          {/* VENUE */}
-
           <div className={styles.venue}>
-            <span>VENUE</span>
-            <strong>HALDWANI STADIUM</strong>
+            <strong>VENUE</strong>
+            <span>HALDWANI STADIUM</span>
             <small>Near Bus Station</small>
           </div>
 
-          {/* CATEGORIES */}
-
           <div className={styles.categories}>
-
             <div className={styles.category}>
               <strong>3 KM</strong>
               <span>KIDS</span>
@@ -156,79 +106,41 @@ export default function HaldwaniHillRush() {
               <strong>7 KM</strong>
               <span>35+ YEARS</span>
             </div>
-
           </div>
-
-          {/* EVENT PERKS */}
 
           <div className={styles.perks}>
-
-            <div>
-              <strong>✚</strong>
-              <span>MEDICAL</span>
-            </div>
-
-            <div>
-              <strong>♢</strong>
-              <span>REFRESHMENTS</span>
-            </div>
-
-            <div>
-              <strong>♙</strong>
-              <span>FREE TANK TOP</span>
-            </div>
-
-            <div>
-              <strong>◷</strong>
-              <span>TIMED EVENT</span>
-            </div>
-
-            <div>
-              <strong>◇</strong>
-              <span>SECURE ROUTE</span>
-            </div>
-
+            <span>MEDICAL</span>
+            <span>REFRESHMENTS</span>
+            <span>FREE TANK TOP</span>
+            <span>TIMED EVENT</span>
+            <span>SECURE ROUTE</span>
           </div>
 
-          {/* COUNTDOWN */}
-
           <div className={styles.countdownTitle}>
-            REGISTRATION IS OPEN
+            EVENT STARTS IN
           </div>
 
           <div className={styles.countdown}>
-
-            <div>
-              <strong>
-                {String(timeLeft.days).padStart(2, "0")}
-              </strong>
+            <div className={styles.countBox}>
+              <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
               <span>DAYS</span>
             </div>
 
-            <div>
-              <strong>
-                {String(timeLeft.hours).padStart(2, "0")}
-              </strong>
+            <div className={styles.countBox}>
+              <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
               <span>HOURS</span>
             </div>
 
-            <div>
-              <strong>
-                {String(timeLeft.minutes).padStart(2, "0")}
-              </strong>
+            <div className={styles.countBox}>
+              <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
               <span>MINUTES</span>
             </div>
 
-            <div>
-              <strong>
-                {String(timeLeft.seconds).padStart(2, "0")}
-              </strong>
+            <div className={styles.countBox}>
+              <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
               <span>SECONDS</span>
             </div>
-
           </div>
-
-          {/* REGISTER BUTTON */}
 
           <a
             href={REGISTER_URL}
@@ -236,64 +148,29 @@ export default function HaldwaniHillRush() {
             rel="noopener noreferrer"
             className={styles.registerButton}
           >
-            REGISTER NOW
-            <span>→</span>
+            REGISTER NOW <span>→</span>
           </a>
-
         </div>
-
       </div>
 
-      {/* =================================
-          PARTNERS & SPONSORS
-      ================================= */}
-
+      {/* PARTNERS & SPONSORS */}
       <section className={styles.partners}>
-
         <p>OUR PARTNERS & SPONSORS</p>
 
         <div className={styles.marquee}>
-
           <div className={styles.marqueeTrack}>
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
 
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
-            <div className={styles.partnerLogo}>
-              LOGO
-            </div>
-
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
+            <div className={styles.partnerLogo}>LOGO</div>
           </div>
-
         </div>
-
       </section>
-
     </section>
   );
 }
