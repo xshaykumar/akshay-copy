@@ -30,7 +30,9 @@ export default function HaldwaniHillRush() {
       }
 
       setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        days: Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        ),
         hours: Math.floor(
           (difference / (1000 * 60 * 60)) % 24
         ),
@@ -60,19 +62,32 @@ export default function HaldwaniHillRush() {
 
       <div className={styles.hero}>
 
+        {/* FOUR PARTNER SPACES */}
+        <div className={styles.topPartners}>
+
+          <div className={styles.topPartner}>
+            LOGO
+          </div>
+
+          <div className={styles.topPartner}>
+            LOGO
+          </div>
+
+          <div className={styles.topPartner}>
+            LOGO
+          </div>
+
+          <div className={styles.topPartner}>
+            LOGO
+          </div>
+
+        </div>
+
+        {/* BACKGROUND */}
         <div className={styles.background} />
         <div className={styles.overlay} />
 
-        {/* LOGOS */}
-        <div className={styles.logos}>
-          <div className={styles.logoSpace}>LOGO</div>
-
-          <div className={styles.logoDivider} />
-
-          <div className={styles.logoSpace}>LOGO</div>
-        </div>
-
-        {/* MAIN CONTENT */}
+        {/* HERO CONTENT */}
         <div className={styles.content}>
 
           <p className={styles.kicker}>
@@ -90,17 +105,17 @@ export default function HaldwaniHillRush() {
           {/* EVENT INFORMATION */}
           <div className={styles.mainInfo}>
 
-            <div>
+            <div className={styles.infoItem}>
               <strong>4 OCTOBER 2026</strong>
               <span>SUNDAY</span>
             </div>
 
-            <div>
+            <div className={styles.infoItem}>
               <strong>₹199</strong>
               <span>REGISTRATION</span>
             </div>
 
-            <div>
+            <div className={styles.infoItem}>
               <strong>HALDWANI → KATHGODAM</strong>
               <span>AND BACK</span>
             </div>
@@ -109,9 +124,15 @@ export default function HaldwaniHillRush() {
 
           {/* VENUE */}
           <div className={styles.venue}>
+
             <strong>VENUE</strong>
+
             <span>HALDWANI STADIUM</span>
-            <small>Near Bus Station</small>
+
+            <small>
+              Near Bus Station
+            </small>
+
           </div>
 
           {/* CATEGORIES */}
@@ -137,17 +158,36 @@ export default function HaldwaniHillRush() {
           {/* EVENT PERKS */}
           <div className={styles.perks}>
 
-            <span>MEDICAL</span>
-            <span>REFRESHMENTS</span>
-            <span>FREE TANK TOP</span>
-            <span>TIMED EVENT</span>
-            <span>SECURE ROUTE</span>
+            <div className={styles.perk}>
+              <strong>✚</strong>
+              <span>MEDICAL</span>
+            </div>
+
+            <div className={styles.perk}>
+              <strong>◉</strong>
+              <span>REFRESHMENTS</span>
+            </div>
+
+            <div className={styles.perk}>
+              <strong>◆</strong>
+              <span>FREE TANK TOP</span>
+            </div>
+
+            <div className={styles.perk}>
+              <strong>◷</strong>
+              <span>TIMED EVENT</span>
+            </div>
+
+            <div className={styles.perk}>
+              <strong>◇</strong>
+              <span>SECURE ROUTE</span>
+            </div>
 
           </div>
 
-          {/* COUNTDOWN - ABOVE REGISTER BUTTON */}
+          {/* COUNTDOWN */}
           <div className={styles.countdownTitle}>
-            EVENT STARTS IN
+            REGISTRATION CLOSES / EVENT STARTS IN
           </div>
 
           <div className={styles.countdown}>
@@ -182,7 +222,7 @@ export default function HaldwaniHillRush() {
 
           </div>
 
-          {/* REGISTER */}
+          {/* REGISTER BUTTON */}
           <a
             href={REGISTER_URL}
             target="_blank"
@@ -196,33 +236,38 @@ export default function HaldwaniHillRush() {
         </div>
       </div>
 
-      {/* ================= PARTNERS ================= */}
+      {/* ================= PARTNERS & SPONSORS ================= */}
 
       <section className={styles.partners}>
+
+        <div className={styles.partnerLine} />
 
         <p className={styles.partnerKicker}>
           TOGETHER FOR A STRONGER TOMORROW
         </p>
 
-        <h3>OUR PARTNERS & SPONSORS</h3>
+        <h3>
+          OUR PARTNERS & SPONSORS
+        </h3>
 
         <div className={styles.marquee}>
+
           <div className={styles.marqueeTrack}>
 
-            <div className={styles.partnerLogo}>LOGO</div>
+            {/* SET 1 */}
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
 
-            {/* Duplicate set for seamless movement */}
-            <div className={styles.partnerLogo}>LOGO</div>
+            {/* SET 2 - DUPLICATE FOR LOOP */}
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
             <div className={styles.partnerLogo}>LOGO</div>
 
           </div>
+
         </div>
 
       </section>
