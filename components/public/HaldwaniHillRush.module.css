@@ -543,43 +543,47 @@
 
 
 /* =========================================================
-   EVENT PERKS
+   EVENT FEATURES
    ========================================================= */
 
 .perks {
-  display: flex;
+  width: min(1000px, 100%);
+  margin: 30px auto 32px;
 
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 
-  flex-wrap: wrap;
+  background: rgba(4, 7, 6, 0.88);
 
-  margin: 28px auto 30px;
-
-  background: rgba(0, 0, 0, 0.76);
-
-  border-top: 1px solid rgba(224, 184, 65, 0.35);
-
-  border-bottom: 1px solid rgba(224, 184, 65, 0.35);
-
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(231, 193, 63, 0.55);
 
   box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.3);
+    0 15px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 30px rgba(255, 202, 45, 0.025);
+
+  backdrop-filter: blur(12px);
 }
 
 
 .perk {
-  min-width: 150px;
+  min-height: 135px;
 
-  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
 
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 10px;
+
+  position: relative;
 
   border-right: 1px solid rgba(255, 255, 255, 0.14);
 
   transition:
     transform 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 
@@ -589,65 +593,153 @@
 
 
 .perk:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 208, 68, 0.10),
+      rgba(255, 208, 68, 0.025)
+    );
+
   transform: translateY(-4px);
 
-  background: rgba(218, 177, 48, 0.08);
+  box-shadow:
+    inset 0 0 30px rgba(255, 208, 68, 0.06);
 }
 
 
-.perkIcon {
-  width: 43px;
-  height: 43px;
+/* GOLD ICON CIRCLE */
 
-  margin: 0 auto 8px;
+.perkIcon {
+  width: 58px;
+  height: 58px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #dcb537;
-
-  border-radius: 50%;
+  margin-bottom: 11px;
 
   color: #ffd044;
 
-  font-size: 21px;
+  border: 2px solid #dcb537;
 
-  font-weight: 900;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 210, 70, 0.13),
+      rgba(0, 0, 0, 0.65) 70%
+    );
 
   box-shadow:
-    0 0 18px rgba(220, 181, 55, 0.12);
+    0 0 15px rgba(255, 208, 68, 0.18),
+    inset 0 0 12px rgba(255, 208, 68, 0.06);
 }
 
 
-.perk span {
+/* TEXT */
+
+.perkText {
+  text-align: center;
+}
+
+
+.perkText strong {
   display: block;
 
   color: #ffffff;
 
-  font-size: 9px;
+  font-size: 10px;
 
   font-weight: 950;
 
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
+
+  line-height: 1.25;
 }
 
 
-.perk small {
+.perkText span {
   display: block;
 
   margin-top: 5px;
 
-  color: #c7c7c7;
+  color: #cfcfcf;
 
   font-size: 7px;
 
-  font-weight: 700;
+  font-weight: 800;
 
   letter-spacing: 1px;
+
+  line-height: 1.3;
 }
 
+
+/* =========================================================
+   MOBILE EVENT FEATURES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .perks {
+    width: 100%;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    margin: 24px auto 28px;
+  }
+
+
+  .perk {
+    min-height: 120px;
+
+    padding: 14px 6px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.13);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  }
+
+
+  .perk:nth-child(2n) {
+    border-right: none;
+  }
+
+
+  .perk:last-child {
+    grid-column: 1 / -1;
+
+    border-right: none;
+
+    border-bottom: none;
+  }
+
+
+  .perkIcon {
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 8px;
+  }
+
+
+  .perkIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+
+  .perkText strong {
+    font-size: 8px;
+  }
+
+
+  .perkText span {
+    font-size: 6px;
+  }
+}
 
 /* =========================================================
    COUNTDOWN
