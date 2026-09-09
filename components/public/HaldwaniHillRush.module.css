@@ -1,20 +1,19 @@
 .eventSection {
   width: 100%;
   overflow: hidden;
-  background: #090909;
+  background: #07100c;
   color: #fff;
 }
 
-/* =========================
-   HERO
-========================= */
+/* =========================================
+   MAIN EVENT BACKGROUND
+   CSS ONLY — NO IMAGE
+========================================= */
 
 .hero {
   position: relative;
-  width: 100%;
+  min-height: 900px;
   overflow: hidden;
-
-  min-height: 850px;
 
   display: flex;
   align-items: center;
@@ -22,116 +21,240 @@
 
   background:
     radial-gradient(
-      circle at 50% 20%,
-      rgba(201, 147, 46, 0.13),
-      transparent 45%
+      ellipse at 50% 20%,
+      rgba(255, 196, 55, 0.20) 0%,
+      rgba(255, 196, 55, 0.06) 28%,
+      transparent 55%
     ),
-    #090909;
+    linear-gradient(
+      180deg,
+      #10291d 0%,
+      #183b29 35%,
+      #0d2118 65%,
+      #050b08 100%
+    );
 }
 
-/* IMPORTANT:
-   NO IMAGE BACKGROUND
-*/
+/* =========================================
+   CSS MOUNTAINS
+========================================= */
 
 .background {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  overflow: hidden;
 
-  background: transparent;
+  background:
+    /* distant mountains */
+    linear-gradient(
+      135deg,
+      transparent 0 46%,
+      rgba(215, 222, 215, 0.18) 46.5%,
+      rgba(215, 222, 215, 0.18) 47.5%,
+      transparent 48%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 48%,
+      rgba(215, 222, 215, 0.14) 48.5%,
+      rgba(215, 222, 215, 0.14) 49.5%,
+      transparent 50%
+    );
+
+  opacity: 1;
 }
+
+/* mountain layers */
+
+.background::before {
+  content: "";
+  position: absolute;
+
+  left: -10%;
+  bottom: 0;
+
+  width: 120%;
+  height: 48%;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0 35%,
+      #183c2b 35.5% 43%,
+      transparent 43.5%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 42%,
+      #214b35 42.5% 51%,
+      transparent 51.5%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 57%,
+      #153524 57.5% 67%,
+      transparent 67.5%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 63%,
+      #1d432f 63.5% 73%,
+      transparent 73.5%
+    );
+
+  filter: blur(1px);
+}
+
+/* foreground hill */
+
+.background::after {
+  content: "";
+
+  position: absolute;
+
+  left: -10%;
+  bottom: -15%;
+
+  width: 120%;
+  height: 45%;
+
+  border-radius: 50% 50% 0 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      #285b3d 0%,
+      #123522 45%,
+      #06100a 80%
+    );
+
+  transform: rotate(-2deg);
+}
+
+/* =========================================
+   GOLDEN LIGHT / SUN
+========================================= */
 
 .overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
 
   background:
+    radial-gradient(
+      circle at 50% 24%,
+      rgba(255, 214, 105, 0.25) 0,
+      rgba(255, 214, 105, 0.08) 12%,
+      transparent 30%
+    ),
     linear-gradient(
       180deg,
-      rgba(201, 147, 46, 0.06),
-      transparent 35%,
-      rgba(0, 0, 0, 0.25)
+      transparent 45%,
+      rgba(0, 0, 0, 0.12) 65%,
+      rgba(0, 0, 0, 0.65) 100%
     );
 }
 
-/* =========================
-   LOGOS
-========================= */
+/* =========================================
+   4 PARTNERS AT TOP
+========================================= */
 
-.logos {
+.topPartners {
   position: absolute;
 
-  top: 30px;
+  top: 28px;
   left: 50%;
 
   transform: translateX(-50%);
 
+  width: min(1000px, 92%);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
   z-index: 5;
 
+  background: rgba(8, 15, 11, 0.78);
+
+  border: 1px solid rgba(231, 188, 76, 0.55);
+
+  backdrop-filter: blur(8px);
+
+  border-radius: 8px;
+
+  padding: 10px;
+}
+
+.topPartner {
+  min-height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 25px;
+  padding: 8px 15px;
 
-  width: 90%;
-}
-
-.logoSpace {
-  width: 170px;
-  height: 65px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px dashed rgba(218, 170, 66, 0.65);
-
-  color: #e7bd57;
-
-  font-size: 12px;
-  font-weight: 900;
-
-  letter-spacing: 3px;
-}
-
-.logoDivider {
-  width: 1px;
-  height: 55px;
-
-  background: rgba(255,255,255,0.35);
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content {
-  position: relative;
-
-  z-index: 3;
-
-  width: min(1100px, 92%);
-
-  padding: 125px 0 70px;
+  border-right: 1px solid
+    rgba(231, 188, 76, 0.35);
 
   text-align: center;
 }
 
+.topPartner:last-child {
+  border-right: none;
+}
+
+.topPartner span {
+  color: #f3cf70;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+  position: relative;
+  z-index: 3;
+
+  width: min(1100px, 92%);
+
+  padding: 145px 0 70px;
+
+  text-align: center;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
 .kicker {
   margin: 0 0 10px;
 
-  color: #dcae3f;
+  color: #f4ce67;
 
   font-size: 13px;
+
   font-weight: 900;
 
   letter-spacing: 7px;
+
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.8);
 }
 
 .content h1 {
   margin: 0;
 
-  font-size: clamp(55px, 9vw, 105px);
+  color: #fff;
+
+  font-size: clamp(55px, 9vw, 110px);
 
   line-height: 0.9;
 
@@ -139,13 +262,16 @@
 
   letter-spacing: -4px;
 
-  color: #fff;
+  text-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.75);
 }
 
 .content h2 {
   margin: 8px 0 18px;
 
-  font-size: clamp(60px, 10vw, 115px);
+  color: #ffbf24;
+
+  font-size: clamp(60px, 10vw, 120px);
 
   line-height: 0.9;
 
@@ -153,30 +279,38 @@
 
   letter-spacing: -5px;
 
-  color: #e8ae2d;
+  text-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.8);
 }
+
+/* =========================================
+   CHALLENGE
+========================================= */
 
 .challenge {
   display: inline-block;
 
-  padding: 9px 25px;
+  padding: 9px 28px;
 
-  border: 2px solid #dcae3f;
+  background: rgba(5, 8, 6, 0.88);
 
-  background: #111;
+  border: 2px solid #f0c34e;
 
-  color: #f4c95c;
+  color: #ffda71;
 
-  font-size: clamp(20px, 3vw, 31px);
+  font-size: clamp(20px, 3vw, 32px);
 
   font-weight: 900;
 
   letter-spacing: 6px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* =========================
+/* =========================================
    EVENT INFO
-========================= */
+========================================= */
 
 .mainInfo {
   display: flex;
@@ -186,16 +320,24 @@
   width: fit-content;
   max-width: 100%;
 
-  margin: 35px auto 25px;
+  margin: 32px auto 22px;
 
-  border-top: 1px solid rgba(255,255,255,0.35);
-  border-bottom: 1px solid rgba(255,255,255,0.35);
+  background: rgba(4, 8, 6, 0.68);
+
+  border-top: 1px solid
+    rgba(255,255,255,0.5);
+
+  border-bottom: 1px solid
+    rgba(255,255,255,0.5);
+
+  backdrop-filter: blur(5px);
 }
 
 .mainInfo > div {
-  padding: 15px 30px;
+  padding: 14px 30px;
 
-  border-right: 1px solid rgba(255,255,255,0.25);
+  border-right: 1px solid
+    rgba(255,255,255,0.25);
 }
 
 .mainInfo > div:last-child {
@@ -208,6 +350,7 @@
   color: #fff;
 
   font-size: 17px;
+
   font-weight: 900;
 }
 
@@ -216,17 +359,18 @@
 
   margin-top: 5px;
 
-  color: #dcae3f;
+  color: #ffd04c;
 
   font-size: 10px;
+
   font-weight: 900;
 
   letter-spacing: 2px;
 }
 
-/* =========================
+/* =========================================
    VENUE
-========================= */
+========================================= */
 
 .venue {
   display: flex;
@@ -235,11 +379,14 @@
 
   gap: 5px;
 
-  margin: 20px auto 25px;
+  margin: 18px auto 22px;
+
+  text-shadow:
+    0 3px 10px rgba(0,0,0,0.8);
 }
 
 .venue strong {
-  color: #dcae3f;
+  color: #ffd04c;
 
   font-size: 11px;
 
@@ -254,13 +401,11 @@
 
 .venue small {
   font-size: 13px;
-
-  opacity: 0.75;
 }
 
-/* =========================
+/* =========================================
    CATEGORIES
-========================= */
+========================================= */
 
 .categories {
   display: flex;
@@ -268,6 +413,10 @@
   justify-content: center;
 
   margin: 20px auto 25px;
+
+  background: rgba(0,0,0,0.55);
+
+  backdrop-filter: blur(5px);
 }
 
 .category {
@@ -275,7 +424,8 @@
 
   padding: 10px 25px;
 
-  border-right: 1px solid rgba(255,255,255,0.25);
+  border-right:
+    1px solid rgba(255,255,255,0.3);
 }
 
 .category:last-child {
@@ -285,7 +435,7 @@
 .category strong {
   display: block;
 
-  color: #e8ae2d;
+  color: #ffc52c;
 
   font-size: 34px;
 
@@ -297,16 +447,18 @@
 
   margin-top: 4px;
 
+  color: #fff;
+
   font-size: 11px;
 
-  font-weight: 800;
+  font-weight: 900;
 
   letter-spacing: 1px;
 }
 
-/* =========================
+/* =========================================
    PERKS
-========================= */
+========================================= */
 
 .perks {
   display: flex;
@@ -316,20 +468,27 @@
   flex-wrap: wrap;
 
   width: fit-content;
+
   max-width: 100%;
 
-  margin: 20px auto 28px;
+  margin: 18px auto 25px;
 
-  border-top: 1px solid rgba(255,255,255,0.25);
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.65);
+
+  border-top:
+    1px solid rgba(255,255,255,0.3);
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.3);
 }
 
 .perks span {
-  padding: 12px 18px;
+  padding: 11px 18px;
 
-  border-right: 1px solid rgba(255,255,255,0.2);
+  border-right:
+    1px solid rgba(255,255,255,0.25);
 
-  color: #eee;
+  color: #fff;
 
   font-size: 10px;
 
@@ -342,20 +501,23 @@
   border-right: none;
 }
 
-/* =========================
+/* =========================================
    COUNTDOWN
-========================= */
+========================================= */
 
 .countdownTitle {
   margin-bottom: 10px;
 
-  color: #dcae3f;
+  color: #ffe08a;
 
   font-size: 11px;
 
   font-weight: 900;
 
   letter-spacing: 4px;
+
+  text-shadow:
+    0 3px 8px rgba(0,0,0,0.8);
 }
 
 .countdown {
@@ -363,27 +525,31 @@
 
   justify-content: center;
 
-  gap: 10px;
+  gap: 9px;
 
-  margin-bottom: 25px;
+  margin-bottom: 23px;
 }
 
 .countBox {
-  min-width: 90px;
+  min-width: 88px;
 
   padding: 10px 12px;
 
-  background: rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.78);
 
-  border: 1px solid rgba(220,174,63,0.6);
+  border:
+    1px solid #e4b735;
 
   border-radius: 5px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.4);
 }
 
 .countBox strong {
   display: block;
 
-  color: #f0bd3e;
+  color: #ffd044;
 
   font-size: 28px;
 
@@ -397,7 +563,7 @@
 
   margin-top: 6px;
 
-  color: #aaa;
+  color: #eee;
 
   font-size: 8px;
 
@@ -406,29 +572,30 @@
   letter-spacing: 1px;
 }
 
-/* =========================
-   REGISTER BUTTON
-========================= */
+/* =========================================
+   REGISTER
+========================================= */
 
 .registerButton {
   display: inline-flex;
 
   align-items: center;
+
   justify-content: center;
 
-  gap: 15px;
+  gap: 14px;
 
   min-width: 250px;
 
   padding: 15px 30px;
 
-  border: 2px solid #e8ae2d;
+  background: #101010;
+
+  border: 2px solid #ffd044;
 
   border-radius: 5px;
 
-  background: #111;
-
-  color: #f4c95c;
+  color: #ffd044;
 
   text-decoration: none;
 
@@ -438,11 +605,14 @@
 
   letter-spacing: 2px;
 
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.5);
+
   transition: 0.25s ease;
 }
 
 .registerButton:hover {
-  background: #e8ae2d;
+  background: #ffd044;
 
   color: #111;
 
@@ -453,9 +623,9 @@
   font-size: 24px;
 }
 
-/* =========================
-   PARTNERS
-========================= */
+/* =========================================
+   PARTNERS & SPONSORS
+========================================= */
 
 .partners {
   position: relative;
@@ -464,9 +634,9 @@
 
   padding: 45px 0 55px;
 
-  background: #0d0d0d;
+  background: #07100c;
 
-  border-top: 1px solid #c9932e;
+  border-top: 2px solid #d5a331;
 
   text-align: center;
 }
@@ -474,7 +644,7 @@
 .partnerKicker {
   margin: 0 0 8px;
 
-  color: #888;
+  color: #999;
 
   font-size: 10px;
 
@@ -486,7 +656,7 @@
 .partners h3 {
   margin: 0 0 30px;
 
-  color: #f1c14f;
+  color: #f3c651;
 
   font-size: 21px;
 
@@ -495,50 +665,50 @@
   letter-spacing: 4px;
 }
 
-/* =========================
-   RIGHT → LEFT MARQUEE
-========================= */
+/* =========================================
+   SPONSORS MOVE RIGHT → LEFT
+========================================= */
 
 .marquee {
   width: 100%;
 
   overflow: hidden;
-
-  position: relative;
 }
 
 .marqueeTrack {
   display: flex;
 
-  align-items: center;
-
   width: max-content;
 
   gap: 25px;
 
-  animation: sponsorSlide 25s linear infinite;
+  animation:
+    sponsorSlide 25s linear infinite;
 }
 
 .partnerLogo {
   flex: 0 0 auto;
 
   width: 170px;
+
   height: 75px;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
-  border: 1px dashed rgba(242,196,91,0.55);
+  border:
+    1px dashed rgba(242,196,91,0.6);
 
-  color: #e5bb50;
+  color: #f2c45b;
 
-  font-size: 12px;
+  font-size: 11px;
 
   font-weight: 900;
 
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 @keyframes sponsorSlide {
@@ -553,40 +723,58 @@
 
 }
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 700px) {
 
   .hero {
-    min-height: 900px;
+    min-height: 920px;
   }
 
-  .logos {
-    top: 18px;
+  .topPartners {
+    top: 15px;
 
-    gap: 10px;
+    width: 94%;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 7px;
   }
 
-  .logoSpace {
-    width: 110px;
+  .topPartner {
+    min-height: 42px;
 
-    height: 45px;
+    padding: 5px;
 
-    font-size: 8px;
+    border-right:
+      1px solid rgba(0,0,0,0.25);
 
-    letter-spacing: 2px;
+    border-bottom:
+      1px solid rgba(0,0,0,0.25);
   }
 
-  .logoDivider {
-    height: 40px;
+  .topPartner:nth-child(2),
+  .topPartner:nth-child(4) {
+    border-right: none;
+  }
+
+  .topPartner:nth-child(3),
+  .topPartner:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .topPartner span {
+    font-size: 7px;
+
+    letter-spacing: 0.6px;
   }
 
   .content {
     width: 92%;
 
-    padding: 100px 0 50px;
+    padding: 135px 0 50px;
   }
 
   .kicker {
@@ -624,13 +812,14 @@
   }
 
   .mainInfo > div {
-    padding: 12px 7px;
+    padding: 11px 7px;
   }
 
   .mainInfo > div:last-child {
     grid-column: 1 / -1;
 
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top:
+      1px solid rgba(255,255,255,0.25);
   }
 
   .mainInfo strong {
@@ -654,21 +843,22 @@
   .category {
     min-width: 0;
 
-    padding: 10px 5px;
+    padding: 9px 5px;
   }
 
   .category strong {
-    font-size: 28px;
+    font-size: 27px;
   }
 
   .category span {
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .category:last-child {
     grid-column: 1 / -1;
 
-    border-top: 1px solid rgba(255,255,255,0.2);
+    border-top:
+      1px solid rgba(255,255,255,0.25);
   }
 
   .perks {
@@ -688,13 +878,13 @@
   }
 
   .countBox {
-    min-width: 68px;
+    min-width: 67px;
 
-    padding: 9px 5px;
+    padding: 8px 4px;
   }
 
   .countBox strong {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .countBox span {
@@ -709,16 +899,6 @@
     padding: 13px 20px;
 
     font-size: 14px;
-  }
-
-  .partners {
-    padding: 35px 0 45px;
-  }
-
-  .partners h3 {
-    font-size: 16px;
-
-    letter-spacing: 2px;
   }
 
   .partnerLogo {
