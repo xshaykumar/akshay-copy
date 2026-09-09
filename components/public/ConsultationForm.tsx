@@ -1,120 +1,299 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { CalendarCheck2, CircleCheckBig } from "lucide-react";
-import styles from "./public.module.css";
+import { useEffect, useState } from "react";
+import styles from "./HaldwaniHillRush.module.css";
 
-export function ConsultationForm() {
-  const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    setSubmitting(true);
-    setMessage("");
-    const values = new FormData(form);
-    const response = await fetch("/api/consultations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Idempotency-Key": crypto.randomUUID(),
-      },
-      body: JSON.stringify({
-        contactName: values.get("contactName"),
-        contactPhone: values.get("contactPhone"),
-        goalCategory: values.get("goalCategory"),
-      }),
-    });
-    const body = (await response.json()) as {
-      message?: string;
-      error?: { message?: string };
+export default function HaldwaniHillRush() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const target = new Date("2026-10-04T06:20:00+05:30").getTime();
+
+    const update = () => {
+      const difference = target - Date.now();
+
+      if (difference <= 0) {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        ),
+        hours: Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        ),
+        minutes: Math.floor(
+          (difference / (1000 * 60)) % 60
+        ),
+        seconds: Math.floor(
+          (difference / 1000) % 60
+        ),
+      });
     };
-    setSubmitting(false);
-    if (!response.ok) {
-      setMessage(
-        body.error?.message ??
-          "The consultation could not be booked. Check the details and try again.",
-      );
-      return;
-    }
-    form.reset();
-    setSubmitted(true);
-    setMessage(
-      body.message ??
-        "Thank you. A 360 Performance mentor will contact you shortly.",
-    );
-  }
+
+    update();
+
+    const interval = setInterval(update, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <form className={styles.formCard} onSubmit={submit}>
-      {submitted ? (
-        <div className={styles.consultationSuccess} role="status">
-          <CircleCheckBig size={42} aria-hidden="true" />
-          <span>Request submitted</span>
-          <h2>Thank you for contacting 360 Performance.</h2>
-          <p>{message}</p>
-        </div>
-      ) : (
-        <>
-          <h2>Book your consultation</h2>
-          <p>
-            Tell us who you are and what you want to achieve. The consultation
-            is completely free.
-          </p>
-          <div className={styles.formGrid}>
-            <div className={styles.formGroup}>
-              <label htmlFor="consult-name">Full name</label>
-              <input
-                className={styles.formControl}
-                id="consult-name"
-                name="contactName"
-                autoComplete="name"
-                maxLength={80}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="consult-phone">Mobile number</label>
-              <input
-                className={styles.formControl}
-                id="consult-phone"
-                name="contactPhone"
-                type="tel"
-                inputMode="numeric"
-                autoComplete="tel"
-                maxLength={16}
-                required
-              />
-            </div>
-            <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
-              <label htmlFor="consult-goal">Your goal</label>
-              <textarea
-                className={styles.formTextArea}
-                id="consult-goal"
-                name="goalCategory"
-                rows={4}
-                maxLength={500}
-                placeholder="Tell us what you would like to achieve"
-                required
-              />
-            </div>
+    <section className={styles.eventSection}>
+
+      {/* =================================
+          HERO
+      ================================= */}
+
+      <div className={styles.hero}>
+
+        {/* CSS ONLY BACKGROUND */}
+        <div className={styles.background} />
+
+        {/* DARK OVERLAY */}
+        <div className={styles.overlay} />
+
+        {/* =================================
+            TOP 4 PARTNERS
+        ================================= */}
+
+        <div className={styles.topPartners}>
+
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
           </div>
-          <button
-            className={`${styles.primaryButton} ${styles.formSubmit}`}
-            type="submit"
-            disabled={submitting}
+
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
+
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
+
+          <div className={styles.topPartner}>
+            <span>LOGO</span>
+          </div>
+
+        </div>
+
+        {/* =================================
+            MAIN CONTENT
+        ================================= */}
+
+        <div className={styles.content}>
+
+          <div className={styles.presents}>
+            PRESENTS
+          </div>
+
+          <h1>HALDWANI</h1>
+
+          <h2>HILL RUSH</h2>
+
+          <div className={styles.challenge}>
+            CHALLENGE 2026
+          </div>
+
+          {/* EVENT DETAILS */}
+
+          <div className={styles.eventDetails}>
+
+            <div className={styles.detail}>
+              <strong>4 OCTOBER 2026</strong>
+              <small>SUNDAY</small>
+            </div>
+
+            <div className={styles.detail}>
+              <strong>₹199</strong>
+              <small>REGISTRATION</small>
+            </div>
+
+            <div className={styles.detail}>
+              <strong>HALDWANI → KATHGODAM</strong>
+              <small>AND BACK</small>
+            </div>
+
+          </div>
+
+          {/* VENUE */}
+
+          <div className={styles.venue}>
+            <span>VENUE</span>
+            <strong>HALDWANI STADIUM</strong>
+            <small>Near Bus Station</small>
+          </div>
+
+          {/* CATEGORIES */}
+
+          <div className={styles.categories}>
+
+            <div className={styles.category}>
+              <strong>3 KM</strong>
+              <span>KIDS</span>
+            </div>
+
+            <div className={styles.category}>
+              <strong>15 KM</strong>
+              <span>JUNIOR & ADULT</span>
+            </div>
+
+            <div className={styles.category}>
+              <strong>7 KM</strong>
+              <span>35+ YEARS</span>
+            </div>
+
+          </div>
+
+          {/* EVENT PERKS */}
+
+          <div className={styles.perks}>
+
+            <div>
+              <strong>✚</strong>
+              <span>MEDICAL</span>
+            </div>
+
+            <div>
+              <strong>♢</strong>
+              <span>REFRESHMENTS</span>
+            </div>
+
+            <div>
+              <strong>♙</strong>
+              <span>FREE TANK TOP</span>
+            </div>
+
+            <div>
+              <strong>◷</strong>
+              <span>TIMED EVENT</span>
+            </div>
+
+            <div>
+              <strong>◇</strong>
+              <span>SECURE ROUTE</span>
+            </div>
+
+          </div>
+
+          {/* COUNTDOWN */}
+
+          <div className={styles.countdownTitle}>
+            REGISTRATION IS OPEN
+          </div>
+
+          <div className={styles.countdown}>
+
+            <div>
+              <strong>
+                {String(timeLeft.days).padStart(2, "0")}
+              </strong>
+              <span>DAYS</span>
+            </div>
+
+            <div>
+              <strong>
+                {String(timeLeft.hours).padStart(2, "0")}
+              </strong>
+              <span>HOURS</span>
+            </div>
+
+            <div>
+              <strong>
+                {String(timeLeft.minutes).padStart(2, "0")}
+              </strong>
+              <span>MINUTES</span>
+            </div>
+
+            <div>
+              <strong>
+                {String(timeLeft.seconds).padStart(2, "0")}
+              </strong>
+              <span>SECONDS</span>
+            </div>
+
+          </div>
+
+          {/* REGISTER BUTTON */}
+
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.registerButton}
           >
-            <CalendarCheck2 size={17} aria-hidden="true" />
-            {submitting ? "Submitting…" : "Submit consultation request"}
-          </button>
-          <p className={styles.formNotice} role="status">
-            {message ||
-              "There is no charge. Our team will contact you on your mobile number."}
-          </p>
-        </>
-      )}
-    </form>
+            REGISTER NOW
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      {/* =================================
+          PARTNERS & SPONSORS
+      ================================= */}
+
+      <section className={styles.partners}>
+
+        <p>OUR PARTNERS & SPONSORS</p>
+
+        <div className={styles.marquee}>
+
+          <div className={styles.marqueeTrack}>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+            <div className={styles.partnerLogo}>
+              LOGO
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
   );
 }
