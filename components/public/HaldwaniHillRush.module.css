@@ -1,12 +1,13 @@
 /* =========================================================
    HALDWANI HILL RUSH 2026
-   PREMIUM DARK / GOLD EVENT DESIGN
+   PREMIUM MOUNTAIN EVENT DESIGN
+   CSS-ONLY BACKGROUND — NO IMAGE REQUIRED
    ========================================================= */
 
 .eventSection {
   width: 100%;
   overflow: hidden;
-  background: #050505;
+  background: #050706;
   color: #ffffff;
 }
 
@@ -18,34 +19,27 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 1000px;
+  min-height: 1100px;
   overflow: hidden;
   display: flex;
   justify-content: center;
-
   background:
     radial-gradient(
-      circle at 50% 18%,
-      rgba(218, 171, 43, 0.20),
+      ellipse at 50% 22%,
+      rgba(214, 180, 55, 0.24),
       transparent 28%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(26, 86, 55, 0.35),
-      transparent 35%
     ),
     linear-gradient(
       180deg,
-      #07120d 0%,
-      #0b1d14 45%,
-      #030605 100%
+      #071510 0%,
+      #0c2118 48%,
+      #030806 100%
     );
 }
 
 
 /* =========================================================
-   MANUAL BACKGROUND
-   NO IMAGE
+   CSS-ONLY MOUNTAIN BACKGROUND
    ========================================================= */
 
 .background {
@@ -56,110 +50,170 @@
 }
 
 
-/* mountain-style abstract background */
+/* SKY GLOW */
 
 .background::before {
   content: "";
   position: absolute;
-
-  left: -15%;
-  bottom: 18%;
-
-  width: 130%;
-  height: 55%;
-
-  background:
-    linear-gradient(
-      135deg,
-      transparent 0 26%,
-      rgba(210, 218, 211, 0.10) 26.4% 27%,
-      transparent 27.4%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0 34%,
-      rgba(210, 218, 211, 0.08) 34.4% 35%,
-      transparent 35.4%
-    ),
-    linear-gradient(
-      135deg,
-      transparent 0 48%,
-      rgba(255, 255, 255, 0.07) 48.4% 49%,
-      transparent 49.4%
-    ),
-    linear-gradient(
-      45deg,
-      transparent 0 61%,
-      rgba(255, 255, 255, 0.06) 61.4% 62%,
-      transparent 62.4%
-    );
-
-  opacity: 0.7;
-}
-
-
-/* dark green lower landscape */
-
-.background::after {
-  content: "";
-
-  position: absolute;
-
-  left: -10%;
-  bottom: -20%;
-
-  width: 120%;
-  height: 48%;
-
-  border-radius: 50% 50% 0 0;
+  inset: 0;
 
   background:
     radial-gradient(
-      ellipse at 25% 10%,
-      #315d3c 0%,
-      transparent 38%
+      circle at 50% 30%,
+      rgba(255, 213, 82, 0.22),
+      transparent 18%
     ),
     radial-gradient(
-      ellipse at 75% 5%,
-      #214a31 0%,
-      transparent 42%
+      ellipse at 15% 20%,
+      rgba(255, 255, 255, 0.08),
+      transparent 30%
     ),
     linear-gradient(
       180deg,
-      #173d28 0%,
-      #0a2114 65%,
-      #020503 100%
+      rgba(30, 72, 54, 0.8),
+      rgba(3, 15, 10, 0.9)
     );
 }
 
 
-/* dark overlay */
+/* MOUNTAIN + LANDSCAPE */
+
+.background::after {
+  content: "";
+  position: absolute;
+
+  left: -10%;
+  bottom: -3%;
+
+  width: 120%;
+  height: 62%;
+
+  background:
+    /* distant mountains */
+    linear-gradient(
+      135deg,
+      transparent 0 27%,
+      rgba(154, 169, 158, 0.22) 27.2% 28.5%,
+      transparent 28.7%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 38%,
+      rgba(185, 196, 186, 0.18) 38.2% 39.5%,
+      transparent 39.7%
+    ),
+
+    /* mountain ridges */
+    linear-gradient(
+      155deg,
+      transparent 0 46%,
+      rgba(78, 113, 91, 0.8) 46.2% 54%,
+      transparent 54.2%
+    ),
+    linear-gradient(
+      25deg,
+      transparent 0 51%,
+      rgba(53, 91, 70, 0.9) 51.2% 63%,
+      transparent 63.2%
+    ),
+
+    /* lower hills */
+    radial-gradient(
+      ellipse at 20% 75%,
+      #315f42 0%,
+      #173a27 45%,
+      transparent 46%
+    ),
+    radial-gradient(
+      ellipse at 78% 70%,
+      #234c34 0%,
+      #0d2819 48%,
+      transparent 49%
+    ),
+
+    /* ground */
+    linear-gradient(
+      180deg,
+      #173d28 0%,
+      #0b2417 48%,
+      #020504 100%
+    );
+
+  transform: rotate(0deg);
+}
+
+
+/* =========================================================
+   ROAD EFFECT
+   ========================================================= */
+
+.hero::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  bottom: -12%;
+
+  width: 32%;
+  height: 58%;
+
+  transform: translateX(-50%) perspective(500px) rotateX(12deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 46%,
+      rgba(255, 255, 255, 0.18) 47% 53%,
+      transparent 54%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(42, 46, 39, 0.2),
+      rgba(10, 12, 10, 0.95)
+    );
+
+  clip-path: polygon(
+    46% 0,
+    54% 0,
+    100% 100%,
+    0 100%
+  );
+
+  opacity: 0.45;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
 
 .overlay {
   position: absolute;
   inset: 0;
 
-  z-index: 1;
+  z-index: 2;
 
   pointer-events: none;
 
   background:
     radial-gradient(
-      circle at 50% 25%,
-      rgba(255, 203, 63, 0.12),
-      transparent 30%
+      circle at 50% 28%,
+      rgba(255, 203, 63, 0.14),
+      transparent 25%
     ),
     linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.12) 0%,
-      rgba(0, 0, 0, 0.28) 55%,
-      rgba(0, 0, 0, 0.90) 100%
+      rgba(0, 0, 0, 0.30) 55%,
+      rgba(0, 0, 0, 0.92) 100%
     );
 }
 
 
 /* =========================================================
-   FOUR TOP PARTNERS
+   FOUR PARTNERS
    ========================================================= */
 
 .topPartners {
@@ -170,7 +224,7 @@
 
   transform: translateX(-50%);
 
-  z-index: 5;
+  z-index: 10;
 
   width: min(1000px, 92%);
 
@@ -182,14 +236,14 @@
   background: rgba(5, 8, 6, 0.88);
 
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.35);
+    0 10px 40px rgba(0, 0, 0, 0.4);
 
   backdrop-filter: blur(10px);
 }
 
 
 .topPartner {
-  min-height: 72px;
+  min-height: 78px;
 
   display: flex;
   align-items: center;
@@ -202,8 +256,7 @@
 
   letter-spacing: 3px;
 
-  border-right:
-    1px solid rgba(224, 184, 65, 0.30);
+  border-right: 1px solid rgba(224, 184, 65, 0.3);
 }
 
 
@@ -213,17 +266,17 @@
 
 
 /* =========================================================
-   CONTENT
+   MAIN CONTENT
    ========================================================= */
 
 .content {
   position: relative;
 
-  z-index: 3;
+  z-index: 5;
 
   width: min(1100px, 94%);
 
-  padding: 155px 0 75px;
+  padding: 155px 0 80px;
 
   text-align: center;
 }
@@ -263,7 +316,8 @@
   letter-spacing: -4px;
 
   text-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.85);
+    0 5px 20px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(255, 255, 255, 0.08);
 }
 
 
@@ -281,7 +335,8 @@
   letter-spacing: -5px;
 
   text-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.85);
+    0 5px 20px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(255, 195, 40, 0.18);
 }
 
 
@@ -294,10 +349,9 @@
 
   padding: 11px 30px;
 
-  background: #090909;
+  background: rgba(5, 5, 5, 0.9);
 
-  border:
-    2px solid #e5bd45;
+  border: 2px solid #e5bd45;
 
   color: #ffd75c;
 
@@ -308,12 +362,12 @@
   letter-spacing: 5px;
 
   box-shadow:
-    0 0 25px rgba(223, 183, 55, 0.12);
+    0 0 25px rgba(223, 183, 55, 0.15);
 }
 
 
 /* =========================================================
-   EVENT INFORMATION
+   EVENT INFO
    ========================================================= */
 
 .mainInfo {
@@ -326,22 +380,19 @@
 
   margin: 32px auto 20px;
 
-  background:
-    rgba(0, 0, 0, 0.62);
+  background: rgba(0, 0, 0, 0.72);
 
-  border-top:
-    1px solid rgba(255, 255, 255, 0.30);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
-  border-bottom:
-    1px solid rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(8px);
 }
 
 
 .infoItem {
   padding: 14px 30px;
 
-  border-right:
-    1px solid rgba(255, 255, 255, 0.20);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 
@@ -428,21 +479,20 @@
 
   margin: 22px auto;
 
-  background:
-    rgba(0, 0, 0, 0.60);
+  background: rgba(0, 0, 0, 0.72);
 
-  border:
-    1px solid rgba(224, 184, 65, 0.28);
+  border: 1px solid rgba(224, 184, 65, 0.35);
+
+  backdrop-filter: blur(8px);
 }
 
 
 .category {
   min-width: 205px;
 
-  padding: 13px 28px;
+  padding: 15px 28px;
 
-  border-right:
-    1px solid rgba(255, 255, 255, 0.20);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 
@@ -465,11 +515,11 @@
 .category span {
   display: block;
 
-  margin-top: 3px;
+  margin-top: 4px;
 
   color: #ffffff;
 
-  font-size: 10px;
+  font-size: 11px;
 
   font-weight: 900;
 
@@ -477,8 +527,23 @@
 }
 
 
+.category small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #cfcfcf;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
 /* =========================================================
-   PERKS
+   EVENT PERKS
    ========================================================= */
 
 .perks {
@@ -488,26 +553,33 @@
 
   flex-wrap: wrap;
 
-  margin: 20px auto 27px;
+  margin: 28px auto 30px;
 
-  background:
-    rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.76);
 
-  border-top:
-    1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(224, 184, 65, 0.35);
 
-  border-bottom:
-    1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(224, 184, 65, 0.35);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 
 .perk {
-  min-width: 130px;
+  min-width: 150px;
 
-  padding: 12px 18px;
+  padding: 15px 20px;
 
-  border-right:
-    1px solid rgba(255, 255, 255, 0.16);
+  text-align: center;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 
@@ -516,23 +588,62 @@
 }
 
 
-.perk strong {
-  display: block;
+.perk:hover {
+  transform: translateY(-4px);
 
-  margin-bottom: 5px;
+  background: rgba(218, 177, 48, 0.08);
+}
+
+
+.perkIcon {
+  width: 43px;
+  height: 43px;
+
+  margin: 0 auto 8px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dcb537;
+
+  border-radius: 50%;
 
   color: #ffd044;
 
-  font-size: 17px;
+  font-size: 21px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 0 18px rgba(220, 181, 55, 0.12);
 }
 
 
 .perk span {
+  display: block;
+
   color: #ffffff;
 
-  font-size: 8px;
+  font-size: 9px;
 
-  font-weight: 900;
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+}
+
+
+.perk small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #c7c7c7;
+
+  font-size: 7px;
+
+  font-weight: 700;
 
   letter-spacing: 1px;
 }
@@ -562,7 +673,7 @@
 
   gap: 9px;
 
-  margin-bottom: 25px;
+  margin-bottom: 27px;
 }
 
 
@@ -571,16 +682,14 @@
 
   padding: 11px 10px;
 
-  background:
-    rgba(0, 0, 0, 0.82);
+  background: rgba(0, 0, 0, 0.86);
 
-  border:
-    1px solid #dcb537;
+  border: 1px solid #dcb537;
 
   border-radius: 5px;
 
   box-shadow:
-    0 0 15px rgba(220, 181, 55, 0.08);
+    0 0 18px rgba(220, 181, 55, 0.1);
 }
 
 
@@ -628,8 +737,7 @@
 
   background: #101010;
 
-  border:
-    2px solid #ffd044;
+  border: 2px solid #ffd044;
 
   border-radius: 5px;
 
@@ -644,7 +752,7 @@
   letter-spacing: 2px;
 
   box-shadow:
-    0 0 20px rgba(255, 208, 68, 0.12);
+    0 0 25px rgba(255, 208, 68, 0.16);
 
   transition:
     transform 0.25s ease,
@@ -662,7 +770,7 @@
   transform: translateY(-3px);
 
   box-shadow:
-    0 8px 30px rgba(255, 208, 68, 0.22);
+    0 8px 35px rgba(255, 208, 68, 0.25);
 }
 
 
@@ -672,7 +780,7 @@
 
 
 /* =========================================================
-   PARTNERS & SPONSORS SECTION
+   PARTNERS & SPONSORS
    ========================================================= */
 
 .partners {
@@ -682,13 +790,13 @@
 
   overflow: hidden;
 
-  padding: 50px 0 60px;
+  padding: 55px 0 70px;
 
   background:
     linear-gradient(
       180deg,
       #050505 0%,
-      #080c09 100%
+      #080d09 100%
     );
 
   text-align: center;
@@ -739,8 +847,7 @@
 
 
 /* =========================================================
-   SPONSOR MARQUEE
-   RIGHT TO LEFT
+   RIGHT → LEFT SPONSOR SLIDER
    ========================================================= */
 
 .marquee {
@@ -765,35 +872,38 @@
 
 
 .partnerLogo {
-  width: 180px;
+  width: 190px;
 
-  height: 78px;
+  height: 82px;
 
-  flex: 0 0 auto;
+  flex-shrink: 0;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
-  background:
-    rgba(255, 255, 255, 0.02);
+  color: #e6c45a;
 
-  border:
-    1px dashed rgba(214, 180, 65, 0.65);
-
-  color: #e8c55b;
-
-  font-size: 11px;
+  font-size: 12px;
 
   font-weight: 900;
 
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+
+  border: 1px solid rgba(224, 184, 65, 0.55);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 196, 35, 0.03)
+    );
+
+  box-shadow:
+    0 0 25px rgba(218, 177, 48, 0.05);
 }
 
-
-/* RIGHT → LEFT */
 
 @keyframes sponsorSlide {
   from {
@@ -801,7 +911,7 @@
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 12px));
   }
 }
 
@@ -810,58 +920,31 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
   .hero {
-    min-height: 980px;
-  }
-
-  .topPartners {
-    top: 15px;
-
-    width: 94%;
-  }
-
-  .topPartner {
-    min-height: 55px;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
+    min-height: 1050px;
   }
 
   .content {
-    width: 92%;
-
-    padding-top: 120px;
-  }
-
-  .mainInfo {
-    width: 100%;
-  }
-
-  .infoItem {
-    padding: 12px 14px;
-  }
-
-  .mainInfo strong {
-    font-size: 12px;
+    width: 94%;
+    padding-top: 145px;
   }
 
   .category {
-    min-width: 150px;
-
-    padding: 11px 12px;
-  }
-
-  .category strong {
-    font-size: 28px;
+    min-width: 175px;
+    padding: 14px 18px;
   }
 
   .perk {
-    min-width: 105px;
+    min-width: 135px;
+  }
 
-    padding: 10px 8px;
+  .mainInfo {
+    max-width: 96%;
+  }
+
+  .infoItem {
+    padding: 13px 18px;
   }
 }
 
@@ -871,146 +954,105 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-
   .hero {
-    min-height: 1040px;
+    min-height: 1250px;
   }
 
   .topPartners {
-    top: 10px;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    width: 92%;
+    top: 15px;
+    width: 94%;
   }
 
   .topPartner {
-    min-height: 43px;
+    min-height: 55px;
 
-    font-size: 7px;
+    font-size: 8px;
 
     letter-spacing: 1.5px;
   }
 
-  .topPartner:nth-child(1),
-  .topPartner:nth-child(2) {
-    border-bottom:
-      1px solid rgba(224, 184, 65, 0.30);
-  }
-
-  .topPartner:nth-child(2) {
-    border-right: none;
-  }
-
   .content {
-    width: 92%;
+    width: 94%;
 
-    padding-top: 105px;
+    padding-top: 110px;
+    padding-bottom: 50px;
   }
 
   .kicker {
-    margin-bottom: 10px;
-
     font-size: 9px;
-
     letter-spacing: 5px;
   }
 
   .content h1 {
-    font-size: 16vw;
+    font-size: clamp(45px, 14vw, 75px);
 
     letter-spacing: -2px;
   }
 
   .content h2 {
-    margin-top: 8px;
-
-    font-size: 17vw;
+    font-size: clamp(48px, 15vw, 80px);
 
     letter-spacing: -3px;
   }
 
   .challenge {
-    padding: 8px 14px;
+    padding: 9px 18px;
 
-    font-size: 17px;
+    font-size: 18px;
 
     letter-spacing: 3px;
   }
 
-
-  /* EVENT INFO */
-
   .mainInfo {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    width: 100%;
 
-    margin-top: 25px;
+    margin-top: 24px;
   }
 
   .infoItem {
-    padding: 10px 5px;
-  }
-
-  .infoItem:nth-child(1) {
-    border-bottom:
-      1px solid rgba(255, 255, 255, 0.20);
-  }
-
-  .infoItem:nth-child(2) {
-    border-right: none;
-
-    border-bottom:
-      1px solid rgba(255, 255, 255, 0.20);
-  }
-
-  .infoItem:nth-child(3) {
-    grid-column: 1 / -1;
+    padding: 12px 10px;
 
     border-right: none;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .infoItem:last-child {
+    border-bottom: none;
   }
 
   .mainInfo strong {
-    font-size: 9px;
+    font-size: 13px;
   }
 
   .mainInfo span {
     font-size: 7px;
-
-    letter-spacing: 1px;
   }
 
-
-  /* VENUE */
-
   .venue {
-    margin: 18px auto;
+    margin: 20px auto;
   }
 
   .venue span {
-    font-size: 18px;
+    font-size: 20px;
   }
-
-  .venue small {
-    font-size: 10px;
-  }
-
-
-  /* CATEGORIES */
 
   .categories {
     width: 100%;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .category {
     min-width: 0;
 
-    padding: 10px 5px;
+    padding: 12px 5px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
   }
 
   .category strong {
@@ -1018,47 +1060,57 @@
   }
 
   .category span {
-    font-size: 8px;
-  }
-
-  .category:nth-child(2) {
-    border-right: none;
-  }
-
-  .category:nth-child(3) {
-    grid-column: 1 / -1;
-
-    border-right: none;
-
-    border-top:
-      1px solid rgba(255, 255, 255, 0.20);
-  }
-
-
-  /* PERKS */
-
-  .perks {
-    margin-top: 17px;
-  }
-
-  .perk {
-    min-width: 33.33%;
-
-    padding: 8px 2px;
-  }
-
-  .perk strong {
-    font-size: 13px;
-  }
-
-  .perk span {
-    font-size: 6px;
+    font-size: 7px;
 
     letter-spacing: 0.5px;
   }
 
+  .category small {
+    font-size: 6px;
+  }
 
-  /* COUNTDOWN */
+  .perks {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    width: 100%;
+  }
+
+  .perk {
+    min-width: 0;
+
+    padding: 13px 5px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .perk:nth-child(2n) {
+    border-right: none;
+  }
+
+  .perk:last-child {
+    grid-column: 1 / -1;
+
+    border-right: none;
+  }
+
+  .perkIcon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 18px;
+  }
+
+  .perk span {
+    font-size: 7px;
+  }
+
+  .perk small {
+    font-size: 6px;
+  }
 
   .countdownTitle {
     font-size: 8px;
@@ -1067,65 +1119,37 @@
   }
 
   .countdown {
-    gap: 4px;
+    gap: 5px;
   }
 
   .countBox {
     min-width: 65px;
 
-    padding: 8px 3px;
+    padding: 9px 5px;
   }
 
   .countBox strong {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .countBox span {
     font-size: 6px;
   }
 
-
-  /* REGISTER */
-
   .registerButton {
-    width: 90%;
+    min-width: 190px;
 
-    min-width: 0;
+    padding: 12px 20px;
 
-    padding: 13px 20px;
+    font-size: 13px;
 
-    font-size: 14px;
-  }
-
-
-  /* PARTNERS */
-
-  .partners {
-    padding: 40px 0 50px;
-  }
-
-  .partnerLine {
-    margin-bottom: 30px;
-  }
-
-  .partnerKicker {
-    font-size: 8px;
-
-    letter-spacing: 2px;
-  }
-
-  .partners h3 {
-    margin-bottom: 25px;
-
-    font-size: 17px;
-
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
   }
 
   .partnerLogo {
-    width: 140px;
+    width: 150px;
 
-    height: 62px;
+    height: 65px;
 
     font-size: 9px;
   }
@@ -1133,28 +1157,39 @@
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL PHONES
    ========================================================= */
 
 @media (max-width: 380px) {
-
   .hero {
-    min-height: 1000px;
+    min-height: 1220px;
   }
 
-  .countBox {
-    min-width: 58px;
+  .content {
+    padding-top: 100px;
   }
 
-  .countBox strong {
-    font-size: 18px;
+  .content h1 {
+    font-size: 42px;
+  }
+
+  .content h2 {
+    font-size: 45px;
+  }
+
+  .challenge {
+    font-size: 15px;
   }
 
   .category strong {
     font-size: 22px;
   }
 
-  .registerButton {
-    width: 94%;
+  .countBox {
+    min-width: 59px;
+  }
+
+  .countBox strong {
+    font-size: 19px;
   }
 }
