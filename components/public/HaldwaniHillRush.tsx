@@ -21,7 +21,7 @@ export default function HaldwaniHillRush() {
   });
 
   useEffect(() => {
-    const target = new Date("2026-10-04T06:20:00+05:30").getTime();
+   const target = new Date("2026-10-04T06:00:00+05:30").getTime();
 
     const updateCountdown = () => {
       const difference = target - Date.now();
@@ -85,7 +85,7 @@ export default function HaldwaniHillRush() {
           <div className={styles.mainInfo}>
             <div className={styles.infoItem}>
               <strong>4 OCTOBER 2026</strong>
-              <span>SUNDAY • 6:20 AM</span>
+              <span>SUNDAY • 6:00 AM</span>
             </div>
 
             <div className={styles.infoItem}>
