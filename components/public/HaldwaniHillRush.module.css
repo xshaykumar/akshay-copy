@@ -69,7 +69,7 @@
   pointer-events: none;
   overflow: hidden;
 
-  background-image: url("/hero-bg.svg");
+  background-image: url("/hero-bg.png");
   background-size: cover;
   background-position: center 38%;
   background-repeat: no-repeat;
