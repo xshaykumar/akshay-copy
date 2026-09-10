@@ -12,6 +12,15 @@ import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
+// Central list of partner logos — edit paths/alts here once,
+// they're reused for both the top strip and the sponsor marquee.
+const PARTNERS = [
+  { name: "360 Performance", src: "/logos/360-performance.png" },
+  { name: "FirstCry Intellitots", src: "/logos/intellitots.png" },
+  { name: "Jonty's Pizzeria", src: "/logos/jontys-pizzeria.png" },
+  { name: "People Places Purpose", src: "/logos/people-places-purpose.png" },
+];
+
 export default function HaldwaniHillRush() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -21,18 +30,13 @@ export default function HaldwaniHillRush() {
   });
 
   useEffect(() => {
-   const target = new Date("2026-10-04T06:00:00+05:30").getTime();
+    const target = new Date("2026-10-04T06:00:00+05:30").getTime();
 
     const updateCountdown = () => {
       const difference = target - Date.now();
 
       if (difference <= 0) {
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -45,9 +49,7 @@ export default function HaldwaniHillRush() {
     };
 
     updateCountdown();
-
     const timer = setInterval(updateCountdown, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
@@ -62,12 +64,13 @@ export default function HaldwaniHillRush() {
         <div className={styles.background} />
         <div className={styles.overlay} />
 
-        {/* FOUR PARTNERS */}
+        {/* TOP PARTNER STRIP */}
         <div className={styles.topPartners}>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
-          <div className={styles.topPartner}>LOGO</div>
+          {PARTNERS.map((partner) => (
+            <div className={styles.topPartner} key={partner.name}>
+              <img src={partner.src} alt={partner.name} loading="eager" />
+            </div>
+          ))}
         </div>
 
         <div className={styles.content}>
@@ -77,9 +80,7 @@ export default function HaldwaniHillRush() {
 
           <h2>HILL RUSH</h2>
 
-          <div className={styles.challenge}>
-            CHALLENGE 2026
-          </div>
+          <div className={styles.challenge}>CHALLENGE 2026</div>
 
           {/* EVENT INFORMATION */}
           <div className={styles.mainInfo}>
@@ -127,70 +128,59 @@ export default function HaldwaniHillRush() {
             </div>
           </div>
 
-          {/* ================= EVENT FEATURES ================= */}
+          {/* EVENT FEATURES / PERKS */}
+          <div className={styles.perks}>
+            <div className={styles.perk}>
+              <div className={styles.perkIcon}>
+                <HeartPulse size={22} strokeWidth={2.2} />
+              </div>
+              <div className={styles.perkText}>
+                <strong>MEDICAL</strong>
+                <span>MEDICAL SUPPORT</span>
+              </div>
+            </div>
 
-<div className={styles.perks}>
+            <div className={styles.perk}>
+              <div className={styles.perkIcon}>
+                <CupSoda size={22} strokeWidth={2.2} />
+              </div>
+              <div className={styles.perkText}>
+                <strong>REFRESHMENTS</strong>
+                <span>ON ROUTE</span>
+              </div>
+            </div>
 
-  <div className={styles.perk}>
-    <div className={styles.perkIcon}>
-      <HeartPulse size={30} strokeWidth={2.2} />
-    </div>
+            <div className={styles.perk}>
+              <div className={styles.perkIcon}>
+                <Shirt size={22} strokeWidth={2.2} />
+              </div>
+              <div className={styles.perkText}>
+                <strong>FREE TANK TOP</strong>
+                <span>FOR PARTICIPANTS</span>
+              </div>
+            </div>
 
-    <div className={styles.perkText}>
-      <strong>MEDICAL</strong>
-      <span>MEDICAL SUPPORT</span>
-    </div>
-  </div>
+            <div className={styles.perk}>
+              <div className={styles.perkIcon}>
+                <Timer size={22} strokeWidth={2.2} />
+              </div>
+              <div className={styles.perkText}>
+                <strong>TIMED EVENT</strong>
+                <span>ACCURATE TIMING</span>
+              </div>
+            </div>
 
+            <div className={styles.perk}>
+              <div className={styles.perkIcon}>
+                <ShieldCheck size={22} strokeWidth={2.2} />
+              </div>
+              <div className={styles.perkText}>
+                <strong>SECURE ROUTE</strong>
+                <span>ROUTE SUPPORT</span>
+              </div>
+            </div>
+          </div>
 
-  <div className={styles.perk}>
-    <div className={styles.perkIcon}>
-      <CupSoda size={30} strokeWidth={2.2} />
-    </div>
-
-    <div className={styles.perkText}>
-      <strong>REFRESHMENTS</strong>
-      <span>ON ROUTE</span>
-    </div>
-  </div>
-
-
-  <div className={styles.perk}>
-    <div className={styles.perkIcon}>
-      <Shirt size={30} strokeWidth={2.2} />
-    </div>
-
-    <div className={styles.perkText}>
-      <strong>FREE TANK TOP</strong>
-      <span>FOR PARTICIPANTS</span>
-    </div>
-  </div>
-
-
-  <div className={styles.perk}>
-    <div className={styles.perkIcon}>
-      <Timer size={30} strokeWidth={2.2} />
-    </div>
-
-    <div className={styles.perkText}>
-      <strong>TIMED EVENT</strong>
-      <span>ACCURATE TIMING</span>
-    </div>
-  </div>
-
-
-  <div className={styles.perk}>
-    <div className={styles.perkIcon}>
-      <ShieldCheck size={30} strokeWidth={2.2} />
-    </div>
-
-    <div className={styles.perkText}>
-      <strong>SECURE ROUTE</strong>
-      <span>ROUTE SUPPORT</span>
-    </div>
-  </div>
-
-</div>
           {/* COUNTDOWN */}
           <div className={styles.countdownTitle}>
             REGISTRATION CLOSES / EVENT STARTS IN
@@ -231,7 +221,7 @@ export default function HaldwaniHillRush() {
         </div>
       </div>
 
-      {/* ================= PARTNERS ================= */}
+      {/* ================= PARTNERS / SPONSORS ================= */}
 
       <section className={styles.partners}>
         <div className={styles.partnerLine} />
@@ -244,15 +234,13 @@ export default function HaldwaniHillRush() {
 
         <div className={styles.marquee}>
           <div className={styles.marqueeTrack}>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
-            <div className={styles.partnerLogo}>LOGO</div>
+            {/* Logo list duplicated once so the CSS marquee
+                animation (-50%) loops seamlessly with no gap */}
+            {[...PARTNERS, ...PARTNERS].map((partner, i) => (
+              <div className={styles.partnerLogo} key={`${partner.name}-${i}`}>
+                <img src={partner.src} alt={partner.name} loading="lazy" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
