@@ -1,466 +1,303 @@
 /* =========================================================
    HALDWANI HILL RUSH CHALLENGE 2026
-   REAL EVENT / CINEMATIC MOUNTAIN DESIGN
-   CSS ONLY — NO BACKGROUND IMAGE REQUIRED
+   CINEMATIC MOUNTAIN EVENT PAGE
+   Real photo background + full design-token system
    ========================================================= */
 
 .eventSection {
+  --gold: #ffd044;
+  --gold-light: #ffe276;
+  --gold-deep: #e5a900;
+  --ink: #030604;
+  --ink-soft: #0a1410;
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-55: rgba(255, 255, 255, 0.55);
+  --line-gold: rgba(255, 208, 68, 0.3);
+  --line-gold-soft: rgba(255, 208, 68, 0.16);
+
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 72px;
+
+  --radius: 3px;
+
   width: 100%;
   overflow: hidden;
-  background: #030604;
+  background: var(--ink);
   color: #fff;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.eventSection *,
+.eventSection *::before,
+.eventSection *::after {
+  box-sizing: border-box;
+}
+
+.eventSection img {
+  display: block;
+  max-width: 100%;
 }
 
 /* =========================================================
-   HERO
+   HERO — real photo background
    ========================================================= */
 
 .hero {
   position: relative;
   width: 100%;
-  min-height: 1120px;
+  min-height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   isolation: isolate;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 25%,
-      rgba(255, 198, 55, 0.18) 0%,
-      rgba(255, 180, 30, 0.07) 18%,
-      transparent 38%
-    ),
-    linear-gradient(
-      180deg,
-      #020706 0%,
-      #071610 35%,
-      #0a2016 65%,
-      #020504 100%
-    );
+  background-color: var(--ink);
 }
 
-/* =========================================================
-   CINEMATIC LANDSCAPE
-   ========================================================= */
-
+/* The photo layer. Swap the url() for your own asset.
+   Use a landscape crop (runners/road roughly centered so it
+   crops gracefully at every width). WebP + JPG fallback via
+   the image-set() below; browsers without support just use
+   the first url(). */
 .background {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+
+  background-image: url("/images/hero-bg.jpg");
+  background-image: image-set(
+    url("/images/hero-bg.webp") type("image/webp"),
+    url("/images/hero-bg.jpg") type("image/jpeg")
+  );
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+
+  animation: heroZoom 26s ease-in-out infinite alternate;
 }
 
-/* Sky + sunrise */
-.background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    /* sunrise */
-    radial-gradient(
-      ellipse at 50% 34%,
-      rgba(255, 214, 91, 0.32) 0%,
-      rgba(255, 184, 44, 0.13) 13%,
-      transparent 31%
-    ),
-
-    /* morning haze */
-    radial-gradient(
-      ellipse at 20% 40%,
-      rgba(145, 190, 165, 0.11),
-      transparent 35%
-    ),
-
-    radial-gradient(
-      ellipse at 82% 42%,
-      rgba(120, 165, 140, 0.10),
-      transparent 35%
-    ),
-
-    linear-gradient(
-      180deg,
-      #020706 0%,
-      #081a13 38%,
-      #0c2418 66%,
-      #030806 100%
-    );
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
 }
 
-/* =========================================================
-   DISTANT HIMALAYAN MOUNTAINS
-   ========================================================= */
-
-.background::after {
-  content: "";
-  position: absolute;
-  left: -8%;
-  bottom: 0;
-  width: 116%;
-  height: 67%;
-
-  background:
-
-    /* distant snowy ridge */
-    linear-gradient(
-      137deg,
-      transparent 0 26%,
-      rgba(191, 202, 194, 0.18) 26.2% 27%,
-      transparent 27.3%
-    ),
-
-    linear-gradient(
-      43deg,
-      transparent 0 32%,
-      rgba(205, 213, 207, 0.14) 32.2% 33%,
-      transparent 33.3%
-    ),
-
-    /* far mountain */
-    linear-gradient(
-      154deg,
-      transparent 0 35%,
-      #163427 35.2% 47%,
-      transparent 47.2%
-    ),
-
-    linear-gradient(
-      26deg,
-      transparent 0 39%,
-      #193b2a 39.2% 54%,
-      transparent 54.2%
-    ),
-
-    /* middle mountain */
-    linear-gradient(
-      148deg,
-      transparent 0 47%,
-      #0f2b1e 47.2% 65%,
-      transparent 65.2%
-    ),
-
-    linear-gradient(
-      32deg,
-      transparent 0 50%,
-      #123321 50.2% 68%,
-      transparent 68.2%
-    ),
-
-    /* lower forest hills */
-    radial-gradient(
-      ellipse at 8% 85%,
-      #16452c 0%,
-      #0a2819 45%,
-      transparent 67%
-    ),
-
-    radial-gradient(
-      ellipse at 92% 83%,
-      #153b27 0%,
-      #071c12 48%,
-      transparent 68%
-    ),
-
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(5, 18, 12, 0.15) 35%,
-      #071a10 67%,
-      #020504 100%
-    );
-
-  opacity: 0.98;
-}
-
-/* =========================================================
-   EXTRA TERRAIN LAYERS
-   ========================================================= */
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-
-  background:
-
-    /* mountain ridge left */
-    linear-gradient(
-      145deg,
-      transparent 0 48%,
-      rgba(41, 91, 61, 0.85) 48.2% 54%,
-      transparent 54.2%
-    ),
-
-    /* mountain ridge right */
-    linear-gradient(
-      35deg,
-      transparent 0 50%,
-      rgba(32, 77, 51, 0.85) 50.2% 57%,
-      transparent 57.2%
-    ),
-
-    /* foreground terrain */
-    linear-gradient(
-      180deg,
-      transparent 58%,
-      rgba(2, 9, 6, 0.1) 62%,
-      rgba(1, 5, 3, 0.72) 82%,
-      #010302 100%
-    );
-}
-
-/* =========================================================
-   ROAD
-   ========================================================= */
-
+/* Road graphic — kept as a subtle CSS accent, sits above the
+   photo, below the content */
 .hero::after {
   content: "";
   position: absolute;
-  z-index: 2;
-
+  z-index: 1;
   left: 50%;
-  bottom: -12%;
-
-  width: min(48vw, 610px);
-  height: 60%;
-
-  transform:
-    translateX(-50%)
-    perspective(900px)
-    rotateX(8deg);
-
-  clip-path: polygon(
-    46% 0,
-    54% 0,
-    100% 100%,
-    0 100%
-  );
-
+  bottom: -10%;
+  width: min(46vw, 560px);
+  height: 55%;
+  transform: translateX(-50%) perspective(900px) rotateX(8deg);
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
   background:
-    /* road centre marking */
     linear-gradient(
       90deg,
       transparent 48.5%,
-      rgba(255, 218, 102, 0.50) 49.4%,
-      rgba(255, 218, 102, 0.50) 50.6%,
+      rgba(255, 218, 102, 0.4) 49.4%,
+      rgba(255, 218, 102, 0.4) 50.6%,
       transparent 51.5%
     ),
-
-    /* road */
     linear-gradient(
       180deg,
-      rgba(51, 57, 48, 0.45) 0%,
-      rgba(28, 31, 26, 0.75) 35%,
-      rgba(9, 11, 9, 0.97) 100%
+      rgba(20, 22, 18, 0) 0%,
+      rgba(10, 11, 9, 0.55) 45%,
+      rgba(5, 6, 5, 0.85) 100%
     );
-
-  box-shadow:
-    0 -20px 50px rgba(0, 0, 0, 0.2);
-
-  opacity: 0.78;
+  opacity: 0.55;
+  pointer-events: none;
 }
 
-/* =========================================================
-   ATMOSPHERIC OVERLAY
-   ========================================================= */
-
+/* Readability overlay — darkens the photo where text sits */
 .overlay {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 2;
   pointer-events: none;
-
   background:
-
-    /* centre spotlight */
     radial-gradient(
-      ellipse at 50% 28%,
-      rgba(255, 207, 62, 0.11),
-      transparent 30%
+      ellipse at 50% 26%,
+      rgba(255, 207, 62, 0.12),
+      transparent 32%
     ),
-
-    /* dark edges */
     radial-gradient(
       ellipse at center,
-      transparent 35%,
-      rgba(0, 0, 0, 0.28) 72%,
-      rgba(0, 0, 0, 0.78) 100%
+      transparent 30%,
+      rgba(0, 0, 0, 0.34) 68%,
+      rgba(0, 0, 0, 0.82) 100%
     ),
-
-    /* readability gradient */
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.22) 0%,
-      rgba(0, 0, 0, 0.05) 30%,
-      rgba(0, 0, 0, 0.25) 60%,
-      rgba(0, 0, 0, 0.82) 100%
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.1) 26%,
+      rgba(0, 0, 0, 0.28) 58%,
+      rgba(0, 0, 0, 0.88) 100%
     );
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    animation: none;
+  }
+}
+
 /* =========================================================
-   PARTNERS TOP
+   TOP PARTNER STRIP — grid so every slot is identical width,
+   logos vertically + horizontally centered regardless of
+   their natural aspect ratio
    ========================================================= */
 
 .topPartners {
   position: absolute;
-  top: 28px;
+  top: var(--space-4);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
 
-  width: min(950px, 90%);
-
+  width: min(960px, 92%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  border-top: 1px solid rgba(255, 210, 75, 0.55);
-  border-bottom: 1px solid rgba(255, 210, 75, 0.28);
-
-  background: rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(5px);
+  border-top: 1px solid var(--line-gold);
+  border-bottom: 1px solid var(--line-gold-soft);
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
 }
 
 .topPartner {
-  min-height: 72px;
-
+  min-height: 76px;
+  padding: var(--space-2) var(--space-3);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: rgba(255, 255, 255, 0.72);
-
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 4px;
-
-  border-right: 1px solid rgba(255, 210, 75, 0.25);
+  border-right: 1px solid var(--line-gold-soft);
 }
 
 .topPartner:last-child {
   border-right: none;
 }
 
+/* Real logo images: contained, desaturated, brighten on hover */
+.topPartner img {
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.6) opacity(0.8);
+  transition: filter 0.25s ease;
+}
+
+.topPartner:hover img {
+  filter: grayscale(0) brightness(1) opacity(1);
+}
+
+/* Fallback text label if no logo image is supplied yet */
+.topPartner span {
+  color: var(--white-70);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
 /* =========================================================
-   CONTENT
+   CONTENT WRAPPER
    ========================================================= */
 
 .content {
   position: relative;
   z-index: 6;
-
   width: min(1120px, 92%);
-  padding: 150px 0 80px;
-
+  margin: 0 auto;
+  padding: clamp(140px, 20vw, 180px) 0 var(--space-6);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-/* =========================================================
-   PRESENTS
-   ========================================================= */
 
 .kicker {
-  margin: 0 0 15px;
-
-  color: #f4c94f;
-
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 8px;
+  margin: 0 0 var(--space-2);
+  color: var(--gold-light);
+  font-size: clamp(11px, 1.4vw, 13px);
+  font-weight: 800;
+  letter-spacing: 7px;
+  text-transform: uppercase;
 }
 
-/* =========================================================
-   MAIN TITLE
-   ========================================================= */
+.content h1,
+.content h2 {
+  margin: 0;
+  width: 100%;
+  line-height: 0.88;
+  font-weight: 900;
+  letter-spacing: clamp(-3px, -0.4vw, -1px);
+  text-wrap: balance;
+}
 
 .content h1 {
-  margin: 0;
-
   color: #fff;
-
-  font-size: clamp(62px, 9vw, 116px);
-  line-height: 0.86;
-
-  font-weight: 950;
-  letter-spacing: -5px;
-
-  text-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.95),
-    0 0 45px rgba(255, 255, 255, 0.08);
+  font-size: clamp(46px, 9vw, 112px);
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.95);
 }
 
 .content h2 {
-  margin: 12px 0 22px;
-
-  color: #ffd044;
-
-  font-size: clamp(64px, 10vw, 126px);
-  line-height: 0.86;
-
-  font-weight: 950;
-  letter-spacing: -6px;
-
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-3);
+  color: var(--gold);
+  font-size: clamp(50px, 10vw, 122px);
   text-shadow:
     0 5px 20px rgba(0, 0, 0, 0.95),
     0 0 35px rgba(255, 190, 40, 0.22);
 }
 
-/* =========================================================
-   CHALLENGE
-   ========================================================= */
-
 .challenge {
   display: inline-block;
-
-  padding: 10px 30px;
-
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
   color: #ffe08a;
-
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: 900;
-  letter-spacing: 5px;
-
+  font-size: clamp(16px, 2.6vw, 28px);
+  font-weight: 800;
+  letter-spacing: 4px;
   border-top: 1px solid rgba(255, 208, 68, 0.8);
   border-bottom: 1px solid rgba(255, 208, 68, 0.8);
-
-  background: rgba(0, 0, 0, 0.22);
-
+  background: rgba(0, 0, 0, 0.25);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 /* =========================================================
-   DATE / PRICE / ROUTE
+   INFO STRIP — date / price / route
+   equal-width grid, stacks cleanly on mobile
    ========================================================= */
 
 .mainInfo {
   width: min(1050px, 100%);
-  margin: 42px auto 28px;
-
+  margin: var(--space-3) auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  background: rgba(0, 0, 0, 0.20);
+  background: rgba(0, 0, 0, 0.24);
   border-top: 1px solid rgba(255, 255, 255, 0.24);
   border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
 }
 
 .infoItem {
   position: relative;
-
-  min-height: 75px;
-  padding: 12px 25px;
-
+  min-height: 84px;
+  padding: var(--space-3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  border-right: 1px solid rgba(255, 208, 68, 0.28);
+  gap: var(--space-1);
+  border-right: 1px solid var(--line-gold-soft);
 }
 
 .infoItem:last-child {
@@ -469,39 +306,26 @@
 
 .infoItem::after {
   content: "";
-
-  position: absolute;
-  bottom: 0;
-
   width: 28px;
   height: 2px;
-
-  background: #ffd044;
+  background: var(--gold);
   opacity: 0.7;
 }
 
 .infoItem strong {
-  display: block;
-
   color: #fff;
-
-  font-size: clamp(14px, 1.5vw, 19px);
-  font-weight: 900;
-  letter-spacing: 0.4px;
-
+  font-size: clamp(14px, 1.6vw, 19px);
+  font-weight: 800;
+  text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .infoItem span {
-  display: block;
-
-  margin-top: 6px;
-
-  color: #ffd044;
-
-  font-size: 8px;
-  font-weight: 900;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 800;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -509,75 +333,62 @@
    ========================================================= */
 
 .venue {
-  margin: 18px auto 30px;
+  margin: var(--space-3) auto;
   text-align: center;
 }
 
 .venue strong {
   display: block;
-
-  margin-bottom: 7px;
-
-  color: #ffd044;
-
-  font-size: 9px;
-  font-weight: 900;
+  margin-bottom: var(--space-1);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 .venue span {
   display: block;
-
   color: #fff;
-
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 950;
-  letter-spacing: 1px;
-
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 900;
   text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9);
 }
 
 .venue small {
   display: block;
-
-  margin-top: 5px;
-
-  color: rgba(255, 255, 255, 0.65);
-
-  font-size: 10px;
+  margin-top: var(--space-1);
+  color: var(--white-55);
+  font-size: 11px;
   letter-spacing: 1.5px;
 }
 
 /* =========================================================
-   DISTANCES
+   CATEGORIES — auto-fit grid: never overflows, always
+   evenly spaced whether 3 or 4 categories are listed
    ========================================================= */
 
 .categories {
-  width: min(900px, 100%);
-  margin: 20px auto 42px;
-
+  width: min(920px, 100%);
+  margin: var(--space-3) auto var(--space-4);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  background: rgba(0, 0, 0, 0.17);
-  border-top: 1px solid rgba(255, 208, 68, 0.30);
-  border-bottom: 1px solid rgba(255, 208, 68, 0.30);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid var(--line-gold);
+  border-bottom: 1px solid var(--line-gold);
 }
 
 .category {
-  position: relative;
-
-  min-height: 110px;
-  padding: 15px 20px;
-
+  min-height: 118px;
+  padding: var(--space-3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  gap: var(--space-1);
   text-align: center;
-
-  border-right: 1px solid rgba(255, 208, 68, 0.28);
+  border-right: 1px solid var(--line-gold-soft);
+  border-bottom: 1px solid transparent;
 }
 
 .category:last-child {
@@ -586,148 +397,116 @@
 
 .category::after {
   content: "";
-
-  width: 35px;
+  width: 32px;
   height: 2px;
-
-  margin-top: 8px;
-
-  background: #ffd044;
+  margin-top: var(--space-1);
+  background: var(--gold);
   opacity: 0.65;
 }
 
 .category strong {
-  color: #ffd044;
-
-  font-size: clamp(36px, 4.5vw, 54px);
+  color: var(--gold);
+  font-size: clamp(32px, 4.5vw, 52px);
   line-height: 0.95;
-
-  font-weight: 950;
-  letter-spacing: -2px;
-
+  font-weight: 900;
+  letter-spacing: -1.5px;
   text-shadow: 0 0 20px rgba(255, 207, 63, 0.18);
 }
 
 .category span {
-  margin-top: 8px;
-
   color: #fff;
-
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .category small {
-  margin-top: 4px;
-
-  color: rgba(255, 255, 255, 0.60);
-
-  font-size: 7px;
-  font-weight: 700;
+  color: var(--white-55);
+  font-size: 8px;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 /* =========================================================
-   PERKS
+   PERKS — auto-fit grid; wraps into neat rows on any width,
+   never squeezes or scroll-hides content on mobile
    ========================================================= */
 
 .perks {
-  width: min(1000px, 100%);
-  margin: 12px auto 42px;
-
+  width: min(1020px, 100%);
+  margin: var(--space-2) auto var(--space-4);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-
-  background: rgba(0, 0, 0, 0.16);
-
-  border-top: 1px solid rgba(255, 208, 68, 0.28);
-  border-bottom: 1px solid rgba(255, 208, 68, 0.28);
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  background: rgba(0, 0, 0, 0.18);
+  border-top: 1px solid var(--line-gold-soft);
+  border-bottom: 1px solid var(--line-gold-soft);
 }
 
 .perk {
-  min-height: 130px;
-
-  padding: 18px 8px;
-
+  min-height: 138px;
+  padding: var(--space-3) var(--space-1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  gap: var(--space-2);
   text-align: center;
-
-  border-right: 1px solid rgba(255, 255, 255, 0.14);
-
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease;
-}
-
-.perk:last-child {
-  border-right: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .perk:hover {
   transform: translateY(-4px);
-
   background: rgba(255, 208, 68, 0.055);
 }
-
-/* ICON */
 
 .perkIcon {
   width: 52px;
   height: 52px;
-
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 10px;
-
-  color: #ffd044;
-
+  color: var(--gold);
   border: 1px solid rgba(255, 208, 68, 0.65);
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 208, 68, 0.13),
-      rgba(0, 0, 0, 0.28) 70%
-    );
-
+  background: radial-gradient(
+    circle,
+    rgba(255, 208, 68, 0.13),
+    rgba(0, 0, 0, 0.28) 70%
+  );
   box-shadow:
     0 0 18px rgba(255, 208, 68, 0.12),
     inset 0 0 12px rgba(255, 208, 68, 0.05);
 }
 
 .perkIcon svg {
-  color: #ffd044;
+  width: 22px;
+  height: 22px;
+  color: var(--gold);
+}
+
+.perkText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .perkText strong {
-  display: block;
-
   color: #fff;
-
-  font-size: 9px;
-  font-weight: 950;
-  letter-spacing: 1.2px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .perkText span {
-  display: block;
-
-  margin-top: 5px;
-
-  color: rgba(255, 255, 255, 0.58);
-
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  color: var(--white-55);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
 }
 
 /* =========================================================
@@ -735,109 +514,92 @@
    ========================================================= */
 
 .countdownTitle {
-  margin-bottom: 12px;
-
+  margin-bottom: var(--space-2);
   color: #ffe08a;
-
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .countdown {
-  width: min(620px, 100%);
-  margin: 0 auto 30px;
-
+  width: min(600px, 100%);
+  margin: 0 auto var(--space-4);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 7px;
+  gap: var(--space-1);
 }
 
 .countBox {
-  padding: 14px 8px;
-
-  background: rgba(0, 0, 0, 0.28);
-
-  border-top: 1px solid rgba(255, 208, 68, 0.38);
+  padding: var(--space-3) var(--space-1);
+  background: rgba(0, 0, 0, 0.32);
+  border-top: 1px solid rgba(255, 208, 68, 0.4);
   border-bottom: 1px solid rgba(255, 208, 68, 0.22);
-
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  text-align: center;
 }
 
 .countBox strong {
   display: block;
-
-  color: #ffd044;
-
-  font-size: clamp(25px, 4vw, 38px);
-  font-weight: 950;
+  color: var(--gold);
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .countBox span {
   display: block;
-
-  margin-top: 6px;
-
-  color: rgba(255, 255, 255, 0.68);
-
-  font-size: 7px;
-  font-weight: 900;
+  margin-top: var(--space-1);
+  color: var(--white-70);
+  font-size: 8px;
+  font-weight: 800;
   letter-spacing: 1.4px;
+  text-transform: uppercase;
 }
 
 /* =========================================================
-   REGISTER
+   REGISTER BUTTON
    ========================================================= */
 
 .registerButton {
   width: min(300px, 100%);
   min-height: 56px;
-
   margin: 0 auto;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-
+  gap: var(--space-2);
   color: #101510 !important;
   text-decoration: none;
-
   font-size: 16px;
-  font-weight: 950;
+  font-weight: 900;
   letter-spacing: 2px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffe276,
-      #ffd044 48%,
-      #e5a900
-    );
-
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 48%, var(--gold-deep));
   border: 1px solid #ffe38a;
-  border-radius: 4px;
-
+  border-radius: var(--radius);
   box-shadow:
     0 0 25px rgba(255, 208, 68, 0.25),
     0 12px 30px rgba(0, 0, 0, 0.4);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .registerButton:hover {
   transform: translateY(-4px);
-
   box-shadow:
     0 0 35px rgba(255, 208, 68, 0.42),
     0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
+.registerButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
 .registerButton span {
-  font-size: 23px;
+  font-size: 20px;
+  line-height: 1;
 }
 
 /* =========================================================
@@ -846,411 +608,268 @@
 
 .partners {
   width: 100%;
-
-  padding: 65px 0 75px;
-
+  padding: var(--space-6) 0;
   text-align: center;
-
   background:
-    radial-gradient(
-      ellipse at center top,
-      rgba(255, 195, 50, 0.06),
-      transparent 35%
-    ),
+    radial-gradient(ellipse at center top, rgba(255, 195, 50, 0.06), transparent 35%),
     #030504;
 }
 
 .partnerLine {
   width: 80%;
   max-width: 900px;
-
   height: 1px;
-
-  margin: 0 auto 40px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(220, 180, 55, 0.8),
-      transparent
-    );
+  margin: 0 auto var(--space-5);
+  background: linear-gradient(90deg, transparent, rgba(220, 180, 55, 0.8), transparent);
 }
 
 .partnerKicker {
-  margin: 0 0 10px;
-
+  margin: 0 0 var(--space-2);
   color: #dcb94e;
-
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 .partners h3 {
-  margin: 0 0 30px;
-
+  margin: 0 0 var(--space-5);
   color: #fff;
-
-  font-size: clamp(21px, 3vw, 30px);
-  font-weight: 950;
-  letter-spacing: 3px;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
-/* =========================================================
-   SPONSOR MARQUEE
-   ========================================================= */
+/* Static, evenly-aligned sponsor grid for a handful of logos.
+   Use this when you have a fixed, known set of sponsors. */
+.sponsorGrid {
+  width: min(960px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line-gold-soft);
+}
 
+.sponsorGrid .partnerLogo {
+  background: #030504;
+}
+
+/* Scrolling marquee — use when you have many sponsors and
+   want a continuous strip instead */
 .marquee {
   width: 100%;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .marqueeTrack {
   width: max-content;
-
   display: flex;
-  gap: 45px;
-
-  animation: sponsorSlide 26s linear infinite;
+  gap: var(--space-5);
+  animation: sponsorSlide 28s linear infinite;
 }
 
 .partnerLogo {
   width: 170px;
-  height: 65px;
-
+  height: 68px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--space-2);
+  border-top: 1px solid var(--line-gold-soft);
+  border-bottom: 1px solid rgba(255, 208, 68, 0.1);
+}
 
-  color: rgba(255, 255, 255, 0.58);
+.partnerLogo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.6) opacity(0.75);
+  transition: filter 0.25s ease;
+}
 
+.partnerLogo:hover img {
+  filter: grayscale(0) brightness(1) opacity(1);
+}
+
+.partnerLogo span {
+  color: var(--white-55);
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 3px;
-
-  border-top: 1px solid rgba(255, 208, 68, 0.25);
-  border-bottom: 1px solid rgba(255, 208, 68, 0.15);
+  text-transform: uppercase;
 }
 
 @keyframes sponsorSlide {
-  from {
-    transform: translateX(0);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 24px)); }
+}
 
-  to {
-    transform: translateX(calc(-50% - 22px));
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+  }
+  .perk,
+  .registerButton {
+    transition: none;
   }
 }
 
 /* =========================================================
-   TABLET
+   RESPONSIVE — TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
-  .hero {
-    min-height: 1100px;
-  }
-
   .content {
-    width: 92%;
-    padding-top: 140px;
+    padding-top: clamp(120px, 22vw, 150px);
   }
 
-  .mainInfo {
-    width: 100%;
+  .topPartners {
+    width: 90%;
   }
 
-  .infoItem {
-    padding: 12px 12px;
-  }
-
-  .categories {
-    width: 100%;
-  }
-
-  .perk {
-    min-width: 130px;
+  .topPartner img {
+    max-height: 34px;
   }
 }
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE — MOBILE
    ========================================================= */
 
 @media (max-width: 600px) {
   .hero {
-    min-height: 1240px;
+    min-height: 100svh;
   }
 
   .topPartners {
-    top: 14px;
+    top: var(--space-3);
     width: 94%;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .topPartner {
-    min-height: 52px;
+    min-height: 54px;
+    padding: var(--space-1) var(--space-2);
+    border-bottom: 1px solid var(--line-gold-soft);
+  }
 
-    font-size: 7px;
+  .topPartner:nth-child(2n) {
+    border-right: none;
+  }
+
+  .topPartner img {
+    max-height: 28px;
+  }
+
+  .topPartner span {
+    font-size: 8px;
     letter-spacing: 1.5px;
   }
 
   .content {
     width: 92%;
-    padding: 105px 0 45px;
+    padding: clamp(150px, 42vw, 190px) 0 var(--space-4);
   }
 
   .kicker {
-    margin-bottom: 11px;
-
-    font-size: 8px;
+    margin-bottom: var(--space-2);
+    font-size: 9px;
     letter-spacing: 5px;
   }
 
-  .content h1 {
-    font-size: clamp(43px, 14vw, 72px);
-    letter-spacing: -3px;
-  }
-
-  .content h2 {
-    margin-top: 9px;
-
-    font-size: clamp(46px, 15vw, 78px);
-    letter-spacing: -4px;
-  }
-
   .challenge {
-    padding: 8px 16px;
-
-    font-size: 16px;
-    letter-spacing: 2.5px;
+    padding: var(--space-1) var(--space-3);
   }
 
-  /* INFO */
-
+  /* INFO STRIP: stack cleanly, no orphaned right-border */
   .mainInfo {
     grid-template-columns: 1fr;
-
-    margin-top: 27px;
+    margin-top: var(--space-4);
   }
 
   .infoItem {
-    min-height: 60px;
-
-    padding: 10px 8px;
-
+    min-height: 64px;
+    padding: var(--space-2);
     border-right: none;
-    border-bottom: 1px solid rgba(255, 208, 68, 0.20);
+    border-bottom: 1px solid var(--line-gold-soft);
   }
 
   .infoItem:last-child {
     border-bottom: none;
   }
 
-  .infoItem strong {
-    font-size: 13px;
-  }
-
-  .infoItem span {
-    font-size: 7px;
-  }
-
-  /* VENUE */
-
-  .venue {
-    margin: 18px auto 24px;
-  }
-
-  .venue span {
-    font-size: 20px;
-  }
-
-  /* CATEGORIES */
-
+  /* CATEGORIES: 3 across stays tidy even at small widths */
   .categories {
     grid-template-columns: repeat(3, 1fr);
-
-    margin-bottom: 32px;
   }
 
   .category {
-    min-height: 100px;
-    padding: 10px 4px;
+    min-height: 104px;
+    padding: var(--space-2) var(--space-1);
   }
 
-  .category strong {
-    font-size: clamp(23px, 8vw, 31px);
-  }
-
-  .category span {
-    margin-top: 7px;
-
-    font-size: 7px;
-    letter-spacing: 0.5px;
-  }
-
-  .category small {
-    font-size: 5.5px;
-  }
-
-  /* PERKS */
-
+  /* PERKS: 2 across on mobile, wraps to extra rows as needed
+     — no horizontal scroll, no clipped items */
   .perks {
-    width: calc(100% + 16px);
-    margin-left: -8px;
-
-    display: flex;
-
-    overflow-x: auto;
-
-    border-top: 1px solid rgba(255, 208, 68, 0.22);
-    border-bottom: 1px solid rgba(255, 208, 68, 0.22);
-
-    scrollbar-width: none;
-  }
-
-  .perks::-webkit-scrollbar {
-    display: none;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .perk {
-    width: 120px;
-    min-width: 120px;
-    min-height: 115px;
+    min-height: 128px;
+  }
 
-    flex: 0 0 120px;
-
-    padding: 12px 5px;
-
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  .perk:nth-child(2n) {
+    border-right: none;
   }
 
   .perkIcon {
-    width: 45px;
-    height: 45px;
-
-    margin-bottom: 8px;
-  }
-
-  .perkIcon svg {
-    width: 21px;
-    height: 21px;
-  }
-
-  .perkText strong {
-    font-size: 7px;
-  }
-
-  .perkText span {
-    font-size: 5.5px;
+    width: 46px;
+    height: 46px;
   }
 
   /* COUNTDOWN */
-
-  .countdownTitle {
-    font-size: 7px;
-    letter-spacing: 1.8px;
-  }
-
-  .countdown {
-    gap: 4px;
-  }
-
-  .countBox {
-    padding: 11px 3px;
-  }
-
   .countBox strong {
-    font-size: 21px;
+    font-size: 22px;
   }
 
-  .countBox span {
-    font-size: 5.5px;
-    letter-spacing: 0.7px;
-  }
-
-  /* BUTTON */
-
+  /* BUTTON — full width, easy tap target */
   .registerButton {
     width: 100%;
     min-height: 52px;
-
-    font-size: 15px;
   }
 
   /* SPONSORS */
-
   .partners {
-    padding: 50px 0 60px;
+    padding: var(--space-5) 0;
+  }
+
+  .sponsorGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .partnerLogo {
-    width: 140px;
-    height: 58px;
+    width: auto;
+    height: 60px;
   }
 }
 
 /* =========================================================
-   SMALL PHONES
+   RESPONSIVE — SMALL PHONES
    ========================================================= */
 
 @media (max-width: 380px) {
-  .hero {
-    min-height: 1200px;
+  .perks,
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .content {
-    padding-top: 95px;
-  }
-
-  .content h1 {
-    font-size: 41px;
-  }
-
-  .content h2 {
-    font-size: 44px;
-  }
-
-  .challenge {
-    font-size: 14px;
-  }
-
-  .category strong {
-    font-size: 21px;
-  }
-
-  .category span {
-    font-size: 5.5px;
-  }
-
-  .category small {
-    font-size: 5px;
-  }
-
-  .perk {
-    width: 112px;
-    min-width: 112px;
-    flex-basis: 112px;
-  }
-
-  .countBox strong {
-    font-size: 18px;
-  }
-}
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .marqueeTrack {
-    animation: none;
-  }
-
-  .perk,
-  .registerButton {
-    transition: none;
+  .category:nth-child(2n) {
+    border-right: none;
   }
 }
