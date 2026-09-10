@@ -69,11 +69,7 @@
   pointer-events: none;
   overflow: hidden;
 
-  background-image: url("/images/hero-bg.jpg");
-  background-image: image-set(
-    url("/images/hero-bg.webp") type("image/webp"),
-    url("/images/hero-bg.jpg") type("image/jpeg")
-  );
+  background-image: url("/hero-bg.svg");
   background-size: cover;
   background-position: center 38%;
   background-repeat: no-repeat;
@@ -145,6 +141,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .background {
+    background-position: center 30%;
     animation: none;
   }
 }
