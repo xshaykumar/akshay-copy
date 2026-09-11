@@ -22,20 +22,18 @@ const PARTNERS = [
   { name: "People Places Purpose", src: "/people-places-purpose-logo.png" },
 ];
 
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
+const CATEGORIES = [
+  { label: "Kids", dist: "3 KM", tone: "tagKids" as const },
+  { label: "Junior", dist: "7 KM", tone: "tagJunior" as const },
+  { label: "Adults", dist: "15 KM", tone: "tagAdults" as const },
+  { label: "Masters", dist: "7 KM", tone: "tagMasters" as const },
+];
+
+type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
 function getTimeLeft(target: number): TimeLeft {
   const difference = target - Date.now();
-
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
-
+  if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   return {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
     hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -68,40 +66,25 @@ function CountdownRow({ timeLeft }: { timeLeft: TimeLeft }) {
 }
 
 export default function HaldwaniHillRush() {
-  const [regTimeLeft, setRegTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const [eventTimeLeft, setEventTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [regTimeLeft, setRegTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [eventTimeLeft, setEventTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const update = () => {
       setRegTimeLeft(getTimeLeft(REGISTRATION_CLOSES));
       setEventTimeLeft(getTimeLeft(EVENT_STARTS));
     };
-
     update();
     const timer = setInterval(update, 1000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section
-      className={styles.eventSection}
-      aria-label="Haldwani Hill Rush Challenge 2026"
-    >
+    <section className={styles.eventSection} aria-label="Haldwani Hill Rush Challenge 2026">
       <div className={styles.hero}>
         <div className={styles.background} />
         <div className={styles.overlay} />
 
-        {/* TOP PARTNER STRIP — the only sponsor placement now */}
         <div className={styles.topPartners}>
           {PARTNERS.map((partner) => (
             <div className={styles.topPartner} key={partner.name}>
@@ -115,6 +98,7 @@ export default function HaldwaniHillRush() {
 
           <h1>HALDWANI</h1>
           <h2>HILL RUSH</h2>
+          <div className={styles.brushAccent} />
 
           <div className={styles.challenge}>CHALLENGE 2026</div>
 
@@ -139,51 +123,48 @@ export default function HaldwaniHillRush() {
             <small>Near Bus Station</small>
           </div>
 
+          {/* CATEGORY TAGS — colored pills instead of boxy grid */}
+          <div className={styles.categories}>
+            {CATEGORIES.map((cat) => (
+              <div key={cat.label} className={`${styles.categoryTag} ${styles[cat.tone]}`}>
+                <span className={styles.dot} />
+                {cat.label}
+                <span className={styles.dist}>{cat.dist}</span>
+              </div>
+            ))}
+          </div>
+
           <div className={styles.perks}>
             <div className={styles.perk}>
-              <div className={styles.perkIcon}>
-                <HeartPulse size={22} strokeWidth={2.2} />
-              </div>
+              <div className={styles.perkIcon}><HeartPulse size={22} strokeWidth={2.2} /></div>
               <div className={styles.perkText}>
                 <strong>MEDICAL</strong>
                 <span>MEDICAL SUPPORT</span>
               </div>
             </div>
-
             <div className={styles.perk}>
-              <div className={styles.perkIcon}>
-                <CupSoda size={22} strokeWidth={2.2} />
-              </div>
+              <div className={styles.perkIcon}><CupSoda size={22} strokeWidth={2.2} /></div>
               <div className={styles.perkText}>
                 <strong>REFRESHMENTS</strong>
                 <span>ON ROUTE</span>
               </div>
             </div>
-
             <div className={styles.perk}>
-              <div className={styles.perkIcon}>
-                <Shirt size={22} strokeWidth={2.2} />
-              </div>
+              <div className={styles.perkIcon}><Shirt size={22} strokeWidth={2.2} /></div>
               <div className={styles.perkText}>
                 <strong>TANK TOP</strong>
                 <span>FOR PARTICIPANTS</span>
               </div>
             </div>
-
             <div className={styles.perk}>
-              <div className={styles.perkIcon}>
-                <Timer size={22} strokeWidth={2.2} />
-              </div>
+              <div className={styles.perkIcon}><Timer size={22} strokeWidth={2.2} /></div>
               <div className={styles.perkText}>
                 <strong>TIMED EVENT</strong>
                 <span>ACCURATE TIMING</span>
               </div>
             </div>
-
             <div className={styles.perk}>
-              <div className={styles.perkIcon}>
-                <ShieldCheck size={22} strokeWidth={2.2} />
-              </div>
+              <div className={styles.perkIcon}><ShieldCheck size={22} strokeWidth={2.2} /></div>
               <div className={styles.perkText}>
                 <strong>SECURE ROUTE</strong>
                 <span>ROUTE SUPPORT</span>
@@ -193,26 +174,16 @@ export default function HaldwaniHillRush() {
 
           <div className={styles.countdownGroup}>
             <div className={styles.countdownBlock}>
-              <div className={styles.countdownTitle}>
-                REGISTRATION CLOSES — 2 OCT, 11:00 PM
-              </div>
+              <div className={styles.countdownTitle}>REGISTRATION CLOSES — 2 OCT, 11:00 PM</div>
               <CountdownRow timeLeft={regTimeLeft} />
             </div>
-
             <div className={styles.countdownBlock}>
-              <div className={styles.countdownTitle}>
-                EVENT STARTS — 4 OCT, 6:00 AM
-              </div>
+              <div className={styles.countdownTitle}>EVENT STARTS — 4 OCT, 6:00 AM</div>
               <CountdownRow timeLeft={eventTimeLeft} />
             </div>
           </div>
 
-          <a
-            href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.registerButton}
-          >
+          <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className={styles.registerButton}>
             REGISTER NOW
             <span>→</span>
           </a>
