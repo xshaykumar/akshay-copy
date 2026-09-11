@@ -4,6 +4,8 @@
    Real photo background + full design-token system
    ========================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&family=Inter:wght@400;600;700;800&display=swap");
+
 .eventSection {
   --gold: #ffd044;
   --gold-light: #ffe276;
@@ -15,6 +17,9 @@
   --line-gold: rgba(255, 208, 68, 0.3);
   --line-gold-soft: rgba(255, 208, 68, 0.16);
 
+  --font-display: "Poppins", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
   --space-1: 6px;
   --space-2: 12px;
   --space-3: 20px;
@@ -22,13 +27,13 @@
   --space-5: 48px;
   --space-6: 72px;
 
-  --radius: 3px;
+  --radius: 4px;
 
   width: 100%;
   overflow: hidden;
   background: var(--ink);
   color: #fff;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
 .eventSection *,
@@ -57,11 +62,6 @@
   background-color: var(--ink);
 }
 
-/* The photo layer. Swap the url() for your own asset.
-   Use a landscape crop (runners/road roughly centered so it
-   crops gracefully at every width). WebP + JPG fallback via
-   the image-set() below; browsers without support just use
-   the first url(). */
 .background {
   position: absolute;
   inset: 0;
@@ -82,8 +82,6 @@
   to   { transform: scale(1.06); }
 }
 
-/* Road graphic — kept as a subtle CSS accent, sits above the
-   photo, below the content */
 .hero::after {
   content: "";
   position: absolute;
@@ -112,7 +110,6 @@
   pointer-events: none;
 }
 
-/* Readability overlay — darkens the photo where text sits */
 .overlay {
   position: absolute;
   inset: 0;
@@ -147,9 +144,7 @@
 }
 
 /* =========================================================
-   TOP PARTNER STRIP — grid so every slot is identical width,
-   logos vertically + horizontally centered regardless of
-   their natural aspect ratio
+   TOP PARTNER STRIP
    ========================================================= */
 
 .topPartners {
@@ -182,7 +177,6 @@
   border-right: none;
 }
 
-/* Real logo images: contained, desaturated, brighten on hover */
 .topPartner img {
   max-height: 40px;
   width: auto;
@@ -195,9 +189,9 @@
   filter: grayscale(0) brightness(1) opacity(1);
 }
 
-/* Fallback text label if no logo image is supplied yet */
 .topPartner span {
   color: var(--white-70);
+  font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 3px;
@@ -223,9 +217,10 @@
 .kicker {
   margin: 0 0 var(--space-2);
   color: var(--gold-light);
+  font-family: var(--font-display);
   font-size: clamp(11px, 1.4vw, 13px);
-  font-weight: 800;
-  letter-spacing: 7px;
+  font-weight: 700;
+  letter-spacing: 8px;
   text-transform: uppercase;
 }
 
@@ -234,6 +229,7 @@
   margin: 0;
   width: 100%;
   line-height: 0.88;
+  font-family: var(--font-display);
   font-weight: 900;
   letter-spacing: clamp(-3px, -0.4vw, -1px);
   text-wrap: balance;
@@ -252,7 +248,7 @@
   font-size: clamp(50px, 10vw, 122px);
   text-shadow:
     0 5px 20px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(255, 190, 40, 0.22);
+    0 0 40px rgba(255, 190, 40, 0.3);
 }
 
 .challenge {
@@ -260,9 +256,10 @@
   padding: var(--space-2) var(--space-4);
   margin-bottom: var(--space-4);
   color: #ffe08a;
+  font-family: var(--font-display);
   font-size: clamp(16px, 2.6vw, 28px);
-  font-weight: 800;
-  letter-spacing: 4px;
+  font-weight: 700;
+  letter-spacing: 5px;
   border-top: 1px solid rgba(255, 208, 68, 0.8);
   border-bottom: 1px solid rgba(255, 208, 68, 0.8);
   background: rgba(0, 0, 0, 0.25);
@@ -271,7 +268,6 @@
 
 /* =========================================================
    INFO STRIP — date / price / route
-   equal-width grid, stacks cleanly on mobile
    ========================================================= */
 
 .mainInfo {
@@ -311,8 +307,9 @@
 
 .infoItem strong {
   color: #fff;
+  font-family: var(--font-display);
   font-size: clamp(14px, 1.6vw, 19px);
-  font-weight: 800;
+  font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
@@ -347,8 +344,9 @@
 .venue span {
   display: block;
   color: #fff;
+  font-family: var(--font-display);
   font-size: clamp(20px, 3vw, 32px);
-  font-weight: 900;
+  font-weight: 800;
   text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9);
 }
 
@@ -361,78 +359,12 @@
 }
 
 /* =========================================================
-   CATEGORIES — auto-fit grid: never overflows, always
-   evenly spaced whether 3 or 4 categories are listed
-   ========================================================= */
-
-.categories {
-  width: min(920px, 100%);
-  margin: var(--space-3) auto var(--space-4);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  background: rgba(0, 0, 0, 0.2);
-  border-top: 1px solid var(--line-gold);
-  border-bottom: 1px solid var(--line-gold);
-}
-
-.category {
-  min-height: 118px;
-  padding: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-1);
-  text-align: center;
-  border-right: 1px solid var(--line-gold-soft);
-  border-bottom: 1px solid transparent;
-}
-
-.category:last-child {
-  border-right: none;
-}
-
-.category::after {
-  content: "";
-  width: 32px;
-  height: 2px;
-  margin-top: var(--space-1);
-  background: var(--gold);
-  opacity: 0.65;
-}
-
-.category strong {
-  color: var(--gold);
-  font-size: clamp(32px, 4.5vw, 52px);
-  line-height: 0.95;
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  text-shadow: 0 0 20px rgba(255, 207, 63, 0.18);
-}
-
-.category span {
-  color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.category small {
-  color: var(--white-55);
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-/* =========================================================
-   PERKS — auto-fit grid; wraps into neat rows on any width,
-   never squeezes or scroll-hides content on mobile
+   PERKS
    ========================================================= */
 
 .perks {
   width: min(1020px, 100%);
-  margin: var(--space-2) auto var(--space-4);
+  margin: var(--space-4) auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   background: rgba(0, 0, 0, 0.18);
@@ -493,8 +425,9 @@
 
 .perkText strong {
   color: #fff;
+  font-family: var(--font-display);
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -507,21 +440,38 @@
 }
 
 /* =========================================================
-   COUNTDOWN
+   COUNTDOWN — two blocks: registration close + event start
    ========================================================= */
+
+.countdownGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-2) 0 var(--space-5);
+}
+
+.countdownBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .countdownTitle {
   margin-bottom: var(--space-2);
   color: #ffe08a;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 3px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
 }
 
 .countdown {
   width: min(600px, 100%);
-  margin: 0 auto var(--space-4);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-1);
@@ -539,8 +489,9 @@
 .countBox strong {
   display: block;
   color: var(--gold);
+  font-family: var(--font-display);
   font-size: clamp(24px, 4vw, 38px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -556,12 +507,14 @@
 }
 
 /* =========================================================
-   REGISTER BUTTON
+   REGISTER BUTTON — enhanced
    ========================================================= */
 
 .registerButton {
-  width: min(300px, 100%);
-  min-height: 56px;
+  position: relative;
+  overflow: hidden;
+  width: min(320px, 100%);
+  min-height: 62px;
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
@@ -569,24 +522,47 @@
   gap: var(--space-2);
   color: #101510 !important;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 48%, var(--gold-deep));
   border: 1px solid #ffe38a;
   border-radius: var(--radius);
   box-shadow:
-    0 0 25px rgba(255, 208, 68, 0.25),
-    0 12px 30px rgba(0, 0, 0, 0.4);
+    0 0 28px rgba(255, 208, 68, 0.3),
+    0 14px 32px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+}
+
+/* subtle diagonal shine sweep on hover */
+.registerButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.registerButton:hover::before {
+  left: 130%;
 }
 
 .registerButton:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 0 35px rgba(255, 208, 68, 0.42),
-    0 18px 40px rgba(0, 0, 0, 0.5);
+    0 0 40px rgba(255, 208, 68, 0.48),
+    0 20px 44px rgba(0, 0, 0, 0.55);
 }
 
 .registerButton:focus-visible {
@@ -595,7 +571,7 @@
 }
 
 .registerButton span {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
 }
 
@@ -632,13 +608,12 @@
 .partners h3 {
   margin: 0 0 var(--space-5);
   color: #fff;
+  font-family: var(--font-display);
   font-size: clamp(20px, 3vw, 30px);
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 2px;
 }
 
-/* Static, evenly-aligned sponsor grid for a handful of logos.
-   Use this when you have a fixed, known set of sponsors. */
 .sponsorGrid {
   width: min(960px, 92%);
   margin: 0 auto;
@@ -652,8 +627,6 @@
   background: #030504;
 }
 
-/* Scrolling marquee — use when you have many sponsors and
-   want a continuous strip instead */
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -714,6 +687,9 @@
   .perk,
   .registerButton {
     transition: none;
+  }
+  .registerButton::before {
+    display: none;
   }
 }
 
@@ -784,7 +760,6 @@
     padding: var(--space-1) var(--space-3);
   }
 
-  /* INFO STRIP: stack cleanly, no orphaned right-border */
   .mainInfo {
     grid-template-columns: 1fr;
     margin-top: var(--space-4);
@@ -801,18 +776,6 @@
     border-bottom: none;
   }
 
-  /* CATEGORIES: 3 across stays tidy even at small widths */
-  .categories {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .category {
-    min-height: 104px;
-    padding: var(--space-2) var(--space-1);
-  }
-
-  /* PERKS: 2 across on mobile, wraps to extra rows as needed
-     — no horizontal scroll, no clipped items */
   .perks {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -830,18 +793,20 @@
     height: 46px;
   }
 
-  /* COUNTDOWN */
+  .countdownGroup {
+    gap: var(--space-3);
+  }
+
   .countBox strong {
     font-size: 22px;
   }
 
-  /* BUTTON — full width, easy tap target */
   .registerButton {
     width: 100%;
-    min-height: 52px;
+    min-height: 56px;
+    font-size: 16px;
   }
 
-  /* SPONSORS */
   .partners {
     padding: var(--space-5) 0;
   }
@@ -861,12 +826,7 @@
    ========================================================= */
 
 @media (max-width: 380px) {
-  .perks,
-  .categories {
+  .perks {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .category:nth-child(2n) {
-    border-right: none;
   }
 }
