@@ -1,26 +1,32 @@
 /* =========================================================
-   HALDWANI HILL RUSH CHALLENGE 2026
-   SINGLE-SCREEN LAYOUT — fits in one viewport, no scroll
+   HALDWANI HILL RUSH — PREMIUM SPORTS THEME
+   Dark, glassy, golden-accent, fluid grid/flex layout
    ========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&family=Inter:wght@400;600;700;800&display=swap");
 
 .eventSection {
   --gold: #ffd044;
-  --gold-light: #ffe276;
+  --gold-light: #ffe9b0;
   --gold-deep: #e5a900;
+  --orange: #ff7a3c;
   --ink: #030604;
-  --white-70: rgba(255, 255, 255, 0.7);
-  --white-55: rgba(255, 255, 255, 0.55);
-  --line-gold: rgba(255, 208, 68, 0.3);
-  --line-gold-soft: rgba(255, 208, 68, 0.16);
 
-  --font-display: "Poppins", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --kids: #2ec9a6;
+  --junior: #3d8bff;
+  --adults: #ff7a3c;
+  --masters: #b073ff;
+
+  --white-80: rgba(255, 255, 255, 0.8);
+  --white-55: rgba(255, 255, 255, 0.55);
+  --card-bg: rgba(10, 12, 9, 0.45);
+  --card-border: rgba(255, 255, 255, 0.09);
+  --divider: linear-gradient(180deg, transparent, rgba(255, 208, 68, 0.35), transparent);
+
+  --font-display: "Poppins", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   width: 100%;
-  height: 100dvh;
-  overflow: hidden;
   background: var(--ink);
   color: #fff;
   font-family: var(--font-body);
@@ -38,13 +44,13 @@
 }
 
 /* =========================================================
-   HERO — exactly one viewport, content distributed evenly
+   HERO
    ========================================================= */
 
 .hero {
   position: relative;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -57,12 +63,16 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
-
   background-image: url("/hero-bg.png");
   background-size: cover;
   background-position: center 38%;
   background-repeat: no-repeat;
+  animation: heroZoom 28s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
 }
 
 .overlay {
@@ -71,178 +81,218 @@
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 26%, rgba(255, 207, 62, 0.12), transparent 32%),
-    radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.34) 68%, rgba(0, 0, 0, 0.85) 100%),
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.15) 22%,
-      rgba(0, 0, 0, 0.35) 55%,
-      rgba(0, 0, 0, 0.9) 100%
-    );
+    radial-gradient(ellipse at 50% 22%, rgba(255, 150, 40, 0.16), transparent 34%),
+    radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.4) 68%, rgba(0, 0, 0, 0.88) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 24%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.92) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background { animation: none; }
 }
 
 /* =========================================================
-   TOP PARTNER STRIP — compact, fixed small height
+   TOP PARTNER STRIP — glass bar, soft dividers
    ========================================================= */
 
 .topPartners {
   position: relative;
   z-index: 10;
-  flex: 0 0 auto;
-
-  width: 100%;
+  width: min(960px, 92%);
+  margin: 20px auto 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
-  border-bottom: 1px solid var(--line-gold-soft);
-  background: rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(6px);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
 .topPartner {
-  min-height: clamp(30px, 5dvh, 46px);
-  padding: clamp(2px, 0.6dvh, 6px) clamp(6px, 1.4vw, 14px);
+  position: relative;
+  min-height: 64px;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid var(--line-gold-soft);
 }
 
-.topPartner:last-child {
-  border-right: none;
+.topPartner:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: var(--divider);
 }
 
 .topPartner img {
-  max-height: clamp(16px, 3dvh, 26px);
+  max-height: 32px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(1) brightness(1.6) opacity(0.85);
+  filter: grayscale(1) brightness(1.7) opacity(0.85);
+  transition: filter 0.25s ease;
 }
 
-.topPartner span {
-  color: var(--white-70);
-  font-family: var(--font-display);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+.topPartner:hover img {
+  filter: grayscale(0) brightness(1) opacity(1);
 }
 
 /* =========================================================
-   CONTENT — flex column, evenly distributed to fill the
-   remaining space between the top strip and screen bottom
+   CONTENT
    ========================================================= */
 
 .content {
   position: relative;
   z-index: 6;
-  flex: 1 1 auto;
-  min-height: 0;
-
-  width: min(1100px, 94%);
+  flex: 1;
+  width: min(1100px, 92%);
   margin: 0 auto;
-  padding: clamp(4px, 1dvh, 10px) 0;
-
+  padding: clamp(24px, 5vh, 48px) 0 clamp(32px, 6vh, 56px);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  gap: clamp(16px, 3vh, 28px);
   text-align: center;
-  gap: clamp(2px, 0.8dvh, 8px);
 }
 
 .kicker {
   margin: 0;
   color: var(--gold-light);
   font-family: var(--font-display);
-  font-size: clamp(8px, 1.6dvh, 12px);
+  font-size: clamp(10px, 1.4vw, 13px);
   font-weight: 700;
-  letter-spacing: 5px;
+  letter-spacing: 7px;
   text-transform: uppercase;
 }
 
+/* ---- 3D gradient brush-style title ---- */
 .content h1,
 .content h2 {
   margin: 0;
   width: 100%;
-  line-height: 0.9;
+  line-height: 0.86;
   font-family: var(--font-display);
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 55%, #e9e9e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.25);
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.5),
+    0 3px 0 rgba(0,0,0,0.4),
+    0 10px 24px rgba(0,0,0,0.7);
 }
 
 .content h1 {
-  color: #fff;
-  font-size: clamp(24px, 6.5dvh, 68px);
-  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.95);
+  font-size: clamp(38px, 8vw, 96px);
 }
 
 .content h2 {
-  color: var(--gold);
-  font-size: clamp(26px, 7.2dvh, 76px);
-  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 190, 40, 0.3);
+  font-size: clamp(42px, 9vw, 108px);
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(80, 50, 0, 0.4);
+  text-shadow:
+    0 1px 0 rgba(90,55,0,0.6),
+    0 3px 0 rgba(90,55,0,0.5),
+    0 12px 30px rgba(0,0,0,0.75),
+    0 0 40px rgba(255, 190, 40, 0.35);
 }
 
+/* jagged brush-stroke accent underline, drawn with clip-path */
+.brushAccent {
+  width: min(320px, 60%);
+  height: 10px;
+  margin: -6px 0 2px;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light));
+  clip-path: polygon(
+    0% 40%, 6% 10%, 14% 55%, 22% 5%, 30% 60%, 38% 15%, 46% 50%,
+    54% 8%, 62% 58%, 70% 12%, 78% 52%, 86% 6%, 94% 45%, 100% 20%,
+    100% 80%, 92% 60%, 84% 95%, 76% 50%, 68% 90%, 60% 40%, 52% 85%,
+    44% 30%, 36% 92%, 28% 35%, 20% 88%, 12% 40%, 4% 90%
+  );
+  opacity: 0.85;
+}
+
+/* ---- badge-style price / challenge tag ---- */
 .challenge {
-  display: inline-block;
-  padding: clamp(3px, 0.8dvh, 8px) clamp(10px, 2vw, 22px);
-  color: #ffe08a;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  color: #1a1200;
   font-family: var(--font-display);
-  font-size: clamp(9px, 1.8dvh, 18px);
-  font-weight: 700;
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight: 800;
   letter-spacing: 3px;
-  border-top: 1px solid rgba(255, 208, 68, 0.8);
-  border-bottom: 1px solid rgba(255, 208, 68, 0.8);
-  background: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+  box-shadow: 0 8px 24px rgba(255, 178, 40, 0.35);
 }
 
 /* =========================================================
-   INFO STRIP
+   GLASS CARD BASE — replaces boxy bordered sections
    ========================================================= */
 
-.mainInfo {
+.mainInfo,
+.perks,
+.categories {
   width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.mainInfo {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: rgba(0, 0, 0, 0.28);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(6px);
 }
 
 .infoItem {
-  padding: clamp(3px, 0.8dvh, 10px) clamp(4px, 1vw, 12px);
+  position: relative;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  border-right: 1px solid var(--line-gold-soft);
+  gap: 6px;
 }
 
-.infoItem:last-child {
-  border-right: none;
+.infoItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: var(--divider);
 }
 
 .infoItem strong {
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(9px, 1.7dvh, 15px);
+  font-size: clamp(14px, 1.6vw, 18px);
   font-weight: 700;
-  text-align: center;
 }
 
 .infoItem span {
   color: var(--gold);
-  font-size: clamp(6px, 1.1dvh, 8px);
+  font-size: 9px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 /* =========================================================
-   VENUE — compact single line
+   VENUE
    ========================================================= */
 
 .venue {
@@ -250,134 +300,205 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .venue strong {
   color: var(--gold);
-  font-size: clamp(7px, 1.2dvh, 9px);
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .venue span {
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(11px, 2dvh, 20px);
+  font-size: clamp(18px, 2.6vw, 28px);
   font-weight: 800;
 }
 
 .venue small {
   color: var(--white-55);
-  font-size: clamp(7px, 1.1dvh, 10px);
+  font-size: 11px;
 }
 
 /* =========================================================
-   PERKS — single compact row, icon + label only
+   CATEGORY TAGS — Kids / Junior / Adults / Masters
+   colored pill badges instead of boxy grid cells
+   ========================================================= */
+
+.categories {
+  border: none;
+  background: none;
+  backdrop-filter: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+}
+
+.categoryTag .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.categoryTag .dist {
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.tagKids {
+  color: var(--kids);
+  background: rgba(46, 201, 166, 0.12);
+  border-color: rgba(46, 201, 166, 0.4);
+}
+.tagKids .dot { background: var(--kids); box-shadow: 0 0 8px var(--kids); }
+
+.tagJunior {
+  color: var(--junior);
+  background: rgba(61, 139, 255, 0.12);
+  border-color: rgba(61, 139, 255, 0.4);
+}
+.tagJunior .dot { background: var(--junior); box-shadow: 0 0 8px var(--junior); }
+
+.tagAdults {
+  color: var(--adults);
+  background: rgba(255, 122, 60, 0.14);
+  border-color: rgba(255, 122, 60, 0.45);
+}
+.tagAdults .dot { background: var(--adults); box-shadow: 0 0 8px var(--adults); }
+
+.tagMasters {
+  color: var(--masters);
+  background: rgba(176, 115, 255, 0.14);
+  border-color: rgba(176, 115, 255, 0.45);
+}
+.tagMasters .dot { background: var(--masters); box-shadow: 0 0 8px var(--masters); }
+
+/* =========================================================
+   PERKS — glowing icons, no harsh borders
    ========================================================= */
 
 .perks {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.2);
-  border-top: 1px solid var(--line-gold-soft);
-  border-bottom: 1px solid var(--line-gold-soft);
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 18px 10px;
 }
 
 .perk {
-  flex: 1 1 0;
-  padding: clamp(3px, 0.8dvh, 8px) 2px;
+  flex: 1 1 110px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 3px;
+  gap: 8px;
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.perk:last-child {
-  border-right: none;
 }
 
 .perkIcon {
-  width: clamp(20px, 4dvh, 34px);
-  height: clamp(20px, 4dvh, 34px);
-  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
-  border: 1px solid rgba(255, 208, 68, 0.6);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 208, 68, 0.13), rgba(0, 0, 0, 0.28) 70%);
+  color: var(--gold);
+  background: radial-gradient(circle, rgba(255, 208, 68, 0.16), rgba(0, 0, 0, 0.3) 70%);
+  box-shadow: 0 0 0 1px rgba(255, 208, 68, 0.35), 0 0 18px rgba(255, 190, 60, 0.35);
+  animation: iconGlow 3.2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(255, 208, 68, 0.3), 0 0 14px rgba(255, 190, 60, 0.25); }
+  50%      { box-shadow: 0 0 0 1px rgba(255, 208, 68, 0.5), 0 0 26px rgba(255, 190, 60, 0.5); }
 }
 
 .perkIcon svg {
   width: 45%;
   height: 45%;
-  color: var(--gold);
-}
-
-/* subtext dropped in the compact layout — only the label remains */
-.perkText span {
-  display: none;
 }
 
 .perkText strong {
   display: block;
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(5.5px, 1dvh, 8px);
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.4px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  white-space: nowrap;
+}
+
+.perkText span {
+  display: block;
+  margin-top: 3px;
+  color: var(--white-55);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .perkIcon { animation: none; }
 }
 
 /* =========================================================
-   DUAL COUNTDOWN — compact, two tight rows
+   COUNTDOWN
    ========================================================= */
 
 .countdownGroup {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(3px, 0.8dvh, 8px);
+  gap: 18px;
 }
 
 .countdownBlock {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 8px;
 }
 
 .countdownTitle {
-  color: #ffe08a;
+  color: var(--gold-light);
   font-family: var(--font-display);
-  font-size: clamp(6px, 1.1dvh, 10px);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  text-align: center;
 }
 
 .countdown {
   width: min(560px, 100%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
+  gap: 8px;
 }
 
 .countBox {
-  padding: clamp(3px, 0.7dvh, 8px) 2px;
-  background: rgba(0, 0, 0, 0.34);
-  border-top: 1px solid rgba(255, 208, 68, 0.4);
-  border-bottom: 1px solid rgba(255, 208, 68, 0.2);
+  padding: 12px 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
   text-align: center;
 }
 
@@ -385,47 +506,45 @@
   display: block;
   color: var(--gold);
   font-family: var(--font-display);
-  font-size: clamp(12px, 2.6dvh, 26px);
+  font-size: clamp(20px, 3.4vw, 32px);
   font-weight: 800;
-  line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
 .countBox span {
   display: block;
-  color: var(--white-70);
-  font-size: clamp(5px, 0.9dvh, 7px);
-  font-weight: 800;
-  letter-spacing: 0.8px;
+  margin-top: 4px;
+  color: var(--white-80);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
 /* =========================================================
-   REGISTER BUTTON — compact but still prominent
+   REGISTER BUTTON
    ========================================================= */
 
 .registerButton {
   position: relative;
   overflow: hidden;
-  width: min(280px, 90%);
-  min-height: clamp(32px, 6dvh, 50px);
+  width: min(300px, 100%);
+  min-height: 58px;
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  color: #101510 !important;
+  gap: 10px;
+  color: #1a1200 !important;
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: clamp(11px, 2dvh, 16px);
+  font-size: 17px;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 48%, var(--gold-deep));
-  border: 1px solid #ffe38a;
-  border-radius: 4px;
-  box-shadow: 0 0 20px rgba(255, 208, 68, 0.28), 0 8px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease;
-  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 26px rgba(255, 190, 60, 0.35), 0 14px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .registerButton::before {
@@ -435,64 +554,40 @@
   left: -60%;
   width: 40%;
   height: 100%;
-  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.6) 50%, transparent);
   transform: skewX(-20deg);
   transition: left 0.6s ease;
 }
 
-.registerButton:hover::before {
-  left: 130%;
-}
+.registerButton:hover::before { left: 130%; }
 
 .registerButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 0 36px rgba(255, 190, 60, 0.5), 0 18px 38px rgba(0, 0, 0, 0.55);
 }
 
 .registerButton:focus-visible {
   outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-
-.registerButton span {
-  font-size: 1.15em;
-  line-height: 1;
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .registerButton {
-    transition: none;
-  }
-  .registerButton::before {
-    display: none;
-  }
+  .registerButton { transition: none; }
+  .registerButton::before { display: none; }
 }
 
 /* =========================================================
-   The old separate below-the-fold "Partners" marquee section
-   has been removed — all 4 sponsor logos now live only in
-   .topPartners above, keeping everything on one screen.
-   If you want a sponsor callout back, add it as a small
-   line inside .content rather than a second full section.
+   RESPONSIVE
    ========================================================= */
 
-/* =========================================================
-   RESPONSIVE — small phones: shrink gaps further
-   ========================================================= */
+@media (max-width: 600px) {
+  .topPartners { grid-template-columns: repeat(2, 1fr); }
+  .topPartner:nth-child(2n)::after { display: none; }
+  .topPartner:nth-child(n+3) { border-top: 1px solid var(--card-border); }
 
-@media (max-width: 380px) {
-  .content {
-    gap: clamp(1px, 0.5dvh, 4px);
-  }
+  .mainInfo { grid-template-columns: 1fr; }
+  .infoItem:not(:last-child)::after { display: none; }
+  .infoItem:not(:last-child) { border-bottom: 1px solid var(--card-border); }
 
-  .perkText strong {
-    font-size: 5px;
-  }
-}
-
-/* Landscape phones / short viewports: prioritize legibility
-   of the core message over the full perk row */
-@media (max-height: 480px) {
-  .perks {
-    display: none;
-  }
+  .registerButton { width: 100%; }
 }
