@@ -12,7 +12,6 @@ import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
-// Two separate targets: registration closing, and the event itself
 const REGISTRATION_CLOSES = new Date("2026-10-02T23:00:00+05:30").getTime();
 const EVENT_STARTS = new Date("2026-10-04T06:00:00+05:30").getTime();
 
@@ -98,13 +97,11 @@ export default function HaldwaniHillRush() {
       className={styles.eventSection}
       aria-label="Haldwani Hill Rush Challenge 2026"
     >
-      {/* ================= HERO ================= */}
-
       <div className={styles.hero}>
         <div className={styles.background} />
         <div className={styles.overlay} />
 
-        {/* TOP PARTNER STRIP */}
+        {/* TOP PARTNER STRIP — the only sponsor placement now */}
         <div className={styles.topPartners}>
           {PARTNERS.map((partner) => (
             <div className={styles.topPartner} key={partner.name}>
@@ -117,37 +114,31 @@ export default function HaldwaniHillRush() {
           <p className={styles.kicker}>PRESENTS</p>
 
           <h1>HALDWANI</h1>
-
           <h2>HILL RUSH</h2>
 
           <div className={styles.challenge}>CHALLENGE 2026</div>
 
-          {/* EVENT INFORMATION */}
           <div className={styles.mainInfo}>
             <div className={styles.infoItem}>
               <strong>4 OCTOBER 2026</strong>
               <span>SUNDAY • 6:00 AM</span>
             </div>
-
             <div className={styles.infoItem}>
               <strong>₹199</strong>
               <span>REGISTRATION</span>
             </div>
-
             <div className={styles.infoItem}>
               <strong>HALDWANI → KATHGODAM</strong>
               <span>AND BACK</span>
             </div>
           </div>
 
-          {/* VENUE */}
           <div className={styles.venue}>
             <strong>VENUE</strong>
             <span>HALDWANI STADIUM</span>
             <small>Near Bus Station</small>
           </div>
 
-          {/* EVENT FEATURES / PERKS */}
           <div className={styles.perks}>
             <div className={styles.perk}>
               <div className={styles.perkIcon}>
@@ -174,7 +165,7 @@ export default function HaldwaniHillRush() {
                 <Shirt size={22} strokeWidth={2.2} />
               </div>
               <div className={styles.perkText}>
-                <strong>FREE TANK TOP</strong>
+                <strong>TANK TOP</strong>
                 <span>FOR PARTICIPANTS</span>
               </div>
             </div>
@@ -200,7 +191,6 @@ export default function HaldwaniHillRush() {
             </div>
           </div>
 
-          {/* DUAL COUNTDOWN: registration close + event start */}
           <div className={styles.countdownGroup}>
             <div className={styles.countdownBlock}>
               <div className={styles.countdownTitle}>
@@ -217,7 +207,6 @@ export default function HaldwaniHillRush() {
             </div>
           </div>
 
-          {/* REGISTER */}
           <a
             href={REGISTER_URL}
             target="_blank"
@@ -229,28 +218,6 @@ export default function HaldwaniHillRush() {
           </a>
         </div>
       </div>
-
-      {/* ================= PARTNERS / SPONSORS ================= */}
-
-      <section className={styles.partners}>
-        <div className={styles.partnerLine} />
-
-        <p className={styles.partnerKicker}>
-          TOGETHER FOR A STRONGER TOMORROW
-        </p>
-
-        <h3>OUR PARTNERS & SPONSORS</h3>
-
-        <div className={styles.marquee}>
-          <div className={styles.marqueeTrack}>
-            {[...PARTNERS, ...PARTNERS].map((partner, i) => (
-              <div className={styles.partnerLogo} key={`${partner.name}-${i}`}>
-                <img src={partner.src} alt={partner.name} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </section>
   );
 }
