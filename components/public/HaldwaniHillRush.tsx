@@ -7,218 +7,398 @@ import {
   Shirt,
   Timer,
   ShieldCheck,
+  ArrowUpRight,
 } from "lucide-react";
 import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
-const REGISTRATION_CLOSES = new Date("2026-10-02T23:00:00+05:30").getTime();
-const EVENT_STARTS = new Date("2026-10-04T06:00:00+05:30").getTime();
+const REGISTRATION_CLOSES = new Date(
+  "2026-10-02T23:00:00+05:30"
+).getTime();
 
-const PARTNERS = [
-  { name: "360 Performance", src: "/360-fc-logo.png.jpeg" },
-  { name: "FirstCry Intellitots", src: "/intellitots-logo.png" },
-  { name: "Jonty's Pizzeria", src: "/jontys-pizzeria-logo.png" },
-  { name: "People Places Purpose", src: "/people-places-purpose-logo.png" },
-];
+const EVENT_STARTS = new Date(
+  "2026-10-04T06:00:00+05:30"
+).getTime();
 
 const CATEGORIES = [
-  { label: "Kids", dist: "3 KM", tone: "tagKids" as const },
-  { label: "Junior", dist: "7 KM", tone: "tagJunior" as const },
-  { label: "Adults", dist: "15 KM", tone: "tagAdults" as const },
-  { label: "Masters", dist: "7 KM", tone: "tagMasters" as const },
+  { label: "Kids", dist: "3 KM" },
+  { label: "Junior", dist: "7 KM" },
+  { label: "Adults", dist: "15 KM" },
+  { label: "Masters", dist: "7 KM" },
 ];
 
-type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
+const PERKS = [
+  {
+    title: "Medical Support",
+    description: "Medical assistance on route",
+    icon: HeartPulse,
+  },
+  {
+    title: "Refreshments",
+    description: "Hydration points on route",
+    icon: CupSoda,
+  },
+  {
+    title: "Official Tank",
+    description: "Participant tank top included",
+    icon: Shirt,
+  },
+  {
+    title: "Timed Event",
+    description: "Accurate race timing",
+    icon: Timer,
+  },
+  {
+    title: "Secure Route",
+    description: "Route support throughout",
+    icon: ShieldCheck,
+  },
+];
+
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
 
 function getTimeLeft(target: number): TimeLeft {
   const difference = target - Date.now();
-  if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+  if (difference <= 0) {
+    return {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+  }
+
   return {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / (1000 * 60)) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
+    hours: Math.floor(
+      (difference / (1000 * 60 * 60)) % 24
+    ),
+    minutes: Math.floor(
+      (difference / (1000 * 60)) % 60
+    ),
+    seconds: Math.floor(
+      (difference / 1000) % 60
+    ),
   };
 }
 
-function CountdownRow({ timeLeft }: { timeLeft: TimeLeft }) {
+function CountdownRow({
+  timeLeft,
+}: {
+  timeLeft: TimeLeft;
+}) {
+  const units = [
+    { value: timeLeft.days, label: "Days" },
+    { value: timeLeft.hours, label: "Hours" },
+    { value: timeLeft.minutes, label: "Minutes" },
+    { value: timeLeft.seconds, label: "Seconds" },
+  ];
+
   return (
     <div className={styles.countdown}>
-      <div className={styles.countBox}>
-        <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
-        <span>DAYS</span>
-      </div>
-      <div className={styles.countBox}>
-        <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
-        <span>HOURS</span>
-      </div>
-      <div className={styles.countBox}>
-        <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
-        <span>MINUTES</span>
-      </div>
-      <div className={styles.countBox}>
-        <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
-        <span>SECONDS</span>
-      </div>
+      {units.map((unit) => (
+        <div className={styles.countUnit} key={unit.label}>
+          <strong>
+            {String(unit.value).padStart(2, "0")}
+          </strong>
+          <span>{unit.label}</span>
+        </div>
+      ))}
     </div>
   );
 }
 
 export default function HaldwaniHillRush() {
-  const [regTimeLeft, setRegTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [eventTimeLeft, setEventTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [regTimeLeft, setRegTimeLeft] =
+    useState<TimeLeft>({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    });
+
+  const [eventTimeLeft, setEventTimeLeft] =
+    useState<TimeLeft>({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    });
 
   useEffect(() => {
-    const update = () => {
-      setRegTimeLeft(getTimeLeft(REGISTRATION_CLOSES));
-      setEventTimeLeft(getTimeLeft(EVENT_STARTS));
+    const updateCountdowns = () => {
+      setRegTimeLeft(
+        getTimeLeft(REGISTRATION_CLOSES)
+      );
+
+      setEventTimeLeft(
+        getTimeLeft(EVENT_STARTS)
+      );
     };
-    update();
-    const timer = setInterval(update, 1000);
-    return () => clearInterval(timer);
+
+    updateCountdowns();
+
+    const interval = window.setInterval(
+      updateCountdowns,
+      1000
+    );
+
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
-    <section className={styles.eventSection} aria-label="Haldwani Hill Rush Challenge 2026">
+    <section
+      className={styles.eventSection}
+      aria-label="Haldwani Hill Rush Challenge 2026"
+    >
       <div className={styles.hero}>
-        <div className={styles.background} />
-        <div className={styles.overlay} />
 
-        <div className={styles.topPartners}>
-          {PARTNERS.map((partner) => (
-            <div className={styles.topPartner} key={partner.name}>
-              <img src={partner.src} alt={partner.name} loading="eager" />
-            </div>
-          ))}
-        </div>
+        {/* Existing mountain background */}
+        <div
+          className={styles.background}
+          aria-hidden="true"
+        />
+
+        {/* Cinematic overlays */}
+        <div
+          className={styles.overlay}
+          aria-hidden="true"
+        />
+
+        <div
+          className={styles.lightSweep}
+          aria-hidden="true"
+        />
+
+        <div
+          className={styles.grain}
+          aria-hidden="true"
+        />
 
         <div className={styles.content}>
-          <p className={styles.kicker}>PRESENTS</p>
 
-          <h1>HALDWANI</h1>
-          <h2>HILL RUSH</h2>
-          <div className={styles.brushAccent} />
+          {/* HERO INTRO */}
+          <div className={styles.heroIntro}>
+            <div className={styles.brandLine}>
+              <span className={styles.brandLineMark} />
+              360 PERFORMANCE
+            </div>
 
-          <div className={styles.challenge}>CHALLENGE 2026</div>
+            <p className={styles.kicker}>
+              PRESENTS
+            </p>
+          </div>
 
+          {/* MAIN TITLE */}
+          <div className={styles.titleBlock}>
+            <h1>HALDWANI</h1>
+
+            <h2>HILL RUSH</h2>
+
+            <div className={styles.titleRule}>
+              <span />
+              <i />
+              <span />
+            </div>
+
+            <div className={styles.challenge}>
+              CHALLENGE <b>2026</b>
+            </div>
+          </div>
+
+          {/* EVENT INFORMATION */}
           <div className={styles.mainInfo}>
+
             <div className={styles.infoItem}>
-              <strong>4 OCTOBER 2026</strong>
-              <span>SUNDAY • 6:00 AM</span>
+              <span className={styles.infoLabel}>
+                DATE & TIME
+              </span>
+
+              <strong>
+                04 OCTOBER 2026
+              </strong>
+
+              <small>
+                SUNDAY · 6:00 AM
+              </small>
             </div>
+
             <div className={styles.infoItem}>
-              <strong>₹199</strong>
-              <span>REGISTRATION</span>
+              <span className={styles.infoLabel}>
+                ENTRY
+              </span>
+
+              <strong className={styles.price}>
+                ₹199
+              </strong>
+
+              <small>
+                REGISTRATION
+              </small>
             </div>
+
             <div className={styles.infoItem}>
-              <strong>HALDWANI → KATHGODAM</strong>
-              <span>AND BACK</span>
+              <span className={styles.infoLabel}>
+                ROUTE
+              </span>
+
+              <strong>
+                HALDWANI → KATHGODAM
+              </strong>
+
+              <small>
+                AND BACK
+              </small>
             </div>
+
           </div>
 
+          {/* VENUE */}
           <div className={styles.venue}>
-            <strong>VENUE</strong>
-            <span>HALDWANI STADIUM</span>
-            <small>Near Bus Station</small>
+            <span className={styles.venueLabel}>
+              VENUE
+            </span>
+
+            <strong>
+              HALDWANI STADIUM
+            </strong>
+
+            <span className={styles.venueLocation}>
+              NEAR BUS STATION
+            </span>
           </div>
 
-          {/* CATEGORY TAGS — colored pills instead of boxy grid */}
-          <div className={styles.categories}>
-            {CATEGORIES.map((cat) => (
-              <div key={cat.label} className={`${styles.categoryTag} ${styles[cat.tone]}`}>
-                <span className={styles.dot} />
-                {cat.label}
-                <span className={styles.dist}>{cat.dist}</span>
+          {/* CATEGORIES */}
+          <div
+            className={styles.categories}
+            aria-label="Race categories"
+          >
+            {CATEGORIES.map((category, index) => (
+              <div
+                className={styles.category}
+                key={category.label}
+              >
+                <span className={styles.categoryNumber}>
+                  0{index + 1}
+                </span>
+
+                <div>
+                  <strong>
+                    {category.label}
+                  </strong>
+
+                  <span>
+                    {category.dist}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
 
+          {/* EVENT FEATURES */}
           <div className={styles.perks}>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}><HeartPulse size={22} strokeWidth={2.2} /></div>
-              <div className={styles.perkText}>
-                <strong>MEDICAL</strong>
-                <span>MEDICAL SUPPORT</span>
-              </div>
-            </div>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}><CupSoda size={22} strokeWidth={2.2} /></div>
-              <div className={styles.perkText}>
-                <strong>REFRESHMENTS</strong>
-                <span>ON ROUTE</span>
-              </div>
-            </div>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}><Shirt size={22} strokeWidth={2.2} /></div>
-              <div className={styles.perkText}>
-                <strong>TANK TOP</strong>
-                <span>FOR PARTICIPANTS</span>
-              </div>
-            </div>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}><Timer size={22} strokeWidth={2.2} /></div>
-              <div className={styles.perkText}>
-                <strong>TIMED EVENT</strong>
-                <span>ACCURATE TIMING</span>
-              </div>
-            </div>
-            <div className={styles.perk}>
-              <div className={styles.perkIcon}><ShieldCheck size={22} strokeWidth={2.2} /></div>
-              <div className={styles.perkText}>
-                <strong>SECURE ROUTE</strong>
-                <span>ROUTE SUPPORT</span>
-              </div>
-            </div>
+            {PERKS.map((perk) => {
+              const Icon = perk.icon;
+
+              return (
+                <div
+                  className={styles.perk}
+                  key={perk.title}
+                >
+                  <div className={styles.perkIcon}>
+                    <Icon
+                      size={19}
+                      strokeWidth={1.7}
+                    />
+                  </div>
+
+                  <div className={styles.perkText}>
+                    <strong>
+                      {perk.title}
+                    </strong>
+
+                    <span>
+                      {perk.description}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
+          {/* COUNTDOWNS */}
           <div className={styles.countdownGroup}>
+
             <div className={styles.countdownBlock}>
-              <div className={styles.countdownTitle}>REGISTRATION CLOSES — 2 OCT, 11:00 PM</div>
-              <CountdownRow timeLeft={regTimeLeft} />
+              <div className={styles.countdownHeader}>
+                <span>
+                  REGISTRATION CLOSES
+                </span>
+
+                <strong>
+                  02 OCT · 11:00 PM
+                </strong>
+              </div>
+
+              <CountdownRow
+                timeLeft={regTimeLeft}
+              />
             </div>
+
+            <div className={styles.countdownDivider} />
+
             <div className={styles.countdownBlock}>
-              <div className={styles.countdownTitle}>EVENT STARTS — 4 OCT, 6:00 AM</div>
-              <CountdownRow timeLeft={eventTimeLeft} />
+              <div className={styles.countdownHeader}>
+                <span>
+                  EVENT STARTS
+                </span>
+
+                <strong>
+                  04 OCT · 6:00 AM
+                </strong>
+              </div>
+
+              <CountdownRow
+                timeLeft={eventTimeLeft}
+              />
             </div>
+
           </div>
 
-          <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className={styles.registerButton}>
-            REGISTER NOW
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-import styles from "./SponsorTicker.module.css";
+          {/* CTA */}
+          <div className={styles.ctaArea}>
 
-type Logo = { name: string; src: string };
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.registerButton}
+            >
+              <span>
+                REGISTER NOW
+              </span>
 
-const DEFAULT_LOGOS: Logo[] = [
-  { name: "360 Performance", src: "/360-fc-logo.png.jpeg" },
-  { name: "FirstCry Intellitots", src: "/intellitots-logo.png" },
-  { name: "Jonty's Pizzeria", src: "/jontys-pizzeria-logo.png" },
-  { name: "People Places Purpose", src: "/people-places-purpose-logo.png" },
-];
+              <span className={styles.buttonArrow}>
+                <ArrowUpRight
+                  size={19}
+                  strokeWidth={2}
+                />
+              </span>
+            </a>
 
-export default function SponsorTicker({ logos = DEFAULT_LOGOS }: { logos?: Logo[] }) {
-  // Render the logo list twice back-to-back. The CSS animation
-  // translates exactly -50% (half the track's total width), so
-  // by the time the first copy has fully scrolled off, the second
-  // copy is in the exact start position — no visible seam or jump.
-  const track = [...logos, ...logos];
+            <p className={styles.ctaNote}>
+              SECURE YOUR BIB · LIMITED REGISTRATIONS
+            </p>
 
-  return (
-    <section className={styles.tickerSection} aria-label="Our partners and sponsors">
-      <div className={styles.tickerViewport}>
-        <div className={styles.tickerTrack}>
-          {track.map((logo, i) => (
-            <div className={styles.tickerLogo} key={`${logo.name}-${i}`}>
-              <img src={logo.src} alt={logo.name} loading="lazy" />
-            </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
