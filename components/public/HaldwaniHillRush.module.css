@@ -591,3 +591,73 @@
 
   .registerButton { width: 100%; }
 }
+.tickerSection {
+  width: 100%;
+  padding: 22px 0;
+  background: rgba(5, 7, 5, 0.55);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 208, 68, 0.15);
+  border-bottom: 1px solid rgba(255, 208, 68, 0.15);
+  overflow: hidden;
+}
+
+.tickerViewport {
+  width: 100%;
+  overflow: hidden;
+  /* fade the edges so logos don't hard-cut at the container edge */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  gap: 64px;
+  /* the track is rendered twice (see component) so translating
+     exactly -50% loops seamlessly with no gap or jump */
+  animation: tickerScroll 26s linear infinite;
+}
+
+.tickerViewport:hover .tickerTrack {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tickerLogo {
+  flex: 0 0 auto;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.tickerLogo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  /* monochrome/white treatment, brightens on hover */
+  filter: grayscale(1) brightness(0) invert(1) opacity(0.55);
+  transition: filter 0.25s ease;
+}
+
+.tickerLogo:hover img {
+  filter: grayscale(0) brightness(1) invert(0) opacity(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .tickerTrack {
+    gap: 40px;
+  }
+  .tickerLogo {
+    height: 30px;
+  }
+}
