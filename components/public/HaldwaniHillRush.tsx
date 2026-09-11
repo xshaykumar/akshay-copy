@@ -12,17 +12,70 @@ import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
-// Central list of partner logos — edit paths/alts here once,
-// they're reused for both the top strip and the sponsor marquee.
+// Two separate targets: registration closing, and the event itself
+const REGISTRATION_CLOSES = new Date("2026-10-02T23:00:00+05:30").getTime();
+const EVENT_STARTS = new Date("2026-10-04T06:00:00+05:30").getTime();
+
 const PARTNERS = [
-  { name: "360 Performance", src: "/logos/360-performance.png" },
-  { name: "FirstCry Intellitots", src: "/logos/intellitots.png" },
-  { name: "Jonty's Pizzeria", src: "/logos/jontys-pizzeria.png" },
-  { name: "People Places Purpose", src: "/logos/people-places-purpose.png" },
+  { name: "360 Performance", src: "/360-fc-logo.png.jpeg" },
+  { name: "FirstCry Intellitots", src: "/intellitots-logo.png" },
+  { name: "Jonty's Pizzeria", src: "/jontys-pizzeria-logo.png" },
+  { name: "People Places Purpose", src: "/people-places-purpose-logo.png" },
 ];
 
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function getTimeLeft(target: number): TimeLeft {
+  const difference = target - Date.now();
+
+  if (difference <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / (1000 * 60)) % 60),
+    seconds: Math.floor((difference / 1000) % 60),
+  };
+}
+
+function CountdownRow({ timeLeft }: { timeLeft: TimeLeft }) {
+  return (
+    <div className={styles.countdown}>
+      <div className={styles.countBox}>
+        <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
+        <span>DAYS</span>
+      </div>
+      <div className={styles.countBox}>
+        <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
+        <span>HOURS</span>
+      </div>
+      <div className={styles.countBox}>
+        <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
+        <span>MINUTES</span>
+      </div>
+      <div className={styles.countBox}>
+        <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
+        <span>SECONDS</span>
+      </div>
+    </div>
+  );
+}
+
 export default function HaldwaniHillRush() {
-  const [timeLeft, setTimeLeft] = useState({
+  const [regTimeLeft, setRegTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const [eventTimeLeft, setEventTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -30,26 +83,13 @@ export default function HaldwaniHillRush() {
   });
 
   useEffect(() => {
-    const target = new Date("2026-10-04T06:00:00+05:30").getTime();
-
-    const updateCountdown = () => {
-      const difference = target - Date.now();
-
-      if (difference <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      });
+    const update = () => {
+      setRegTimeLeft(getTimeLeft(REGISTRATION_CLOSES));
+      setEventTimeLeft(getTimeLeft(EVENT_STARTS));
     };
 
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
+    update();
+    const timer = setInterval(update, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -107,27 +147,6 @@ export default function HaldwaniHillRush() {
             <small>Near Bus Station</small>
           </div>
 
-          {/* CATEGORIES */}
-          <div className={styles.categories}>
-            <div className={styles.category}>
-              <strong>3 KM</strong>
-              <span>KIDS</span>
-              <small>UP TO 12 YEARS</small>
-            </div>
-
-            <div className={styles.category}>
-              <strong>15 KM</strong>
-              <span>JUNIOR & ADULT</span>
-              <small>13–35 YEARS</small>
-            </div>
-
-            <div className={styles.category}>
-              <strong>7 KM</strong>
-              <span>35+ YEARS</span>
-              <small>MALE & FEMALE</small>
-            </div>
-          </div>
-
           {/* EVENT FEATURES / PERKS */}
           <div className={styles.perks}>
             <div className={styles.perk}>
@@ -181,30 +200,20 @@ export default function HaldwaniHillRush() {
             </div>
           </div>
 
-          {/* COUNTDOWN */}
-          <div className={styles.countdownTitle}>
-            REGISTRATION CLOSES / EVENT STARTS IN
-          </div>
-
-          <div className={styles.countdown}>
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.days).padStart(2, "0")}</strong>
-              <span>DAYS</span>
+          {/* DUAL COUNTDOWN: registration close + event start */}
+          <div className={styles.countdownGroup}>
+            <div className={styles.countdownBlock}>
+              <div className={styles.countdownTitle}>
+                REGISTRATION CLOSES — 2 OCT, 11:00 PM
+              </div>
+              <CountdownRow timeLeft={regTimeLeft} />
             </div>
 
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
-              <span>HOURS</span>
-            </div>
-
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
-              <span>MINUTES</span>
-            </div>
-
-            <div className={styles.countBox}>
-              <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
-              <span>SECONDS</span>
+            <div className={styles.countdownBlock}>
+              <div className={styles.countdownTitle}>
+                EVENT STARTS — 4 OCT, 6:00 AM
+              </div>
+              <CountdownRow timeLeft={eventTimeLeft} />
             </div>
           </div>
 
@@ -234,8 +243,6 @@ export default function HaldwaniHillRush() {
 
         <div className={styles.marquee}>
           <div className={styles.marqueeTrack}>
-            {/* Logo list duplicated once so the CSS marquee
-                animation (-50%) loops seamlessly with no gap */}
             {[...PARTNERS, ...PARTNERS].map((partner, i) => (
               <div className={styles.partnerLogo} key={`${partner.name}-${i}`}>
                 <img src={partner.src} alt={partner.name} loading="lazy" />
