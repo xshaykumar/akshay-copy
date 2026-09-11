@@ -192,3 +192,35 @@ export default function HaldwaniHillRush() {
     </section>
   );
 }
+import styles from "./SponsorTicker.module.css";
+
+type Logo = { name: string; src: string };
+
+const DEFAULT_LOGOS: Logo[] = [
+  { name: "360 Performance", src: "/360-fc-logo.png.jpeg" },
+  { name: "FirstCry Intellitots", src: "/intellitots-logo.png" },
+  { name: "Jonty's Pizzeria", src: "/jontys-pizzeria-logo.png" },
+  { name: "People Places Purpose", src: "/people-places-purpose-logo.png" },
+];
+
+export default function SponsorTicker({ logos = DEFAULT_LOGOS }: { logos?: Logo[] }) {
+  // Render the logo list twice back-to-back. The CSS animation
+  // translates exactly -50% (half the track's total width), so
+  // by the time the first copy has fully scrolled off, the second
+  // copy is in the exact start position — no visible seam or jump.
+  const track = [...logos, ...logos];
+
+  return (
+    <section className={styles.tickerSection} aria-label="Our partners and sponsors">
+      <div className={styles.tickerViewport}>
+        <div className={styles.tickerTrack}>
+          {track.map((logo, i) => (
+            <div className={styles.tickerLogo} key={`${logo.name}-${i}`}>
+              <img src={logo.src} alt={logo.name} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
