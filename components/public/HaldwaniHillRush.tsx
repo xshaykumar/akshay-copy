@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   ArrowUpRight,
 } from "lucide-react";
+
 import styles from "./HaldwaniHillRush.module.css";
 
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
@@ -20,12 +21,6 @@ const REGISTRATION_CLOSES = new Date(
 const EVENT_STARTS = new Date(
   "2026-10-25T06:00:00+05:30"
 ).getTime();
-
-Visible text:
-04 OCTOBER 2026  ->  25 OCTOBER 2026
-02 OCT · 11:00 PM -> 23 OCT · 11:00 PM
-04 OCT · 6:00 AM  -> 25 OCT · 6:00 AM
-
 
 const CATEGORIES = [
   "Kids",
@@ -85,12 +80,15 @@ function getTimeLeft(target: number): TimeLeft {
     days: Math.floor(
       difference / (1000 * 60 * 60 * 24)
     ),
+
     hours: Math.floor(
       (difference / (1000 * 60 * 60)) % 24
     ),
+
     minutes: Math.floor(
       (difference / (1000 * 60)) % 60
     ),
+
     seconds: Math.floor(
       (difference / 1000) % 60
     ),
@@ -187,7 +185,8 @@ export default function HaldwaniHillRush() {
       <div className={styles.hero}>
 
         {/* =====================================================
-            BACKGROUND
+            PHOTOGRAPHIC BACKGROUND
+            Image: /public/hero-bg.webp
         ===================================================== */}
 
         <div
@@ -195,6 +194,7 @@ export default function HaldwaniHillRush() {
           aria-hidden="true"
         />
 
+        {/* White cinematic fade for text readability */}
         <div
           className={styles.overlay}
           aria-hidden="true"
@@ -210,18 +210,20 @@ export default function HaldwaniHillRush() {
           aria-hidden="true"
         />
 
-
         {/* =====================================================
-            CONTENT
+            MAIN CONTENT
         ===================================================== */}
 
         <div className={styles.content}>
 
-          {/* HERO LABEL */}
+          {/* =================================================
+              BRAND
+          ================================================= */}
 
           <div className={styles.heroIntro}>
 
             <div className={styles.brandLine}>
+
               <span
                 className={styles.brandLineMark}
               />
@@ -233,6 +235,7 @@ export default function HaldwaniHillRush() {
               <span
                 className={styles.brandLineMark}
               />
+
             </div>
 
             <p className={styles.kicker}>
@@ -241,9 +244,8 @@ export default function HaldwaniHillRush() {
 
           </div>
 
-
           {/* =================================================
-              TITLE
+              MAIN EVENT TITLE
           ================================================= */}
 
           <div className={styles.titleBlock}>
@@ -266,6 +268,7 @@ export default function HaldwaniHillRush() {
             </div>
 
             <div className={styles.challenge}>
+
               <span>
                 CHALLENGE
               </span>
@@ -273,16 +276,18 @@ export default function HaldwaniHillRush() {
               <strong>
                 2026
               </strong>
+
             </div>
 
           </div>
-
 
           {/* =================================================
               PRIMARY EVENT INFORMATION
           ================================================= */}
 
           <div className={styles.mainInfo}>
+
+            {/* DATE */}
 
             <div className={styles.infoItem}>
 
@@ -300,6 +305,7 @@ export default function HaldwaniHillRush() {
 
             </div>
 
+            {/* ENTRY */}
 
             <div className={styles.infoItem}>
 
@@ -319,6 +325,7 @@ export default function HaldwaniHillRush() {
 
             </div>
 
+            {/* ROUTE */}
 
             <div className={styles.infoItem}>
 
@@ -337,7 +344,6 @@ export default function HaldwaniHillRush() {
             </div>
 
           </div>
-
 
           {/* =================================================
               VENUE
@@ -358,7 +364,6 @@ export default function HaldwaniHillRush() {
             </span>
 
           </div>
-
 
           {/* =================================================
               CATEGORIES
@@ -397,7 +402,6 @@ export default function HaldwaniHillRush() {
 
           </div>
 
-
           {/* =================================================
               EVENT FEATURES
           ================================================= */}
@@ -417,8 +421,8 @@ export default function HaldwaniHillRush() {
                     className={styles.perkIcon}
                   >
                     <Icon
-                      size={19}
-                      strokeWidth={1.6}
+                      size={16}
+                      strokeWidth={1.7}
                     />
                   </div>
 
@@ -442,7 +446,6 @@ export default function HaldwaniHillRush() {
 
           </div>
 
-
           {/* =================================================
               COUNTDOWN
           ================================================= */}
@@ -451,8 +454,12 @@ export default function HaldwaniHillRush() {
             className={styles.countdownGroup}
           >
 
+            {/* REGISTRATION COUNTDOWN */}
+
             <div
-              className={styles.countdownBlock}
+              className={
+                styles.countdownBlock
+              }
             >
 
               <div
@@ -466,7 +473,7 @@ export default function HaldwaniHillRush() {
                 </span>
 
                 <strong>
-                  02 OCT · 11:00 PM
+                  23 OCT · 11:00 PM
                 </strong>
 
               </div>
@@ -477,15 +484,19 @@ export default function HaldwaniHillRush() {
 
             </div>
 
-
             <div
-              className={styles.countdownDivider}
+              className={
+                styles.countdownDivider
+              }
               aria-hidden="true"
             />
 
+            {/* EVENT COUNTDOWN */}
 
             <div
-              className={styles.countdownBlock}
+              className={
+                styles.countdownBlock
+              }
             >
 
               <div
@@ -512,9 +523,8 @@ export default function HaldwaniHillRush() {
 
           </div>
 
-
           {/* =================================================
-              CTA
+              REGISTER NOW — BOTTOM CTA
           ================================================= */}
 
           <div className={styles.ctaArea}>
@@ -526,6 +536,7 @@ export default function HaldwaniHillRush() {
               className={
                 styles.registerButton
               }
+              aria-label="Register now for Haldwani Hill Rush"
             >
 
               <span>
