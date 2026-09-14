@@ -18,7 +18,7 @@ const REGISTRATION_CLOSES = new Date(
 ).getTime();
 
 const EVENT_STARTS = new Date(
-  "2026-10-04T06:00:00+05:30"
+  "2026-10-25T06:00:00+05:30"
 ).getTime();
 
 const CATEGORIES = [
@@ -285,7 +285,7 @@ export default function HaldwaniHillRush() {
               </span>
 
               <strong>
-                04 OCTOBER 2026
+                25 OCTOBER 2026
               </strong>
 
               <small>
@@ -493,7 +493,7 @@ export default function HaldwaniHillRush() {
                 </span>
 
                 <strong>
-                  04 OCT · 6:00 AM
+                  25 OCT · 6:00 AM
                 </strong>
 
               </div>
