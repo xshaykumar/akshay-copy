@@ -14,12 +14,18 @@ import styles from "./HaldwaniHillRush.module.css";
 const REGISTER_URL = "https://rzp.io/rzp/CFg0yaFX";
 
 const REGISTRATION_CLOSES = new Date(
-  "2026-10-02T23:00:00+05:30"
+  "2026-10-23T23:00:00+05:30"
 ).getTime();
 
 const EVENT_STARTS = new Date(
   "2026-10-25T06:00:00+05:30"
 ).getTime();
+
+Visible text:
+04 OCTOBER 2026  ->  25 OCTOBER 2026
+02 OCT · 11:00 PM -> 23 OCT · 11:00 PM
+04 OCT · 6:00 AM  -> 25 OCT · 6:00 AM
+
 
 const CATEGORIES = [
   "Kids",
