@@ -36,7 +36,7 @@
   position:absolute;
   inset:0;
   z-index:0;
-  background:url("/hero-bg.webp") no-repeat 73% 50%/cover;
+  background:url("/hero-bg") no-repeat 73% 50%/cover;
 }
 
 /* =====================================================
