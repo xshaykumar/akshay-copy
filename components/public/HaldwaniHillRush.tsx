@@ -178,390 +178,432 @@ export default function HaldwaniHillRush() {
   }, []);
 
   return (
-    <section
-      className={styles.eventSection}
-      aria-label="Haldwani Hill Rush Challenge 2026"
-    >
-      <div className={styles.hero}>
-
-        {/* =====================================================
-            PHOTOGRAPHIC BACKGROUND
-            Image: /public/hero-bg.webp
-        ===================================================== */}
-
-        <div
-          className={styles.background}
-          aria-hidden="true"
-        />
-
-        {/* White cinematic fade for text readability */}
-        <div
-          className={styles.overlay}
-          aria-hidden="true"
-        />
-
-        <div
-          className={styles.lightSweep}
-          aria-hidden="true"
-        />
-
-        <div
-          className={styles.grain}
-          aria-hidden="true"
-        />
-
-        {/* =====================================================
-            MAIN CONTENT
-        ===================================================== */}
-
-        <div className={styles.content}>
-
-          {/* =================================================
-              BRAND
-          ================================================= */}
-
-          <div className={styles.heroIntro}>
-
-            <div className={styles.brandLine}>
-
-              <span
-                className={styles.brandLineMark}
-              />
-
-              <span>
-                360 PERFORMANCE
-              </span>
-
-              <span
-                className={styles.brandLineMark}
-              />
-
-            </div>
-
-            <p className={styles.kicker}>
-              PRESENTS
-            </p>
-
-          </div>
-
-          {/* =================================================
-              MAIN EVENT TITLE
-          ================================================= */}
-
-          <div className={styles.titleBlock}>
-
-            <h1>
-              HALDWANI
-            </h1>
-
-            <h2>
-              HILL RUSH
-            </h2>
-
-            <div
-              className={styles.titleRule}
-              aria-hidden="true"
-            >
-              <span />
-              <i />
-              <span />
-            </div>
-
-            <div className={styles.challenge}>
-
-              <span>
-                CHALLENGE
-              </span>
-
-              <strong>
-                2026
-              </strong>
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              PRIMARY EVENT INFORMATION
-          ================================================= */}
-
-          <div className={styles.mainInfo}>
-
-            {/* DATE */}
-
-            <div className={styles.infoItem}>
-
-              <span className={styles.infoLabel}>
-                DATE & TIME
-              </span>
-
-              <strong>
-                25 OCTOBER 2026
-              </strong>
-
-              <small>
-                SUNDAY · 6:00 AM
-              </small>
-
-            </div>
-
-            {/* ENTRY */}
-
-            <div className={styles.infoItem}>
-
-              <span className={styles.infoLabel}>
-                ENTRY
-              </span>
-
-              <strong
-                className={styles.price}
-              >
-                ₹199
-              </strong>
-
-              <small>
-                REGISTRATION
-              </small>
-
-            </div>
-
-            {/* ROUTE */}
-
-            <div className={styles.infoItem}>
-
-              <span className={styles.infoLabel}>
-                ROUTE
-              </span>
-
-              <strong>
-                HALDWANI → KATHGODAM
-              </strong>
-
-              <small>
-                AND BACK
-              </small>
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              VENUE
-          ================================================= */}
-
-          <div className={styles.venue}>
-
-            <span className={styles.venueLabel}>
-              VENUE
-            </span>
-
-            <strong>
-              HALDWANI STADIUM
-            </strong>
-
-            <span className={styles.venueLocation}>
-              NEAR BUS STATION
-            </span>
-
-          </div>
-
-          {/* =================================================
-              CATEGORIES
-          ================================================= */}
-
-          <div
-            className={styles.categories}
-            aria-label="Race categories"
-          >
-
-            {CATEGORIES.map(
-              (category, index) => (
-                <div
-                  className={styles.category}
-                  key={category}
-                >
-
-                  <span
-                    className={
-                      styles.categoryNumber
-                    }
-                  >
-                    {String(index + 1).padStart(
-                      2,
-                      "0"
-                    )}
-                  </span>
-
-                  <strong>
-                    {category}
-                  </strong>
-
-                </div>
-              )
-            )}
-
-          </div>
-
-          {/* =================================================
-              EVENT FEATURES
-          ================================================= */}
-
-          <div className={styles.perks}>
-
-            {PERKS.map((perk) => {
-              const Icon = perk.icon;
-
-              return (
-                <div
-                  className={styles.perk}
-                  key={perk.title}
-                >
-
-                  <div
-                    className={styles.perkIcon}
-                  >
-                    <Icon
-                      size={16}
-                      strokeWidth={1.7}
-                    />
-                  </div>
-
-                  <div
-                    className={styles.perkText}
-                  >
-
-                    <strong>
-                      {perk.title}
-                    </strong>
-
-                    <span>
-                      {perk.description}
-                    </span>
-
-                  </div>
-
-                </div>
-              );
-            })}
-
-          </div>
-
-          {/* =================================================
-              COUNTDOWN
-          ================================================= */}
-
-          <div
-            className={styles.countdownGroup}
-          >
-
-            {/* REGISTRATION COUNTDOWN */}
-
-            <div
-              className={
-                styles.countdownBlock
-              }
-            >
-
-              <div
-                className={
-                  styles.countdownHeader
-                }
-              >
-
-                <span>
-                  REGISTRATION CLOSES
-                </span>
-
-                <strong>
-                  23 OCT · 11:00 PM
-                </strong>
-
-              </div>
-
-              <CountdownRow
-                timeLeft={regTimeLeft}
-              />
-
-            </div>
-
-            <div
-              className={
-                styles.countdownDivider
-              }
-              aria-hidden="true"
-            />
-
-            {/* EVENT COUNTDOWN */}
-
-            <div
-              className={
-                styles.countdownBlock
-              }
-            >
-
-              <div
-                className={
-                  styles.countdownHeader
-                }
-              >
-
-                <span>
-                  EVENT STARTS
-                </span>
-
-                <strong>
-                  25 OCT · 6:00 AM
-                </strong>
-
-              </div>
-
-              <CountdownRow
-                timeLeft={eventTimeLeft}
-              />
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              REGISTER NOW — BOTTOM CTA
-          ================================================= */}
-
-          <div className={styles.ctaArea}>
-
-            <a
-              href={REGISTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={
-                styles.registerButton
-              }
-              aria-label="Register now for Haldwani Hill Rush"
-            >
-
-              <span>
-                REGISTER NOW
-              </span>
-
-              <span
-                className={styles.buttonArrow}
-              >
-                <ArrowUpRight
-                  size={19}
-                  strokeWidth={1.9}
-                />
-              </span>
-
-            </a>
-
-            <p className={styles.ctaNote}>
-              SECURE YOUR BIB · LIMITED REGISTRATIONS
-            </p>
-
-          </div>
+    <>
+      {/* =====================================================
+          IMPORTANT EVENT UPDATE
+          ===================================================== */}
+
+      <div className={styles.announcementBar}>
+        <div className={styles.announcementTrack}>
+
+          <span>
+            IMPORTANT UPDATE&nbsp;&nbsp;•&nbsp;&nbsp;
+            EVENT RESCHEDULED TO 25 OCTOBER 2026
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            The event has been rescheduled to ensure proper
+            route coordination, road safety and participant
+            facilities
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            Thank you for your patience and continued support
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            SEE YOU AT HALDWANI HILL RUSH 2026
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+          </span>
+
+          <span aria-hidden="true">
+            IMPORTANT UPDATE&nbsp;&nbsp;•&nbsp;&nbsp;
+            EVENT RESCHEDULED TO 25 OCTOBER 2026
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            The event has been rescheduled to ensure proper
+            route coordination, road safety and participant
+            facilities
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            Thank you for your patience and continued support
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            SEE YOU AT HALDWANI HILL RUSH 2026
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+          </span>
 
         </div>
       </div>
-    </section>
+
+      <section
+        className={styles.eventSection}
+        aria-label="Haldwani Hill Rush Challenge 2026"
+      >
+
+        <div className={styles.hero}>
+
+          {/* =====================================================
+              PHOTOGRAPHIC BACKGROUND
+              Image: /public/hero-bg.webp
+          ===================================================== */}
+
+          <div
+            className={styles.background}
+            aria-hidden="true"
+          />
+
+          {/* White cinematic fade for text readability */}
+
+          <div
+            className={styles.overlay}
+            aria-hidden="true"
+          />
+
+          <div
+            className={styles.lightSweep}
+            aria-hidden="true"
+          />
+
+          <div
+            className={styles.grain}
+            aria-hidden="true"
+          />
+
+          {/* =====================================================
+              MAIN CONTENT
+          ===================================================== */}
+
+          <div className={styles.content}>
+
+            {/* =================================================
+                BRAND
+            ================================================= */}
+
+            <div className={styles.heroIntro}>
+
+              <div className={styles.brandLine}>
+
+                <span
+                  className={styles.brandLineMark}
+                />
+
+                <span>
+                  360 PERFORMANCE
+                </span>
+
+                <span
+                  className={styles.brandLineMark}
+                />
+
+              </div>
+
+              <p className={styles.kicker}>
+                PRESENTS
+              </p>
+
+            </div>
+
+            {/* =================================================
+                MAIN EVENT TITLE
+            ================================================= */}
+
+            <div className={styles.titleBlock}>
+
+              <h1>
+                HALDWANI
+              </h1>
+
+              <h2>
+                HILL RUSH
+              </h2>
+
+              <div
+                className={styles.titleRule}
+                aria-hidden="true"
+              >
+                <span />
+                <i />
+                <span />
+              </div>
+
+              <div className={styles.challenge}>
+
+                <span>
+                  CHALLENGE
+                </span>
+
+                <strong>
+                  2026
+                </strong>
+
+              </div>
+
+            </div>
+
+            {/* =================================================
+                PRIMARY EVENT INFORMATION
+            ================================================= */}
+
+            <div className={styles.mainInfo}>
+
+              {/* DATE */}
+
+              <div className={styles.infoItem}>
+
+                <span className={styles.infoLabel}>
+                  DATE & TIME
+                </span>
+
+                <strong>
+                  25 OCTOBER 2026
+                </strong>
+
+                <small>
+                  SUNDAY · 6:00 AM
+                </small>
+
+              </div>
+
+              {/* ENTRY */}
+
+              <div className={styles.infoItem}>
+
+                <span className={styles.infoLabel}>
+                  ENTRY
+                </span>
+
+                <strong
+                  className={styles.price}
+                >
+                  ₹199
+                </strong>
+
+                <small>
+                  REGISTRATION
+                </small>
+
+              </div>
+
+              {/* ROUTE */}
+
+              <div className={styles.infoItem}>
+
+                <span className={styles.infoLabel}>
+                  ROUTE
+                </span>
+
+                <strong>
+                  HALDWANI → KATHGODAM
+                </strong>
+
+                <small>
+                  AND BACK
+                </small>
+
+              </div>
+
+            </div>
+
+            {/* =================================================
+                VENUE
+            ================================================= */}
+
+            <div className={styles.venue}>
+
+              <span className={styles.venueLabel}>
+                VENUE
+              </span>
+
+              <strong>
+                HALDWANI STADIUM
+              </strong>
+
+              <span className={styles.venueLocation}>
+                NEAR BUS STATION
+              </span>
+
+            </div>
+
+            {/* =================================================
+                CATEGORIES
+            ================================================= */}
+
+            <div
+              className={styles.categories}
+              aria-label="Race categories"
+            >
+
+              {CATEGORIES.map(
+                (category, index) => (
+                  <div
+                    className={styles.category}
+                    key={category}
+                  >
+
+                    <span
+                      className={
+                        styles.categoryNumber
+                      }
+                    >
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
+                    </span>
+
+                    <strong>
+                      {category}
+                    </strong>
+
+                  </div>
+                )
+              )}
+
+            </div>
+
+            {/* =================================================
+                EVENT FEATURES
+            ================================================= */}
+
+            <div className={styles.perks}>
+
+              {PERKS.map((perk) => {
+                const Icon = perk.icon;
+
+                return (
+                  <div
+                    className={styles.perk}
+                    key={perk.title}
+                  >
+
+                    <div
+                      className={styles.perkIcon}
+                    >
+                      <Icon
+                        size={16}
+                        strokeWidth={1.7}
+                      />
+                    </div>
+
+                    <div
+                      className={styles.perkText}
+                    >
+
+                      <strong>
+                        {perk.title}
+                      </strong>
+
+                      <span>
+                        {perk.description}
+                      </span>
+
+                    </div>
+
+                  </div>
+                );
+              })}
+
+            </div>
+
+            {/* =================================================
+                COUNTDOWN
+            ================================================= */}
+
+            <div
+              className={styles.countdownGroup}
+            >
+
+              {/* REGISTRATION COUNTDOWN */}
+
+              <div
+                className={
+                  styles.countdownBlock
+                }
+              >
+
+                <div
+                  className={
+                    styles.countdownHeader
+                  }
+                >
+
+                  <span>
+                    REGISTRATION CLOSES
+                  </span>
+
+                  <strong>
+                    23 OCT · 11:00 PM
+                  </strong>
+
+                </div>
+
+                <CountdownRow
+                  timeLeft={regTimeLeft}
+                />
+
+              </div>
+
+              <div
+                className={
+                  styles.countdownDivider
+                }
+                aria-hidden="true"
+              />
+
+              {/* EVENT COUNTDOWN */}
+
+              <div
+                className={
+                  styles.countdownBlock
+                }
+              >
+
+                <div
+                  className={
+                    styles.countdownHeader
+                  }
+                >
+
+                  <span>
+                    EVENT STARTS
+                  </span>
+
+                  <strong>
+                    25 OCT · 6:00 AM
+                  </strong>
+
+                </div>
+
+                <CountdownRow
+                  timeLeft={eventTimeLeft}
+                />
+
+              </div>
+
+            </div>
+
+            {/* =================================================
+                REGISTER NOW — BOTTOM CTA
+            ================================================= */}
+
+            <div className={styles.ctaArea}>
+
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={
+                  styles.registerButton
+                }
+                aria-label="Register now for Haldwani Hill Rush"
+              >
+
+                <span>
+                  REGISTER NOW
+                </span>
+
+                <span
+                  className={styles.buttonArrow}
+                >
+                  <ArrowUpRight
+                    size={19}
+                    strokeWidth={1.9}
+                  />
+                </span>
+
+              </a>
+
+              <p className={styles.ctaNote}>
+                SECURE YOUR BIB · LIMITED REGISTRATIONS
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
