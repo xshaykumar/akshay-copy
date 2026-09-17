@@ -87,9 +87,19 @@ export async function POST(request: Request) {
       contentType: file.type,
       upsert: false,
     });
-    if (uploadError) {
-      throw new HttpError(502, "certificate_upload_failed", "The certificate could not be stored.");
-    }
+   if (uploadError) {
+  console.error("Coach certificate upload failed:", {
+    requestId,
+    message: uploadError.message,
+    name: uploadError.name,
+  });
+
+  throw new HttpError(
+    502,
+    "certificate_upload_failed",
+    uploadError.message || "The certificate could not be stored.",
+  );
+}
 
     try {
       const [certification] = await db.transaction(async (transaction) => {
