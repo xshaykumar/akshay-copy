@@ -121,3 +121,63 @@ linear-gradient(180deg,rgba(255,255,255,.15),transparent 35%,rgba(255,255,255,.1
 @media(prefers-reduced-motion:reduce){
   .registerButton,.registerButton::before{transition:none}
 }
+/* =====================================================
+   IMPORTANT EVENT ANNOUNCEMENT
+   ===================================================== */
+
+.announcementBar {
+  width: 100%;
+  overflow: hidden;
+  background: #111111;
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 10px 0;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1000;
+}
+
+.announcementTrack {
+  display: flex;
+  width: max-content;
+  animation: announcementScroll 30s linear infinite;
+}
+
+.announcementTrack span {
+  flex-shrink: 0;
+  padding-right: 100px;
+  color: #d4af37;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+@keyframes announcementScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.announcementBar:hover .announcementTrack {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .announcementBar {
+    padding: 9px 0;
+  }
+
+  .announcementTrack span {
+    font-size: 11px;
+    padding-right: 70px;
+  }
+
+  .announcementTrack {
+    animation-duration: 25s;
+  }
+}
