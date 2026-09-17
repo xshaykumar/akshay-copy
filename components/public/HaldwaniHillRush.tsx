@@ -226,15 +226,15 @@ export default function HaldwaniHillRush() {
 
           {/* =====================================================
               PHOTOGRAPHIC BACKGROUND
-              Image: /public/hero-bg.webp
-          ===================================================== */}
+              Image: /public/hero-bg
+              ===================================================== */}
 
           <div
             className={styles.background}
             aria-hidden="true"
           />
 
-          {/* White cinematic fade for text readability */}
+          {/* Text readability overlay */}
 
           <div
             className={styles.overlay}
@@ -253,41 +253,13 @@ export default function HaldwaniHillRush() {
 
           {/* =====================================================
               MAIN CONTENT
-          ===================================================== */}
+              ===================================================== */}
 
           <div className={styles.content}>
 
             {/* =================================================
-                BRAND
-            ================================================= */}
-
-            <div className={styles.heroIntro}>
-
-              <div className={styles.brandLine}>
-
-                <span
-                  className={styles.brandLineMark}
-                />
-
-                <span>
-                  360 PERFORMANCE
-                </span>
-
-                <span
-                  className={styles.brandLineMark}
-                />
-
-              </div>
-
-              <p className={styles.kicker}>
-                PRESENTS
-              </p>
-
-            </div>
-
-            {/* =================================================
                 MAIN EVENT TITLE
-            ================================================= */}
+                ================================================= */}
 
             <div className={styles.titleBlock}>
 
@@ -324,7 +296,7 @@ export default function HaldwaniHillRush() {
 
             {/* =================================================
                 PRIMARY EVENT INFORMATION
-            ================================================= */}
+                ================================================= */}
 
             <div className={styles.mainInfo}>
 
@@ -388,7 +360,7 @@ export default function HaldwaniHillRush() {
 
             {/* =================================================
                 VENUE
-            ================================================= */}
+                ================================================= */}
 
             <div className={styles.venue}>
 
@@ -408,7 +380,7 @@ export default function HaldwaniHillRush() {
 
             {/* =================================================
                 CATEGORIES
-            ================================================= */}
+                ================================================= */}
 
             <div
               className={styles.categories}
@@ -445,7 +417,7 @@ export default function HaldwaniHillRush() {
 
             {/* =================================================
                 EVENT FEATURES
-            ================================================= */}
+                ================================================= */}
 
             <div className={styles.perks}>
 
@@ -489,7 +461,7 @@ export default function HaldwaniHillRush() {
 
             {/* =================================================
                 COUNTDOWN
-            ================================================= */}
+                ================================================= */}
 
             <div
               className={styles.countdownGroup}
@@ -565,8 +537,8 @@ export default function HaldwaniHillRush() {
             </div>
 
             {/* =================================================
-                REGISTER NOW — BOTTOM CTA
-            ================================================= */}
+                REGISTER NOW
+                ================================================= */}
 
             <div className={styles.ctaArea}>
 
@@ -602,7 +574,9 @@ export default function HaldwaniHillRush() {
             </div>
 
           </div>
+
         </div>
+
       </section>
     </>
   );
