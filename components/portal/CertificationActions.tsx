@@ -75,10 +75,10 @@ export function CoachCertificationManager({
       setMessage("Choose a certificate to upload.");
       return;
     }
-    if (file.size > 1024 * 1024) {
-      setMessage("The certificate must be no larger than 1 MB.");
-      return;
-    }
+   if (file.size > 10 * 1024 * 1024) {
+  setMessage("The certificate must be no larger than 10 MB.");
+  return;
+}
     setWorking(true);
     setMessage("");
     try {
@@ -255,7 +255,7 @@ export function CoachCertificationManager({
               accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
               required
             />
-            <small>PDF, JPG, JPEG, or PNG · maximum 1 MB</small>
+            <small>PDF, JPG, JPEG, or PNG · maximum 10 MB</small>
           </div>
           <button
             className={styles.primaryButton}
