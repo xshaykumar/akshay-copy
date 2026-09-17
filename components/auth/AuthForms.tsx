@@ -783,3 +783,140 @@ export function UpdatePasswordForm() {
     </form>
   );
 }
+export function RecoveryMfaForm() {
+  const router = useRouter();
+  const [factorId, setFactorId] = useState("");
+  const [challengeId, setChallengeId] = useState("");
+  const [error, setError] = useState("");
+  const [working, setWorking] = useState(true);
+
+  async function prepare() {
+    setError("");
+    setWorking(true);
+
+    try {
+      const supabase = createClient();
+
+      const { data: factors, error: factorsError } =
+        await supabase.auth.mfa.listFactors();
+
+      if (factorsError) {
+        throw new Error(factorsError.message);
+      }
+
+      const factor = factors.totp.find(
+        (item) => item.status === "verified",
+      );
+
+      if (!factor) {
+        throw new Error(
+          "No verified authenticator factor is available for this account.",
+        );
+      }
+
+      const { data: challenge, error: challengeError } =
+        await supabase.auth.mfa.challenge({
+          factorId: factor.id,
+        });
+
+      if (challengeError) {
+        throw new Error(challengeError.message);
+      }
+
+      setFactorId(factor.id);
+      setChallengeId(challenge.id);
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "MFA verification could not be started.",
+      );
+    } finally {
+      setWorking(false);
+    }
+  }
+
+  async function verify(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const code = String(
+      new FormData(event.currentTarget).get("code") ?? "",
+    );
+
+    setError("");
+
+    if (!/^[0-9]{6}$/.test(code)) {
+      setError("Enter the six-digit authenticator code.");
+      return;
+    }
+
+    setWorking(true);
+
+    try {
+      const supabase = createClient();
+
+      const { error: verifyError } = await supabase.auth.mfa.verify({
+        factorId,
+        challengeId,
+        code,
+      });
+
+      if (verifyError) {
+        throw new Error(verifyError.message);
+      }
+
+      router.push("/update-password");
+      router.refresh();
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "MFA verification failed.",
+      );
+    } finally {
+      setWorking(false);
+    }
+  }
+
+  if (working && !factorId) {
+    void prepare();
+
+    return (
+      <>
+        <FormMessage error={error} />
+        <p>Preparing secure verification…</p>
+      </>
+    );
+  }
+
+  return (
+    <form className={styles.authForm} onSubmit={verify}>
+      <div className={styles.formGroup}>
+        <label htmlFor="recovery-mfa-code">
+          Six-digit authenticator code
+        </label>
+
+        <input
+          className={styles.formControl}
+          id="recovery-mfa-code"
+          name="code"
+          inputMode="numeric"
+          pattern="[0-9]{6}"
+          autoComplete="one-time-code"
+          maxLength={6}
+          required
+        />
+      </div>
+
+      <FormMessage error={error} />
+
+      <button
+        className={styles.authSubmit}
+        type="submit"
+        disabled={working}
+      >
+        {working ? "Verifying…" : "Verify and continue"}
+      </button>
+    </form>
+  );
+}
