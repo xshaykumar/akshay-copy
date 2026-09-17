@@ -705,9 +705,10 @@ export function UpdatePasswordForm() {
     const { error: updateError } = await createClient().auth.updateUser({ password });
     setSubmitting(false);
     if (updateError) {
-      setError("The reset session is invalid or expired. Request a new link.");
-      return;
-    }
+  console.error("Password reset update error:", updateError);
+  setError(updateError.message);
+  return;
+}
     router.push("/login?password=updated");
     router.refresh();
   }
