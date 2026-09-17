@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
@@ -878,16 +878,18 @@ export function RecoveryMfaForm() {
     }
   }
 
-  if (working && !factorId) {
-    void prepare();
+ useEffect(() => {
+  void prepare();
+}, []);
 
-    return (
-      <>
-        <FormMessage error={error} />
-        <p>Preparing secure verification…</p>
-      </>
-    );
-  }
+if (working && !factorId) {
+  return (
+    <>
+      <FormMessage error={error} />
+      <p>Preparing secure verification…</p>
+    </>
+  );
+}
 
   return (
     <form className={styles.authForm} onSubmit={verify}>
