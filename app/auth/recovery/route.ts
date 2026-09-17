@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { getPublicEnv } from "@/lib/env/browser";
 
@@ -8,7 +8,7 @@ function recoveryFailure(origin: string) {
   );
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const tokenHash = url.searchParams.get("token_hash");
@@ -30,20 +30,7 @@ export async function GET(request: Request) {
     {
       cookies: {
         getAll() {
-          return request.headers
-            .get("cookie")
-            ?.split("; ")
-            .filter(Boolean)
-            .map((cookie) => {
-              const separator = cookie.indexOf("=");
-              return {
-                name: separator >= 0 ? cookie.slice(0, separator) : cookie,
-                value:
-                  separator >= 0
-                    ? decodeURIComponent(cookie.slice(separator + 1))
-                    : "",
-              };
-            }) ?? [];
+          return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
           for (const { name, value, options } of cookiesToSet) {
