@@ -690,41 +690,94 @@ export function UpdatePasswordForm() {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const values = new FormData(event.currentTarget);
     const password = String(values.get("password") ?? "");
+
     if (password.length < 6) {
       setError("Password must contain at least 6 characters.");
       return;
     }
+
     if (password !== String(values.get("confirmation") ?? "")) {
       setError("Passwords do not match.");
       return;
     }
+
     setSubmitting(true);
     setError("");
-    const { error: updateError } = await createClient().auth.updateUser({ password });
-    setSubmitting(false);
-    if (updateError) {
-  console.error("Password reset update error:", updateError);
-  setError(updateError.message);
-  return;
-}
-    router.push("/login?password=updated");
-    router.refresh();
+
+    try {
+      const supabase = createClient();
+
+      const { data: assurance, error: assuranceError } =
+        await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+
+      if (assuranceError) {
+        throw new Error(assuranceError.message);
+      }
+
+      if (
+        assurance.currentLevel === "aal1" &&
+        assurance.nextLevel === "aal2"
+      ) {
+        router.push("/mfa/recovery");
+        return;
+      }
+
+      const { error: updateError } =
+        await supabase.auth.updateUser({ password });
+
+      if (updateError) {
+        throw new Error(updateError.message);
+      }
+
+      router.push("/login?password=updated");
+      router.refresh();
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "The password could not be updated.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
     <form className={styles.authForm} onSubmit={submit}>
       <div className={styles.formGroup}>
         <label htmlFor="new-password">New password</label>
-        <PasswordInput id="new-password" name="password" minLength={6} autoComplete="new-password" visibilityLabel="new password" />
+        <PasswordInput
+          id="new-password"
+          name="password"
+          minLength={6}
+          autoComplete="new-password"
+          visibilityLabel="new password"
+        />
       </div>
+
       <div className={styles.formGroup}>
-        <label htmlFor="new-password-confirmation">Confirm new password</label>
-        <PasswordInput id="new-password-confirmation" name="confirmation" minLength={6} autoComplete="new-password" visibilityLabel="new password confirmation" />
+        <label htmlFor="new-password-confirmation">
+          Confirm new password
+        </label>
+        <PasswordInput
+          id="new-password-confirmation"
+          name="confirmation"
+          minLength={6}
+          autoComplete="new-password"
+          visibilityLabel="new password confirmation"
+        />
       </div>
+
       <FormMessage error={error} />
-      <button className={styles.authSubmit} type="submit" disabled={submitting}>
+
+      <button
+        className={styles.authSubmit}
+        type="submit"
+        disabled={submitting}
+      >
         {submitting ? "Updating…" : "Update password"}
       </button>
     </form>
