@@ -619,15 +619,38 @@ export function ForgotPasswordForm() {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const email = String(new FormData(event.currentTarget).get("email") ?? "");
+
+    const email = String(
+      new FormData(event.currentTarget).get("email") ?? "",
+    ).trim();
+
     setSubmitting(true);
     setError("");
     setSuccess("");
+
     try {
-      await postJson("/api/auth/forgot-password", { email });
-      setSuccess("If that account exists, a secure reset link has been sent.");
+      const supabase = createClient();
+
+      const recoveryUrl = `${window.location.origin}/auth/recovery`;
+
+      const { error: resetError } =
+        await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: recoveryUrl,
+        });
+
+      if (resetError) {
+        throw new Error(resetError.message);
+      }
+
+      setSuccess(
+        "If that account exists, a secure reset link has been sent.",
+      );
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Reset could not be started.");
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "Reset could not be started.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -646,8 +669,14 @@ export function ForgotPasswordForm() {
           required
         />
       </div>
+
       <FormMessage error={error} success={success} />
-      <button className={styles.authSubmit} type="submit" disabled={submitting}>
+
+      <button
+        className={styles.authSubmit}
+        type="submit"
+        disabled={submitting}
+      >
         {submitting ? "Sending…" : "Send reset link"}
       </button>
     </form>
