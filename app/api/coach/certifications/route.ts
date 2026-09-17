@@ -13,7 +13,7 @@ import {
 } from "@/lib/http/errors";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-const MAX_CERTIFICATE_BYTES = 1024 * 1024;
+const MAX_CERTIFICATE_BYTES = 10 * 1024 * 1024;
 const allowedCertificateTypes = new Set([
   "application/pdf",
   "image/jpeg",
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       throw new HttpError(
         400,
         "invalid_certificate",
-        "Certificates must be PDF, JPG, JPEG, or PNG and no larger than 1 MB.",
+        "Certificates must be PDF, JPG, JPEG, or PNG and no larger than 10 MB.",
       );
     }
 
