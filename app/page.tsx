@@ -21,7 +21,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { PublicShell } from "@/components/public/PublicShell";
-import HaldwaniHillRush from "@/components/public/HaldwaniHillRush";
 import styles from "@/components/public/public.module.css";
 import founderImage from "@/founder.png";
 
@@ -157,7 +156,6 @@ const process = [
 export default function Home() {
   return (
     <PublicShell>
-      <HaldwaniHillRush />
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
